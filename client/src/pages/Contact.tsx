@@ -63,19 +63,7 @@ export default function Contact() {
                 San Jose, CA 95112
               </p>
             </div>
-            ---------
-            <div className="p-6 bg-secondary/30 rounded-2xl border border-foreground/10">
-              <Calendar className="w-8 h-8 text-purple-400 mb-4" />
-              <h3 className="text-xl font-bold text-foreground mb-2">
-                Meeting Times
-              </h3>
-              <p className="text-muted-foreground">
-                Mon, Wed, Fri: 3:30 PM - 6:30 PM
-                <br />
-                Sat: 10:00 AM - 4:00 PM
-              </p>
-            </div>
-            ----
+
           </div>
 
           {/* Form */}
