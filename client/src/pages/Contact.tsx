@@ -48,7 +48,7 @@ export default function Contact() {
               <h3 className="text-xl font-bold text-foreground mb-2">Email Us</h3>
               <p className="text-muted-foreground">contact@totalchaos.com</p>
             </div>
-            
+ /*          
             <div className="p-6 bg-secondary/30 rounded-2xl border border-foreground/10">
               <MapPin className="w-8 h-8 text-accent mb-4" />
               <h3 className="text-xl font-bold text-foreground mb-2">Location</h3>
@@ -58,7 +58,7 @@ export default function Contact() {
                 San Jose, CA 95112
               </p>
             </div>
-
+*/   
             <div className="p-6 bg-secondary/30 rounded-2xl border border-foreground/10">
               <Calendar className="w-8 h-8 text-purple-400 mb-4" />
               <h3 className="text-xl font-bold text-foreground mb-2">Meeting Times</h3>
