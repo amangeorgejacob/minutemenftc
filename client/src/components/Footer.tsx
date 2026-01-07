@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { Github, Twitter, Instagram, Mail, Heart } from "lucide-react";
+import { Mail, Heart } from "lucide-react";
 
 export function Footer() {
   return (
@@ -12,16 +12,7 @@ export function Footer() {
               Inspiring the next generation of engineers and innovators through competitive robotics.
               First Tech Challenge Team #24621.
             </p>
-            <div className="flex gap-4">
-              <a href="#" className="p-2 bg-foreground/5 rounded-full hover:bg-primary/20 hover:text-primary transition-colors">
-                <Github className="w-5 h-5" />
-              </a>
-              <a href="#" className="p-2 bg-foreground/5 rounded-full hover:bg-primary/20 hover:text-primary transition-colors">
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a href="#" className="p-2 bg-foreground/5 rounded-full hover:bg-primary/20 hover:text-primary transition-colors">
-                <Instagram className="w-5 h-5" />
-              </a>
+
               <a href="mailto:contact@totalchaos.com" className="p-2 bg-foreground/5 rounded-full hover:bg-primary/20 hover:text-primary transition-colors">
                 <Mail className="w-5 h-5" />
               </a>
