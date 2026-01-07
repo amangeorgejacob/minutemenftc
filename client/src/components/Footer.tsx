@@ -1,0 +1,63 @@
+import { Link } from "wouter";
+import { Github, Twitter, Instagram, Mail, Heart } from "lucide-react";
+
+export function Footer() {
+  return (
+    <footer className="bg-background border-t border-white/10 pt-16 pb-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+          <div className="col-span-1 md:col-span-2">
+            <h3 className="text-2xl font-bold mb-4 text-white">ROBOTECH</h3>
+            <p className="text-muted-foreground max-w-md mb-6">
+              Inspiring the next generation of engineers and innovators through competitive robotics.
+              First Tech Challenge Team #12345 based in Silicon Valley.
+            </p>
+            <div className="flex gap-4">
+              <a href="#" className="p-2 bg-white/5 rounded-full hover:bg-primary/20 hover:text-primary transition-colors">
+                <Github className="w-5 h-5" />
+              </a>
+              <a href="#" className="p-2 bg-white/5 rounded-full hover:bg-primary/20 hover:text-primary transition-colors">
+                <Twitter className="w-5 h-5" />
+              </a>
+              <a href="#" className="p-2 bg-white/5 rounded-full hover:bg-primary/20 hover:text-primary transition-colors">
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a href="mailto:contact@robotech.com" className="p-2 bg-white/5 rounded-full hover:bg-primary/20 hover:text-primary transition-colors">
+                <Mail className="w-5 h-5" />
+              </a>
+            </div>
+          </div>
+          
+          <div>
+            <h4 className="font-bold mb-4 text-white">Explore</h4>
+            <ul className="space-y-2">
+              <li><Link href="/about" className="text-muted-foreground hover:text-primary transition-colors">Our Team</Link></li>
+              <li><Link href="/community" className="text-muted-foreground hover:text-primary transition-colors">Community Impact</Link></li>
+              <li><Link href="/sponsors" className="text-muted-foreground hover:text-primary transition-colors">Sponsors</Link></li>
+              <li><Link href="/contact" className="text-muted-foreground hover:text-primary transition-colors">Contact Us</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-bold mb-4 text-white">Support Us</h4>
+            <p className="text-muted-foreground mb-4 text-sm">
+              We rely on community support to build robots and compete.
+            </p>
+            <Link href="/contact" className="inline-flex items-center gap-2 text-primary font-bold hover:text-accent transition-colors">
+              Become a Sponsor <Heart className="w-4 h-4" />
+            </Link>
+          </div>
+        </div>
+
+        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-sm text-muted-foreground">
+            © {new Date().getFullYear()} RoboTech Team. All rights reserved.
+          </p>
+          <p className="text-sm text-muted-foreground">
+            Built with ❤️ and 🤖
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+}

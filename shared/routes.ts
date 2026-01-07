@@ -1,0 +1,68 @@
+import { z } from 'zod';
+import { insertMemberSchema, insertSponsorSchema, insertMessageSchema, members, sponsors, messages } from './schema';
+
+// ============================================
+// SHARED ERROR SCHEMAS
+// ============================================
+export const errorSchemas = {
+  validation: z.object({
+    message: z.string(),
+    field: z.string().optional(),
+  }),
+  notFound: z.object({
+    message: z.string(),
+  }),
+  internal: z.object({
+    message: z.string(),
+  }),
+};
+
+// ============================================
+// API CONTRACT
+// ============================================
+export const api = {
+  members: {
+    list: {
+      method: 'GET' as const,
+      path: '/api/members',
+      responses: {
+        200: z.array(z.custom<typeof members.$inferSelect>()),
+      },
+    },
+  },
+  sponsors: {
+    list: {
+      method: 'GET' as const,
+      path: '/api/sponsors',
+      responses: {
+        200: z.array(z.custom<typeof sponsors.$inferSelect>()),
+      },
+    },
+  },
+  contact: {
+    submit: {
+      method: 'POST' as const,
+      path: '/api/contact',
+      input: insertMessageSchema,
+      responses: {
+        201: z.custom<typeof messages.$inferSelect>(),
+        400: errorSchemas.validation,
+      },
+    },
+  },
+};
+
+// ============================================
+// HELPER
+// ============================================
+export function buildUrl(path: string, params?: Record<string, string | number>): string {
+  let url = path;
+  if (params) {
+    Object.entries(params).forEach(([key, value]) => {
+      if (url.includes(`:${key}`)) {
+        url = url.replace(`:${key}`, String(value));
+      }
+    });
+  }
+  return url;
+}
