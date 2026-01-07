@@ -40,8 +40,10 @@ export function Footer() {
           </div>
         </div>
 
-        
+        <div className="border-t border-foreground/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
 
+        </div>
+      </div>
     </footer>
   );
 }
