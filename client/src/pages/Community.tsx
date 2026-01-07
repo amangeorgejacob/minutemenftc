@@ -2,8 +2,8 @@ import { motion } from "framer-motion";
 import { BookOpen, Users, Globe, Heart } from "lucide-react";
 
 const impactStats = [
-  { icon: Users, value: "500+", label: "Students Mentored" },
-  { icon: Heart, value: "200h", label: "Volunteer Hours" },
+  { icon: Users, value: "50-100+", label: "Students Mentored" },
+  { icon: Heart, value: "~100h", label: "Volunteer Hours" },
 ];
 
 export default function Community() {
@@ -48,7 +48,7 @@ export default function Community() {
           <div className="order-2 md:order-1">
             <h2 className="text-3xl font-bold text-foreground mb-6">STEM Outreach</h2>
             <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-              We regularly visit local elementary and middle schools to demonstrate our robots and inspire young students to pursue careers in STEM.
+              We visit local elementary schools to demonstrate our robots and inspire young students to pursue careers in STEM.
             </p>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
@@ -57,11 +57,11 @@ export default function Community() {
               </li>
               <li className="flex items-start gap-3">
                 <div className="w-2 h-2 rounded-full bg-accent mt-2" />
-                <span className="text-muted-foreground">Intro to coding workshops with Scratch</span>
+                <span className="text-muted-foreground">Mentoring new 6th graders how to build and program demo robots</span>
               </li>
               <li className="flex items-start gap-3">
                 <div className="w-2 h-2 rounded-full bg-accent mt-2" />
-                <span className="text-muted-foreground">Mentoring Junior FLL teams</span>
+                <span className="text-muted-foreground">GOing to places like Seafair in Seattle to inspire kids (and adults) into taking STEM paths</span>
               </li>
             </ul>
           </div>
@@ -76,27 +76,7 @@ export default function Community() {
           </div>
         </div>
 
-        {/* Summer Camps */}
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="rounded-2xl overflow-hidden border border-white/10 h-[400px] relative group">
-            <div className="absolute inset-0 bg-accent/20 opacity-0 group-hover:opacity-100 transition-opacity z-10" />
-            {/* summer camp robotics */}
-            <img 
-              src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80"
-              alt="Summer Camps" 
-              className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-            />
-          </div>
-          <div>
-            <h2 className="text-3xl font-bold text-foreground mb-6">Summer Robotics Camps</h2>
-            <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-              Every summer, we host a week-long robotics camp where students learn to design, build, and program their own LEGO Mindstorms robots.
-            </p>
-            <p className="text-muted-foreground">
-              These camps fund our team's season while providing hands-on engineering experience to over 50 students each year.
-            </p>
-          </div>
-        </div>
+        
       </section>
     </div>
   );
