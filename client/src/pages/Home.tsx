@@ -15,7 +15,7 @@ export default function Home() {
             alt="Robotics Competition" 
             className="w-full h-full object-cover opacity-20"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
         </div>
 
         <div className="container relative z-10 px-4 text-center">
@@ -27,9 +27,8 @@ export default function Home() {
             <span className="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary border border-primary/20 text-sm font-semibold mb-6 tracking-wide uppercase">
               FTC Team #12345
             </span>
-            <h1 className="text-5xl md:text-7xl font-display font-black mb-6 text-white leading-tight">
-              BUILDING THE <br />
-              <span className="tech-gradient-text">FUTURE</span>
+            <h1 className="text-5xl md:text-7xl font-display font-black mb-6 text-foreground leading-tight">
+              TOTAL <span className="tech-gradient-text">CHAOS</span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
               We are a passionate team of student engineers designing, building, and programming robots to compete in the FIRST Tech Challenge.
@@ -38,7 +37,7 @@ export default function Home() {
               <Link href="/about" className="inline-flex items-center justify-center px-8 py-4 rounded-lg bg-primary text-primary-foreground font-bold hover:bg-primary/90 transition-all hover:scale-105">
                 Meet the Team
               </Link>
-              <Link href="/contact" className="inline-flex items-center justify-center px-8 py-4 rounded-lg bg-white/5 text-white font-bold border border-white/10 hover:bg-white/10 transition-all backdrop-blur-sm">
+              <Link href="/contact" className="inline-flex items-center justify-center px-8 py-4 rounded-lg bg-foreground/5 text-foreground font-bold border border-foreground/10 hover:bg-foreground/10 transition-all backdrop-blur-sm">
                 Join Us
               </Link>
             </div>
@@ -54,10 +53,10 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="p-8 rounded-2xl bg-card/50 border border-white/5 hover:border-primary/50 transition-colors"
+              className="p-8 rounded-2xl bg-card/50 border border-foreground/10 hover:border-primary/50 transition-colors"
             >
               <Zap className="w-12 h-12 text-accent mb-6" />
-              <h3 className="text-2xl font-bold text-white mb-4">Innovation</h3>
+              <h3 className="text-2xl font-bold text-foreground mb-4">Innovation</h3>
               <p className="text-muted-foreground">
                 Pushing the boundaries of what student-built robots can achieve through custom CAD designs and advanced control algorithms.
               </p>
@@ -68,10 +67,10 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="p-8 rounded-2xl bg-card/50 border border-white/5 hover:border-primary/50 transition-colors"
+              className="p-8 rounded-2xl bg-card/50 border border-foreground/10 hover:border-primary/50 transition-colors"
             >
               <Users className="w-12 h-12 text-primary mb-6" />
-              <h3 className="text-2xl font-bold text-white mb-4">Community</h3>
+              <h3 className="text-2xl font-bold text-foreground mb-4">Community</h3>
               <p className="text-muted-foreground">
                 Mentoring local FLL teams and hosting workshops to spread STEM education throughout our local schools.
               </p>
@@ -82,10 +81,10 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="p-8 rounded-2xl bg-card/50 border border-white/5 hover:border-primary/50 transition-colors"
+              className="p-8 rounded-2xl bg-card/50 border border-foreground/10 hover:border-primary/50 transition-colors"
             >
               <Trophy className="w-12 h-12 text-yellow-500 mb-6" />
-              <h3 className="text-2xl font-bold text-white mb-4">Excellence</h3>
+              <h3 className="text-2xl font-bold text-foreground mb-4">Excellence</h3>
               <p className="text-muted-foreground">
                 Regional finalists 3 years running. Recognized for engineering portfolio and control systems excellence.
               </p>
@@ -98,7 +97,7 @@ export default function Home() {
       <section className="py-32 relative overflow-hidden">
         <div className="absolute inset-0 bg-primary/5 -skew-y-3 transform origin-top-left" />
         <div className="container mx-auto px-4 relative z-10 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">Ready to support us?</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-8">Ready to support Total Chaos?</h2>
           <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
             Your support helps us buy parts, register for competitions, and travel to events. Become a part of our journey.
           </p>
