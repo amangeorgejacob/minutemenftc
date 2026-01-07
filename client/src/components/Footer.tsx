@@ -46,7 +46,7 @@ export function Footer() {
             Built with ❤️ and 🤖
           </p>
         </div>
-      
+      </div>
     </footer>
   );
 }
