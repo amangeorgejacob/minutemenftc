@@ -34,8 +34,7 @@ export default function Contact() {
           GET IN <span className="text-primary">TOUCH</span>
         </motion.h1>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Have a question? Want to sponsor us? Send
-          us a message!
+          Have a question? Want to sponsor us? Send us a message!
         </p>
       </section>
 
@@ -56,14 +55,13 @@ export default function Contact() {
                 Location
               </h3>
               <p className="text-muted-foreground">
-                Innovation High School
+                Maywood Middle School
                 <br />
-                123 Technology Drive
+                168th Ave SE
                 <br />
-                San Jose, CA 95112
+                Renton, WA 14490
               </p>
             </div>
-
           </div>
 
           {/* Form */}
