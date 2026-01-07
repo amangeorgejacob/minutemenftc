@@ -3,8 +3,6 @@ import { BookOpen, Users, Globe, Heart } from "lucide-react";
 
 const impactStats = [
   { icon: Users, value: "500+", label: "Students Mentored" },
-  { icon: BookOpen, value: "50+", label: "Workshops Hosted" },
-  { icon: Globe, value: "10", label: "Schools Reached" },
   { icon: Heart, value: "200h", label: "Volunteer Hours" },
 ];
 
@@ -20,7 +18,7 @@ export default function Community() {
           COMMUNITY <span className="text-accent">IMPACT</span>
         </motion.h1>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Robotics is more than just building machines—it's about building people and communities.
+          Robotics is more than just building machines - it's about building people and communities.
         </p>
       </section>
 
