@@ -61,7 +61,7 @@ export default function Community() {
               </li>
               <li className="flex items-start gap-3">
                 <div className="w-2 h-2 rounded-full bg-accent mt-2" />
-                <span className="text-muted-foreground">GOing to places like Seafair in Seattle to inspire kids (and adults) into taking STEM paths</span>
+                <span className="text-muted-foreground">Going to places like Seafair in Seattle to inspire kids (and adults) into taking STEM paths</span>
               </li>
             </ul>
           </div>
