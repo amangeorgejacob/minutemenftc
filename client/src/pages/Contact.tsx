@@ -34,7 +34,7 @@ export default function Contact() {
           GET IN <span className="text-primary">TOUCH</span>
         </motion.h1>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Have a question? Want to sponsor us? Or just want to talk robots? Send
+          Have a question? Want to sponsor us? Send
           us a message!
         </p>
       </section>
