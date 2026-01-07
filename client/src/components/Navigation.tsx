@@ -1,6 +1,6 @@
 import { Link, useLocation } from "wouter";
 import { motion } from "framer-motion";
-import { Menu, X, Cpu } from "lucide-react";
+import { Menu, X, Cpu, Zap } from "lucide-react";
 import { useState } from "react";
 
 const links = [
@@ -21,7 +21,7 @@ export function Navigation() {
         <div className="flex items-center justify-between h-20">
           <Link href="/" className="flex items-center gap-2 group">
             <div className="p-2 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
-              <Cpu className="w-8 h-8 text-primary" />
+              <Zap className="w-8 h-8 text-primary" />
             </div>
             <span className="font-display font-bold text-xl tracking-wider text-foreground">
               TOTAL <span className="text-primary">CHAOS</span>
