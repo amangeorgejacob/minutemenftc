@@ -13,9 +13,9 @@ export default function About() {
         <motion.h1 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-4xl md:text-6xl font-bold text-white mb-6"
+          className="text-4xl md:text-6xl font-bold text-foreground mb-6"
         >
-          MEET THE <span className="text-primary">CREW</span>
+          MEET THE <span className="text-primary">CHAOS</span>
         </motion.h1>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
           We are a diverse group of students united by a passion for robotics, engineering, and problem solving.
@@ -59,7 +59,7 @@ export default function About() {
                   <span className="inline-block px-3 py-1 rounded-full bg-primary/20 text-primary text-xs font-bold uppercase tracking-wider mb-2 backdrop-blur-sm border border-primary/20">
                     {member.role}
                   </span>
-                  <h3 className="text-2xl font-bold text-white mb-2">{member.name}</h3>
+                  <h3 className="text-2xl font-bold text-foreground mb-2">{member.name}</h3>
                   <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
                     {member.bio}
                   </p>
@@ -81,12 +81,12 @@ export default function About() {
 
       {/* Values Section */}
       <section className="container mx-auto px-4 mt-32">
-        <div className="bg-gradient-to-r from-secondary/50 to-background rounded-3xl p-12 border border-white/10 relative overflow-hidden">
+        <div className="bg-gradient-to-r from-secondary/50 to-background rounded-3xl p-12 border border-foreground/10 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
           
           <div className="relative z-10 grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold text-white mb-6">Our Core Values</h2>
+              <h2 className="text-3xl font-bold text-foreground mb-6">Our Core Values</h2>
               <div className="space-y-6">
                 <div>
                   <h3 className="text-xl font-bold text-primary mb-2">Gracious Professionalism</h3>

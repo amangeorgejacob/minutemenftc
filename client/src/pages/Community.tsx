@@ -15,7 +15,7 @@ export default function Community() {
         <motion.h1 
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="text-4xl md:text-6xl font-bold text-white mb-6"
+          className="text-4xl md:text-6xl font-bold text-foreground mb-6"
         >
           COMMUNITY <span className="text-accent">IMPACT</span>
         </motion.h1>
@@ -36,7 +36,7 @@ export default function Community() {
               className="p-6 rounded-2xl bg-secondary/20 border border-white/5 text-center hover:bg-secondary/30 transition-colors"
             >
               <stat.icon className="w-8 h-8 text-primary mx-auto mb-4" />
-              <div className="text-3xl font-bold text-white mb-2 font-display">{stat.value}</div>
+              <div className="text-3xl font-bold text-foreground mb-2 font-display">{stat.value}</div>
               <div className="text-sm text-muted-foreground uppercase tracking-wider">{stat.label}</div>
             </motion.div>
           ))}
@@ -48,7 +48,7 @@ export default function Community() {
         {/* Outreach */}
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="order-2 md:order-1">
-            <h2 className="text-3xl font-bold text-white mb-6">STEM Outreach</h2>
+            <h2 className="text-3xl font-bold text-foreground mb-6">STEM Outreach</h2>
             <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
               We regularly visit local elementary and middle schools to demonstrate our robots and inspire young students to pursue careers in STEM.
             </p>
@@ -90,7 +90,7 @@ export default function Community() {
             />
           </div>
           <div>
-            <h2 className="text-3xl font-bold text-white mb-6">Summer Robotics Camps</h2>
+            <h2 className="text-3xl font-bold text-foreground mb-6">Summer Robotics Camps</h2>
             <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
               Every summer, we host a week-long robotics camp where students learn to design, build, and program their own LEGO Mindstorms robots.
             </p>

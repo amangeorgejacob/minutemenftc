@@ -18,7 +18,7 @@ export default function Sponsors() {
         <motion.h1 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-4xl md:text-6xl font-bold text-white mb-6"
+          className="text-4xl md:text-6xl font-bold text-foreground mb-6"
         >
           OUR <span className="text-primary">SPONSORS</span>
         </motion.h1>
@@ -38,7 +38,7 @@ export default function Sponsors() {
           <section className="relative">
             <div className="flex items-center gap-4 mb-8">
               <Trophy className="w-8 h-8 text-yellow-400" />
-              <h2 className="text-3xl font-bold text-white">Gold Partners</h2>
+              <h2 className="text-3xl font-bold text-foreground">Gold Partners</h2>
               <div className="h-px bg-white/10 flex-grow" />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -54,7 +54,7 @@ export default function Sponsors() {
                     {sponsor.logoUrl ? (
                       <img src={sponsor.logoUrl} alt={sponsor.name} className="max-h-full max-w-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300" />
                     ) : (
-                      <span className="text-3xl font-bold text-white group-hover:text-yellow-400 transition-colors">{sponsor.name}</span>
+                      <span className="text-3xl font-bold text-foreground group-hover:text-yellow-400 transition-colors">{sponsor.name}</span>
                     )}
                   </div>
                 </a>
@@ -68,7 +68,7 @@ export default function Sponsors() {
           <section>
             <div className="flex items-center gap-4 mb-8">
               <Award className="w-8 h-8 text-gray-300" />
-              <h2 className="text-3xl font-bold text-white">Silver Partners</h2>
+              <h2 className="text-3xl font-bold text-foreground">Silver Partners</h2>
               <div className="h-px bg-white/10 flex-grow" />
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
@@ -98,7 +98,7 @@ export default function Sponsors() {
           <section>
             <div className="flex items-center gap-4 mb-8">
               <Medal className="w-8 h-8 text-orange-400" />
-              <h2 className="text-3xl font-bold text-white">Bronze Partners</h2>
+              <h2 className="text-3xl font-bold text-foreground">Bronze Partners</h2>
               <div className="h-px bg-white/10 flex-grow" />
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">

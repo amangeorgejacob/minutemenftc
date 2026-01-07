@@ -29,7 +29,7 @@ export default function Contact() {
         <motion.h1 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-4xl md:text-6xl font-bold text-white mb-6"
+          className="text-4xl md:text-6xl font-bold text-foreground mb-6"
         >
           GET IN <span className="text-primary">TOUCH</span>
         </motion.h1>
@@ -43,25 +43,25 @@ export default function Contact() {
           
           {/* Contact Info */}
           <div className="md:col-span-1 space-y-8">
-            <div className="p-6 bg-secondary/30 rounded-2xl border border-white/5">
+            <div className="p-6 bg-secondary/30 rounded-2xl border border-foreground/10">
               <Mail className="w-8 h-8 text-primary mb-4" />
-              <h3 className="text-xl font-bold text-white mb-2">Email Us</h3>
-              <p className="text-muted-foreground">contact@robotech.com</p>
+              <h3 className="text-xl font-bold text-foreground mb-2">Email Us</h3>
+              <p className="text-muted-foreground">contact@totalchaos.com</p>
             </div>
             
-            <div className="p-6 bg-secondary/30 rounded-2xl border border-white/5">
+            <div className="p-6 bg-secondary/30 rounded-2xl border border-foreground/10">
               <MapPin className="w-8 h-8 text-accent mb-4" />
-              <h3 className="text-xl font-bold text-white mb-2">Location</h3>
+              <h3 className="text-xl font-bold text-foreground mb-2">Location</h3>
               <p className="text-muted-foreground">
                 Innovation High School<br />
                 123 Technology Drive<br />
-                Silicon Valley, CA 94000
+                San Jose, CA 95112
               </p>
             </div>
 
-            <div className="p-6 bg-secondary/30 rounded-2xl border border-white/5">
+            <div className="p-6 bg-secondary/30 rounded-2xl border border-foreground/10">
               <Calendar className="w-8 h-8 text-purple-400 mb-4" />
-              <h3 className="text-xl font-bold text-white mb-2">Meeting Times</h3>
+              <h3 className="text-xl font-bold text-foreground mb-2">Meeting Times</h3>
               <p className="text-muted-foreground">
                 Mon, Wed, Fri: 3:30 PM - 6:30 PM<br />
                 Sat: 10:00 AM - 4:00 PM
@@ -71,8 +71,8 @@ export default function Contact() {
 
           {/* Form */}
           <div className="md:col-span-2">
-            <div className="p-8 rounded-3xl bg-secondary/20 border border-white/10 backdrop-blur-sm">
-              <h2 className="text-2xl font-bold text-white mb-6">Send a Message</h2>
+            <div className="p-8 rounded-3xl bg-secondary/20 border border-foreground/10 backdrop-blur-sm">
+              <h2 className="text-2xl font-bold text-foreground mb-6">Send a Message</h2>
               
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
@@ -80,7 +80,7 @@ export default function Contact() {
                     <label className="text-sm font-medium text-muted-foreground">Name</label>
                     <input
                       {...form.register("name")}
-                      className="w-full px-4 py-3 rounded-lg bg-background/50 border border-white/10 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                      className="w-full px-4 py-3 rounded-lg bg-background/50 border border-foreground/10 text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
                       placeholder="Your name"
                     />
                     {form.formState.errors.name && (
@@ -93,7 +93,7 @@ export default function Contact() {
                     <input
                       {...form.register("email")}
                       type="email"
-                      className="w-full px-4 py-3 rounded-lg bg-background/50 border border-white/10 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                      className="w-full px-4 py-3 rounded-lg bg-background/50 border border-foreground/10 text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
                       placeholder="you@example.com"
                     />
                     {form.formState.errors.email && (
@@ -107,7 +107,7 @@ export default function Contact() {
                   <textarea
                     {...form.register("message")}
                     rows={6}
-                    className="w-full px-4 py-3 rounded-lg bg-background/50 border border-white/10 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all resize-none"
+                    className="w-full px-4 py-3 rounded-lg bg-background/50 border border-foreground/10 text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all resize-none"
                     placeholder="How can we help you?"
                   />
                   {form.formState.errors.message && (

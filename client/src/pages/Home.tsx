@@ -25,7 +25,7 @@ export default function Home() {
             transition={{ duration: 0.8 }}
           >
             <span className="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary border border-primary/20 text-sm font-semibold mb-6 tracking-wide uppercase">
-              FTC Team #12345
+              FTC Team #24621
             </span>
             <h1 className="text-5xl md:text-7xl font-display font-black mb-6 text-foreground leading-tight">
               TOTAL <span className="tech-gradient-text">CHAOS</span>
