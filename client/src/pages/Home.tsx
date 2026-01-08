@@ -34,11 +34,11 @@ export default function Home() {
               We are a passionate team of student engineers designing, building, and programming robots to compete in the FIRST Tech Challenge.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/about" className="inline-flex items-center justify-center px-8 py-4 rounded-lg bg-primary text-primary-foreground font-bold hover:bg-primary/90 transition-all hover:scale-105">
-                Meet the Team
+              <Link href="/community" className="inline-flex items-center justify-center px-8 py-4 rounded-lg bg-primary text-primary-foreground font-bold hover:bg-primary/90 transition-all hover:scale-105">
+                Our Impact
               </Link>
               <Link href="/contact" className="inline-flex items-center justify-center px-8 py-4 rounded-lg bg-foreground/5 text-foreground font-bold border border-foreground/10 hover:bg-foreground/10 transition-all backdrop-blur-sm">
-                Join Us
+                Contact Us
               </Link>
             </div>
           </motion.div>
@@ -72,7 +72,7 @@ export default function Home() {
               <Users className="w-12 h-12 text-primary mb-6" />
               <h3 className="text-2xl font-bold text-foreground mb-4">Community</h3>
               <p className="text-muted-foreground">
-                Mentoring local FLL teams and hosting workshops to spread STEM education throughout our local schools.
+                Introducing local elementary schools and mentoring kids to spread STEM education throughout our, and other local schools.
               </p>
             </motion.div>
 
