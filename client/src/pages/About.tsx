@@ -63,15 +63,6 @@ export default function About() {
                   <p className="text-xs text-muted-foreground mb-3 line-clamp-1">
                     {member.bio}
                   </p>
-                  
-                  <div className="flex gap-2 opacity-0 transform translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
-                    <button className="p-1.5 rounded-full bg-white/10 hover:bg-primary hover:text-white text-white transition-colors">
-                      <Github className="w-3.5 h-3.5" />
-                    </button>
-                    <button className="p-1.5 rounded-full bg-white/10 hover:bg-[#0077b5] hover:text-white text-white transition-colors">
-                      <Linkedin className="w-3.5 h-3.5" />
-                    </button>
-                  </div>
                 </div>
               </motion.div>
             ))}
