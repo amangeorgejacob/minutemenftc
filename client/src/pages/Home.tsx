@@ -86,7 +86,7 @@ export default function Home() {
               <Trophy className="w-12 h-12 text-yellow-500 mb-6" />
               <h3 className="text-2xl font-bold text-foreground mb-4">Excellence</h3>
               <p className="text-muted-foreground">
-                Regional finalists 3 years running. Recognized for engineering portfolio and control systems excellence.
+                We compete at the highest level and earning victories through precision engineering and match-winning strategy.
               </p>
             </motion.div>
           </div>
