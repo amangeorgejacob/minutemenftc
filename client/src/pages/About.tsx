@@ -25,22 +25,22 @@ export default function About() {
       {/* Team Grid */}
       <section className="container mx-auto px-4">
         {isLoading ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[1, 2, 3, 4, 5, 6].map((i) => (
-              <div key={i} className="h-96 rounded-2xl bg-secondary/20 animate-pulse" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
+              <div key={i} className="aspect-square rounded-xl bg-secondary/20 animate-pulse" />
             ))}
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {members?.map((member, index) => (
               <motion.div
                 key={member.id}
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: index * 0.1 }}
-                className="group relative overflow-hidden rounded-2xl bg-secondary/30 border border-white/5 hover:border-primary/50 transition-all duration-300"
+                className="group relative overflow-hidden rounded-xl bg-secondary/30 border border-white/5 hover:border-primary/50 transition-all duration-300"
               >
-                <div className="aspect-[4/5] relative">
+                <div className="aspect-square relative">
                   {member.imageUrl ? (
                     <img 
                       src={member.imageUrl} 
@@ -52,24 +52,24 @@ export default function About() {
                       <span className="text-4xl font-bold text-white/20">{member.name[0]}</span>
                     </div>
                   )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-80" />
                 </div>
                 
-                <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <span className="inline-block px-3 py-1 rounded-full bg-primary/20 text-primary text-xs font-bold uppercase tracking-wider mb-2 backdrop-blur-sm border border-primary/20">
+                <div className="absolute bottom-0 left-0 right-0 p-4">
+                  <span className="inline-block px-2 py-0.5 rounded-full bg-primary/20 text-primary text-[10px] font-bold uppercase tracking-wider mb-1 backdrop-blur-sm border border-primary/20">
                     {member.role}
                   </span>
-                  <h3 className="text-2xl font-bold text-foreground mb-2">{member.name}</h3>
-                  <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
+                  <h3 className="text-lg font-bold text-foreground mb-1">{member.name}</h3>
+                  <p className="text-xs text-muted-foreground mb-3 line-clamp-1">
                     {member.bio}
                   </p>
                   
-                  <div className="flex gap-3 opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
-                    <button className="p-2 rounded-full bg-white/10 hover:bg-primary hover:text-white text-white transition-colors">
-                      <Github className="w-4 h-4" />
+                  <div className="flex gap-2 opacity-0 transform translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                    <button className="p-1.5 rounded-full bg-white/10 hover:bg-primary hover:text-white text-white transition-colors">
+                      <Github className="w-3.5 h-3.5" />
                     </button>
-                    <button className="p-2 rounded-full bg-white/10 hover:bg-[#0077b5] hover:text-white text-white transition-colors">
-                      <Linkedin className="w-4 h-4" />
+                    <button className="p-1.5 rounded-full bg-white/10 hover:bg-[#0077b5] hover:text-white text-white transition-colors">
+                      <Linkedin className="w-3.5 h-3.5" />
                     </button>
                   </div>
                 </div>
