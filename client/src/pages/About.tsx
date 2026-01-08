@@ -93,11 +93,11 @@ export default function About() {
                   <p className="text-muted-foreground">We compete fiercely but treat everyone with respect and kindness, helping other teams whenever we can.</p>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-primary mb-2">Student-Led</h3>
-                  <p className="text-muted-foreground">Every line of code, every custom part, and every strategy decision is made by students.</p>
+                  <h3 className="text-xl font-bold text-primary mb-2">Inspiration First</h3>
+                  <p className="text-muted-foreground">In FTC, Inspiration First means the robot is only the beginning. The real victory is the curiosity, confidence, and courage we build along the way. When we inspire others to believe they can learn, create, and lead, we’re building a future far greater than any trophy.</p>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-primary mb-2">Innovation First</h3>
+                  <h3 className="text-xl font-bold text-primary mb-2">Our Innovation</h3>
                   <p className="text-muted-foreground">We don't just follow the meta; we try to find creative solutions to complex engineering challenges.</p>
                 </div>
               </div>
