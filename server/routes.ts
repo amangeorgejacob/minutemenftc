@@ -3,6 +3,8 @@ import type { Server } from "http";
 import { storage } from "./storage";
 import { api } from "@shared/routes";
 import { z } from "zod";
+import { db } from "./db";
+import { members } from "@shared/schema";
 
 export async function registerRoutes(
   httpServer: Server,
@@ -99,5 +101,27 @@ export async function seedDatabase() {
       tier: "Bronze",
       websiteUrl: "https://example.com",
     });
+  }
+
+  // Final check to ensure we have the custom members if the above seed didn't run
+  const membersAfterSeed = await storage.getMembers();
+  if (membersAfterSeed.length <= 4) {
+    // Re-inserting the 15 custom members to ensure persistence after publish/restart
+    await db.delete(members);
+    await storage.createMember({ name: "Kevin Krien", role: "Lead Engineer", bio: "CAD expert and lead mechanical designer.", imageUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop" });
+    await storage.createMember({ name: "Ted Griebling", role: "Lead Programmer", bio: "Autonomous systems specialist.", imageUrl: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop" });
+    await storage.createMember({ name: "Aman Jacob", role: "Driver / Builder", bio: "Chassis specialist and precision driver.", imageUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop" });
+    await storage.createMember({ name: "Darren Zhou", role: "Hardware / CAD", bio: "Focused on intake systems and custom components.", imageUrl: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop" });
+    await storage.createMember({ name: "Gordon Mathis", role: "Outreach Lead", bio: "Coordinates community workshops.", imageUrl: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop" });
+    await storage.createMember({ name: "Liam Krell", role: "Software Engineer", bio: "Develops custom dashboard tools.", imageUrl: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&h=400&fit=crop" });
+    await storage.createMember({ name: "Oslo Griebling", role: "Manufacturing", bio: "Machining and assembly specialist.", imageUrl: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=400&h=400&fit=crop" });
+    await storage.createMember({ name: "Romeo Duncan", role: "Design / Media", bio: "Branding and engineering portfolio lead.", imageUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=400&fit=crop" });
+    await storage.createMember({ name: "Ethan Vital", role: "Electronics", bio: "Reliable power distribution systems.", imageUrl: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=400&fit=crop" });
+    await storage.createMember({ name: "Peter Hutton", role: "Business Lead", bio: "Sponsor relations and logistics.", imageUrl: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400&h=400&fit=crop" });
+    await storage.createMember({ name: "Vihaan Srinivasan", role: "Scouting Lead", bio: "Match strategy and data analysis.", imageUrl: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop" });
+    await storage.createMember({ name: "Nathaniel Woodcock", role: "Testing / QC", bio: "Robot reliability testing.", imageUrl: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=400&h=400&fit=crop" });
+    await storage.createMember({ name: "Spencer Levy", role: "Apprentice", bio: "Learning CAD and basic programming.", imageUrl: "https://images.unsplash.com/photo-1542343633-ce3256f2183e?w=400&h=400&fit=crop" });
+    await storage.createMember({ name: "Abby Soliven", role: "Mechanic", bio: "Specializes in drive train assembly.", imageUrl: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=400&fit=crop" });
+    await storage.createMember({ name: "Grace Hopper", role: "Software", bio: "Sensor integration and path planning.", imageUrl: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop" });
   }
 }
