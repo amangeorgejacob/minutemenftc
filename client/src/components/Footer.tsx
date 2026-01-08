@@ -42,6 +42,10 @@ export function Footer() {
         </div>
 
         
+        <div className="border-t border-foreground/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
+          <p>© {new Date().getFullYear()} Total Chaos #24621. All rights reserved.</p>
+          <p className="flex items-center gap-1">Built with ❤️ and 🤖</p>
+        </div>
       </div>
     </footer>
   );
