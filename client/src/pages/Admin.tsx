@@ -11,7 +11,11 @@ import { Loader2, Save } from "lucide-react";
 export default function Admin() {
   const { toast } = useToast();
   const [editingId, setEditingId] = useState<number | null>(null);
-  const [editValues, setEditValues] = useState<{ name: string; role: string }>({ name: "", role: "" });
+  const [editValues, setEditValues] = useState<{ name: string; role: string; imageUrl: string }>({ 
+    name: "", 
+    role: "", 
+    imageUrl: "" 
+  });
 
   const { data: members, isLoading } = useQuery<Member[]>({
     queryKey: ["/api/members"],
@@ -41,7 +45,11 @@ export default function Admin() {
 
   const handleEdit = (member: Member) => {
     setEditingId(member.id);
-    setEditValues({ name: member.name, role: member.role });
+    setEditValues({ 
+      name: member.name, 
+      role: member.role, 
+      imageUrl: member.imageUrl || "" 
+    });
   };
 
   const handleSave = (id: number) => {
@@ -77,6 +85,15 @@ export default function Admin() {
                   <Input
                     value={editingId === member.id ? editValues.role : member.role}
                     onChange={(e) => setEditValues({ ...editValues, role: e.target.value })}
+                    disabled={editingId !== member.id}
+                  />
+                </div>
+                <div className="flex-1 w-full space-y-2">
+                  <label className="text-sm font-medium text-muted-foreground">Image URL</label>
+                  <Input
+                    value={editingId === member.id ? editValues.imageUrl : (member.imageUrl || "")}
+                    onChange={(e) => setEditValues({ ...editValues, imageUrl: e.target.value })}
+                    placeholder="https://example.com/photo.jpg"
                     disabled={editingId !== member.id}
                   />
                 </div>
