@@ -60,9 +60,6 @@ export default function About() {
                     {member.role}
                   </span>
                   <h3 className="text-lg font-bold text-foreground mb-1">{member.name}</h3>
-                  <p className="text-xs text-muted-foreground mb-3 line-clamp-1">
-                    {member.bio}
-                  </p>
                 </div>
               </motion.div>
             ))}
