@@ -15,6 +15,16 @@ export async function registerRoutes(
     res.json(members);
   });
 
+  app.patch("/api/members/:id", async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      const member = await storage.updateMember(id, req.body);
+      res.json(member);
+    } catch (err) {
+      res.status(500).json({ message: "Failed to update member" });
+    }
+  });
+
   // Sponsors
   app.get(api.sponsors.list.path, async (req, res) => {
     const sponsors = await storage.getSponsors();

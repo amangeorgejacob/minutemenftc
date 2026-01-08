@@ -12,6 +12,7 @@ import About from "@/pages/About";
 import Community from "@/pages/Community";
 import Sponsors from "@/pages/Sponsors";
 import Contact from "@/pages/Contact";
+import Admin from "@/pages/Admin";
 
 function Router() {
   return (
@@ -21,6 +22,7 @@ function Router() {
       <Route path="/community" component={Community} />
       <Route path="/sponsors" component={Sponsors} />
       <Route path="/contact" component={Contact} />
+      <Route path="/admin" component={Admin} />
       <Route component={NotFound} />
     </Switch>
   );
