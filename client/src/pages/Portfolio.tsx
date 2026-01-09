@@ -1,7 +1,8 @@
 import { useMembers } from "@/hooks/use-team-data";
 import { motion } from "framer-motion";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Github, Linkedin } from "lucide-react";
+import { Github, Linkedin, ExternalLink, QrCode } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export default function Portfolio() {
   const { data: members, isLoading } = useMembers();
@@ -17,13 +18,39 @@ export default function Portfolio() {
         >
           OUR <span className="text-primary">PORTFOLIO</span>
         </motion.h1>
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Showcasing our team's journey, engineering excellence, and the impact we've made in the robotics community.
-        </p>
+        
+        <div className="max-w-2xl mx-auto space-y-12">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2 }}
+            className="bg-secondary/30 border border-primary/20 rounded-2xl p-8 backdrop-blur-sm"
+          >
+            <div className="flex flex-col items-center gap-6">
+              <div className="p-6 bg-white rounded-xl shadow-lg shadow-primary/10">
+                <QrCode className="w-48 h-48 text-black" />
+              </div>
+              
+              <div className="space-y-4 w-full">
+                <h2 className="text-2xl font-bold text-foreground">Meet the team here</h2>
+                <p className="text-muted-foreground">
+                  Scan the QR code or click the button below to check out our full Engineering Portfolio and see our journey in detail.
+                </p>
+                
+                <Button asChild size="lg" className="w-full sm:w-auto">
+                  <a href="https://docs.google.com/presentation/d/your-portfolio-id/view" target="_blank" rel="noopener noreferrer" className="gap-2">
+                    Check out our Engineering Portfolio
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+                </Button>
+              </div>
+            </div>
+          </motion.div>
+        </div>
       </section>
 
-      {/* Team Grid */}
-      <section className="container mx-auto px-4">
+      {/* Team Grid (Hidden for now as requested) */}
+      <section className="container mx-auto px-4 hidden">
         {isLoading ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
