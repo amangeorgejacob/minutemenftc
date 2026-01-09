@@ -41,17 +41,15 @@ export default function About() {
                 className="group relative overflow-hidden rounded-xl bg-secondary/30 border border-white/5 hover:border-primary/50 transition-all duration-300"
               >
                 <div className="aspect-square relative">
-                  {member.imageUrl ? (
-                    <img 
-                      src={member.imageUrl} 
-                      alt={member.name}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                  ) : (
-                    <div className="w-full h-full bg-secondary flex items-center justify-center">
-                      <span className="text-4xl font-bold text-white/20">{member.name[0]}</span>
-                    </div>
-                  )}
+                  <img 
+                    src={member.imageUrl || `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&background=random`} 
+                    alt={member.name}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&background=random`;
+                    }}
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-80" />
                 </div>
                 
