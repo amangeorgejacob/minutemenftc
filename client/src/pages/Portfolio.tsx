@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Github, Linkedin } from "lucide-react";
 
-export default function About() {
+export default function Portfolio() {
   const { data: members, isLoading } = useMembers();
 
   return (
@@ -15,10 +15,10 @@ export default function About() {
           animate={{ opacity: 1, y: 0 }}
           className="text-4xl md:text-6xl font-bold text-foreground mb-6"
         >
-          MEET THE <span className="text-primary">CHAOS</span>
+          OUR <span className="text-primary">PORTFOLIO</span>
         </motion.h1>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          We are a diverse group of students united by a passion for robotics, engineering, and problem solving.
+          Showcasing our team's journey, engineering excellence, and the impact we've made in the robotics community.
         </p>
       </section>
 

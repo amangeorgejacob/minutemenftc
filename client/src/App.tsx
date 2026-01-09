@@ -8,7 +8,7 @@ import NotFound from "@/pages/not-found";
 
 // Pages
 import Home from "@/pages/Home";
-import About from "@/pages/About";
+import Portfolio from "@/pages/Portfolio";
 import Community from "@/pages/Community";
 import Sponsors from "@/pages/Sponsors";
 import Contact from "@/pages/Contact";
@@ -18,7 +18,7 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
-      <Route path="/about" component={About} />
+      <Route path="/portfolio" component={Portfolio} />
       <Route path="/community" component={Community} />
       <Route path="/sponsors" component={Sponsors} />
       <Route path="/contact" component={Contact} />
