@@ -103,7 +103,7 @@ export async function seedDatabase() {
     await storage.createSponsor({
       name: "FIRST Washington",
       tier: "Gold",
-      logoUrl: "https://firstwa.org/wp-content/uploads/2020/09/FIRST_WA_Logo_Color.png",
+      logoUrl: "/FirstW.jpg",
       websiteUrl: "https://firstwa.org",
     });
     await storage.createSponsor({
