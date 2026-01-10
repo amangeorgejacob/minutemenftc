@@ -25,32 +25,40 @@ export default function Sponsors() {
       </section>
 
       {/* Sponsors Grid */}
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 max-w-6xl">
         {isLoading ? (
           <div className="text-center py-20">
             <div className="inline-block w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin" />
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center items-center">
             {sponsors?.map((sponsor) => (
               <a 
                 key={sponsor.id} 
                 href={sponsor.websiteUrl || "#"} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="group block p-8 bg-secondary/30 border border-white/5 rounded-2xl hover:border-primary/50 transition-all hover:scale-[1.02] backdrop-blur-sm"
+                className="group block p-10 bg-secondary/30 border border-white/5 rounded-2xl hover:border-primary/50 transition-all hover:scale-[1.02] backdrop-blur-sm overflow-hidden min-h-[300px] flex flex-col justify-center"
               >
-                <div className="h-32 flex flex-col items-center justify-center gap-4">
-                  {sponsor.logoUrl ? (
-                    <img 
-                      src={sponsor.logoUrl} 
-                      alt={sponsor.name} 
-                      className="max-h-24 max-w-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300" 
-                    />
-                  ) : null}
-                  <span className="text-xl font-bold text-foreground group-hover:text-primary transition-colors text-center">
-                    {sponsor.name}
-                  </span>
+                <div className="flex flex-col items-center justify-center gap-10">
+                  <div className="h-32 w-full flex items-center justify-center p-2">
+                    {sponsor.logoUrl ? (
+                      <img 
+                        src={sponsor.logoUrl} 
+                        alt={sponsor.name} 
+                        className="max-h-full max-w-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500" 
+                      />
+                    ) : (
+                      <div className="w-24 h-24 rounded-full bg-primary/10 flex items-center justify-center">
+                        <Trophy className="w-12 h-12 text-primary/40" />
+                      </div>
+                    )}
+                  </div>
+                  <div className="text-center w-full">
+                    <span className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors block leading-tight">
+                      {sponsor.name}
+                    </span>
+                  </div>
                 </div>
               </a>
             ))}

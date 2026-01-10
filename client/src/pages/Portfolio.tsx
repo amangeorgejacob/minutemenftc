@@ -1,13 +1,13 @@
 import { useMembers } from "@/hooks/use-team-data";
 import { motion } from "framer-motion";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Github, Linkedin, ExternalLink, QrCode } from "lucide-react";
+import { Github, Linkedin, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import React from 'react';
-import QRCode from 'qrcode.react';
+import { QRCodeSVG } from "qrcode.react";
 
 export default function Portfolio() {
   const { data: members, isLoading } = useMembers();
+  const portfolioUrl = "https://docs.google.com/presentation/d/your-portfolio-id/view";
 
   return (
     <div className="min-h-screen pt-24 pb-16">
@@ -30,7 +30,7 @@ export default function Portfolio() {
           >
             <div className="flex flex-col items-center gap-6">
               <div className="p-6 bg-white rounded-xl shadow-lg shadow-primary/10">
-                <QrCode className="w-48 h-48 text-black" />
+                <QRCodeSVG value={portfolioUrl} size={192} level="H" />
               </div>
               
               <div className="space-y-4 w-full">
