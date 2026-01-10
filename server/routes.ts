@@ -4,7 +4,7 @@ import { storage } from "./storage";
 import { api } from "@shared/routes";
 import { z } from "zod";
 import { db } from "./db";
-import { members } from "@shared/schema";
+import { members, sponsors } from "@shared/schema";
 
 export async function registerRoutes(
   httpServer: Server,
@@ -85,21 +85,38 @@ export async function seedDatabase() {
   }
 
   const existingSponsors = await storage.getSponsors();
-  if (existingSponsors.length === 0) {
+  if (existingSponsors.length <= 3) {
+    // If we only have the example sponsors (or fewer), clear and seed with real ones
+    await db.delete(sponsors);
     await storage.createSponsor({
-      name: "TechCorp",
+      name: "Boeing",
       tier: "Gold",
-      websiteUrl: "https://example.com",
+      logoUrl: "https://upload.wikimedia.org/wikipedia/commons/4/4f/Boeing_full_logo.svg",
+      websiteUrl: "https://www.boeing.com",
     });
     await storage.createSponsor({
-      name: "Local Machine Shop",
-      tier: "Silver",
-      websiteUrl: "https://example.com",
+      name: "Microsoft",
+      tier: "Gold",
+      logoUrl: "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg",
+      websiteUrl: "https://www.microsoft.com",
     });
     await storage.createSponsor({
-      name: "Community Bank",
-      tier: "Bronze",
-      websiteUrl: "https://example.com",
+      name: "FIRST Washington",
+      tier: "Gold",
+      logoUrl: "https://firstwa.org/wp-content/uploads/2020/09/FIRST_WA_Logo_Color.png",
+      websiteUrl: "https://firstwa.org",
+    });
+    await storage.createSponsor({
+      name: "Issaquah Schools Foundation",
+      tier: "Gold",
+      logoUrl: "https://isfdn.org/wp-content/uploads/2021/08/ISF-Logo-Vertical-Color.png",
+      websiteUrl: "https://isfdn.org",
+    });
+    await storage.createSponsor({
+      name: "Maywood Middle School PTSA",
+      tier: "Gold",
+      logoUrl: "https://maywoodptsa.org/wp-content/uploads/2023/08/maywood-middle-school-ptsa-logo.png",
+      websiteUrl: "https://maywoodptsa.org",
     });
   }
 
