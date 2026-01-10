@@ -46,12 +46,6 @@ export default function Sponsors() {
                       src={sponsor.logoUrl} 
                       alt={sponsor.name} 
                       className="max-h-24 max-w-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300" 
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.style.display = 'none';
-                        const fallback = target.nextElementSibling as HTMLElement;
-                        if (fallback) fallback.style.display = 'block';
-                      }}
                     />
                   ) : null}
                   <span className="text-xl font-bold text-foreground group-hover:text-primary transition-colors text-center">
