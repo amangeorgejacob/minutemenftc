@@ -47,6 +47,12 @@ export default function Sponsors() {
                         src={sponsor.logoUrl} 
                         alt={sponsor.name} 
                         className="max-h-full max-w-full object-contain group-hover:scale-110 transition-all duration-500" 
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          if (!target.src.includes('images/')) {
+                            target.src = `/images${target.src}`;
+                          }
+                        }}
                       />
                     ) : (
                       <div className="w-24 h-24 rounded-full bg-primary/10 flex items-center justify-center">
