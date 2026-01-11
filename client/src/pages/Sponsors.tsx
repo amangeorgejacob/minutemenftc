@@ -46,7 +46,7 @@ export default function Sponsors() {
                       <img 
                         src={sponsor.logoUrl} 
                         alt={sponsor.name} 
-                        className="max-h-full max-w-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500" 
+                        className="max-h-full max-w-full object-contain group-hover:scale-110 transition-all duration-500" 
                       />
                     ) : (
                       <div className="w-24 h-24 rounded-full bg-primary/10 flex items-center justify-center">
