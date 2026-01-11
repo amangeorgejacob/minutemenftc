@@ -115,13 +115,13 @@ export async function seedDatabase() {
       name: "Issaquah Schools Foundation",
       tier: "Gold",
       logoUrl:
-        "https://isfdn.org/wp-content/uploads/2021/08/ISF-Logo-Vertical-Color.png",
+        "https://drive.google.com/file/d/1NXd4TngO7bWAoc9DqWgk4Pn7s63PqshB/view?usp=sharing",
       websiteUrl: "https://isfdn.org",
     });
     await storage.createSponsor({
       name: "Maywood Middle School PTSA",
       tier: "Gold",
-      logoUrl: "https://lh3.googleusercontent.com/u/0/d/1NXd4TngO7bWAoc9DqWgk4Pn7s63PqshB",
+      logoUrl: "https://drive.google.com/file/d/1NXd4TngO7bWAoc9DqWgk4Pn7s63PqshB/view?usp=sharing",
       websiteUrl: "https://maywoodptsa.org",
     });
   }
