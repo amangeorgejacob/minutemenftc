@@ -108,19 +108,19 @@ export async function seedDatabase() {
     await storage.createSponsor({
       name: "FIRST Washington",
       tier: "Gold",
-      logoUrl: "/images/FirstWashington.jpg",
+      logoUrl: "/FirstWashington.jpg",
       websiteUrl: "https://firstwa.org",
     });
     await storage.createSponsor({
       name: "Issaquah Schools Foundation",
       tier: "Gold",
-      logoUrl: "/images/ISF-Logo.png",
+      logoUrl: "/ISF-Logo.png",
       websiteUrl: "https://isfdn.org",
     });
     await storage.createSponsor({
       name: "Maywood Middle School PTSA",
       tier: "Gold",
-      logoUrl: "/images/Maywood-PTSA-Logo.jpg",
+      logoUrl: "/Maywood-PTSA-Logo.jpg",
       websiteUrl: "https://maywoodptsa.org",
     });
   }
