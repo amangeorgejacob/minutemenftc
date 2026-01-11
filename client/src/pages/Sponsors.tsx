@@ -1,7 +1,18 @@
 import { useSponsors } from "@/hooks/use-team-data";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { ArrowUpRight, Trophy, Award, Medal } from "lucide-react";
+import { ArrowUpRight, Trophy } from "lucide-react";
+
+// Import local assets
+import firstWashingtonImg from "@/assets/images/FirstWashington.jpg";
+import isfLogoImg from "@/assets/images/ISF-Logo.png";
+import maywoodPtsaImg from "@/assets/images/Maywood-PTSA-Logo.jpg";
+
+const LOCAL_LOGOS: Record<string, string> = {
+  "FIRST Washington": firstWashingtonImg,
+  "Issaquah Schools Foundation": isfLogoImg,
+  "Maywood Middle School PTSA": maywoodPtsaImg,
+};
 
 export default function Sponsors() {
   const { data: sponsors, isLoading } = useSponsors();
@@ -32,42 +43,40 @@ export default function Sponsors() {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center items-center">
-            {sponsors?.map((sponsor) => (
-              <a 
-                key={sponsor.id} 
-                href={sponsor.websiteUrl || "#"} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="group block p-10 bg-secondary/30 border border-white/5 rounded-2xl hover:border-primary/50 transition-all hover:scale-[1.02] backdrop-blur-sm overflow-hidden min-h-[300px] flex flex-col justify-center"
-              >
-                <div className="flex flex-col items-center justify-center gap-10">
-                  <div className="h-32 w-full flex items-center justify-center p-2">
-                    {sponsor.logoUrl ? (
-                      <img 
-                        src={sponsor.logoUrl} 
-                        alt={sponsor.name} 
-                        className="max-h-full max-w-full object-contain group-hover:scale-110 transition-all duration-500" 
-                        onError={(e) => {
-                          const target = e.target as HTMLImageElement;
-                          if (!target.src.includes('images/')) {
-                            target.src = `/images${target.src}`;
-                          }
-                        }}
-                      />
-                    ) : (
-                      <div className="w-24 h-24 rounded-full bg-primary/10 flex items-center justify-center">
-                        <Trophy className="w-12 h-12 text-primary/40" />
-                      </div>
-                    )}
+            {sponsors?.map((sponsor) => {
+              const logoSrc = LOCAL_LOGOS[sponsor.name] || sponsor.logoUrl;
+              
+              return (
+                <a 
+                  key={sponsor.id} 
+                  href={sponsor.websiteUrl || "#"} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="group block p-10 bg-secondary/30 border border-white/5 rounded-2xl hover:border-primary/50 transition-all hover:scale-[1.02] backdrop-blur-sm overflow-hidden min-h-[300px] flex flex-col justify-center"
+                >
+                  <div className="flex flex-col items-center justify-center gap-10">
+                    <div className="h-32 w-full flex items-center justify-center p-2">
+                      {logoSrc ? (
+                        <img 
+                          src={logoSrc} 
+                          alt={sponsor.name} 
+                          className="max-h-full max-w-full object-contain group-hover:scale-110 transition-all duration-500" 
+                        />
+                      ) : (
+                        <div className="w-24 h-24 rounded-full bg-primary/10 flex items-center justify-center">
+                          <Trophy className="w-12 h-12 text-primary/40" />
+                        </div>
+                      )}
+                    </div>
+                    <div className="text-center w-full">
+                      <span className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors block leading-tight">
+                        {sponsor.name}
+                      </span>
+                    </div>
                   </div>
-                  <div className="text-center w-full">
-                    <span className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors block leading-tight">
-                      {sponsor.name}
-                    </span>
-                  </div>
-                </div>
-              </a>
-            ))}
+                </a>
+              );
+            })}
           </div>
         )}
       </div>
