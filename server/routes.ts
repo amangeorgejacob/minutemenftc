@@ -108,7 +108,7 @@ export async function seedDatabase() {
     await storage.createSponsor({
       name: "FIRST Washington",
       tier: "Gold",
-      logoUrl: "/FirstW.jpg",
+      logoUrl: "/images/FirstWashington.jpg",
       websiteUrl: "https://firstwa.org",
     });
     await storage.createSponsor({
