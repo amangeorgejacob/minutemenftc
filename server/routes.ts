@@ -121,7 +121,7 @@ export async function seedDatabase() {
     await storage.createSponsor({
       name: "Maywood Middle School PTSA",
       tier: "Gold",
-      logoUrl: "https://drive.google.com/file/d/1NXd4TngO7bWAoc9DqWgk4Pn7s63PqshB/view?usp=sharing",
+      logoUrl: "https://lh3.googleusercontent.com/u/0/d/1NXd4TngO7bWAoc9DqWgk4Pn7s63PqshB",
       websiteUrl: "https://maywoodptsa.org",
     });
   }
