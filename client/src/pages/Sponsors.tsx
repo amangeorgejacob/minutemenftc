@@ -5,9 +5,9 @@ import { ArrowUpRight, Trophy } from "lucide-react";
 
 // Use public URLs directly with cache busting for reliability
 const LOCAL_LOGOS: Record<string, string> = {
-  "FIRST Washington": `/FirstWashington.jpg?v=${Date.now()}`,
+  "FIRST Washington": `/FirstWashington.png?v=${Date.now()}`,
   "Issaquah Schools Foundation": `/ISF-Logo.png?v=${Date.now()}`,
-  "Maywood Middle School PTSA": `/Maywood-PTSA-Logo.jpg?v=${Date.now()}`,
+  "Maywood Middle School PTSA": `/Maywood-PTSA-Logo.png?v=${Date.now()}`,
 };
 
 export default function Sponsors() {
