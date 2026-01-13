@@ -4,9 +4,9 @@ import { Link } from "wouter";
 import { ArrowUpRight, Trophy } from "lucide-react";
 
 // Import local assets
-import firstWashingtonImg from "@/assets/images/FirstWashington.jpg";
-import isfLogoImg from "@/assets/images/ISF-Logo.png";
-import maywoodPtsaImg from "@/assets/images/Maywood-PTSA-Logo.jpg";
+import firstWashingtonImg from "../assets/images/FirstWashington.jpg";
+import isfLogoImg from "../assets/images/ISF-Logo.png";
+import maywoodPtsaImg from "../assets/images/Maywood-PTSA-Logo.jpg";
 
 const LOCAL_LOGOS: Record<string, string> = {
   "FIRST Washington": firstWashingtonImg,
