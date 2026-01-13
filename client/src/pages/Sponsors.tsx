@@ -3,15 +3,11 @@ import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { ArrowUpRight, Trophy } from "lucide-react";
 
-// Import local assets
-import firstWashingtonImg from "../assets/images/FirstWashington.jpg";
-import isfLogoImg from "../assets/images/ISF-Logo.png";
-import maywoodPtsaImg from "../assets/images/Maywood-PTSA-Logo.jpg";
-
+// Use public URLs directly for clarity and reliability
 const LOCAL_LOGOS: Record<string, string> = {
-  "FIRST Washington": firstWashingtonImg,
-  "Issaquah Schools Foundation": isfLogoImg,
-  "Maywood Middle School PTSA": maywoodPtsaImg,
+  "FIRST Washington": "/FirstWashington.jpg",
+  "Issaquah Schools Foundation": "/ISF-Logo.png",
+  "Maywood Middle School PTSA": "/Maywood-PTSA-Logo.jpg",
 };
 
 export default function Sponsors() {
@@ -44,7 +40,7 @@ export default function Sponsors() {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center items-center">
             {sponsors?.map((sponsor) => {
-              // Priority: Local imports if defined, else database URL
+              // Priority: Local explicit mapping -> Database URL
               const logoSrc = LOCAL_LOGOS[sponsor.name] || sponsor.logoUrl;
               
               return (
