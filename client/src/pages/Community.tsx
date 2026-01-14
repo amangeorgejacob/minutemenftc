@@ -109,7 +109,7 @@ export default function Community() {
                 </li>
               </ul>
             </div>
-            <div className={`${index % 2 === 1 ? "md:order-1" : "md:order-2"} rounded-2xl overflow-hidden border border-white/10 h-[300px] md:h-[350px] w-full max-w-[500px] mx-auto relative group shadow-2xl`}>
+            <div className={`${index % 2 === 1 ? "md:order-1" : "md:order-2"} rounded-2xl overflow-hidden border border-white/10 h-[400px] relative group shadow-2xl`}>
               <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity z-10" />
               <img 
                 src={item.image}
