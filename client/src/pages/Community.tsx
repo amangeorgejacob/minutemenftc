@@ -5,7 +5,7 @@ import img2 from "@assets/stock_images/robotics_team_studen_5851dda1.jpg";
 import img3 from "@assets/stock_images/robotics_team_studen_ce1e670c.jpg";
 
 const impactStats = [
-  { icon: Users, value: "50-100+", label: "Students Mentored" },
+  { icon: Users, value: "50-100+", label: "Students Reached" },
   { icon: Heart, value: "~100h", label: "Volunteer Hours" },
 ];
 
