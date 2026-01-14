@@ -22,7 +22,7 @@ export function Navigation() {
           <Link href="/" className="flex items-center gap-3 group">
             <div className="relative w-12 h-12 flex items-center justify-center">
               <img 
-                src="/LogoImproved.png" 
+                src={`/LogoImproved.png?v=${Date.now()}`} 
                 alt="Total Chaos Logo" 
                 className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
               />
