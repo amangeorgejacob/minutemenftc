@@ -19,9 +19,13 @@ export function Navigation() {
     <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-foreground/10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="p-2 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
-              <Cpu className="w-8 h-8 text-primary" />
+          <Link href="/" className="flex items-center gap-3 group">
+            <div className="relative w-12 h-12 flex items-center justify-center">
+              <img 
+                src="/LogoImproved.png" 
+                alt="Total Chaos Logo" 
+                className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
+              />
             </div>
             <span className="font-display font-bold text-xl tracking-wider text-foreground">
               TOTAL <span className="text-primary">CHAOS</span>
