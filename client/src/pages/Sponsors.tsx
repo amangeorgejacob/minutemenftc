@@ -62,6 +62,7 @@ export default function Sponsors() {
                       outerRadius={120}
                       paddingAngle={5}
                       dataKey="value"
+                      label={({ name, value }) => `${name}: ${value}%`}
                     >
                       {fundingData.map((entry, index) => (
                         <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
