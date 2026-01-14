@@ -2,6 +2,8 @@ import { useSponsors } from "@/hooks/use-team-data";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { ArrowUpRight, Trophy } from "lucide-react";
+import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from "recharts";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 // Use public URLs directly with cache busting for reliability
 const LOCAL_LOGOS: Record<string, string> = {
@@ -10,8 +12,18 @@ const LOCAL_LOGOS: Record<string, string> = {
   "Maywood Middle School PTSA": `/Maywood-PTSA-Logo.png?v=${Date.now()}`,
 };
 
+const COLORS = ["#0ea5e9", "#6366f1", "#8b5cf6", "#ec4899", "#f43f5e"];
+
 export default function Sponsors() {
   const { data: sponsors, isLoading } = useSponsors();
+
+  const fundingData = sponsors ? [
+    { name: sponsors.find(s => s.name === "Boeing")?.name || "Boeing", value: 15 },
+    { name: sponsors.find(s => s.name === "Microsoft")?.name || "Microsoft", value: 15 },
+    { name: sponsors.find(s => s.name === "FIRST Washington")?.name || "FIRST Washington", value: 15 },
+    { name: sponsors.find(s => s.name === "Issaquah Schools Foundation")?.name || "Issaquah Schools Foundation", value: 15 },
+    { name: sponsors.find(s => s.name === "Maywood Middle School PTSA")?.name || "Maywood PTSA", value: 40 },
+  ] : [];
 
   return (
     <div className="min-h-screen pt-24 pb-16">
@@ -29,6 +41,43 @@ export default function Sponsors() {
         <Link href="/contact" className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground transition-all font-bold border border-primary/20">
           Become a Sponsor <ArrowUpRight className="w-4 h-4" />
         </Link>
+      </section>
+
+      {/* Funding Chart Section */}
+      <section className="container mx-auto px-4 mb-24 max-w-4xl">
+        <Card className="bg-secondary/20 border-white/5 backdrop-blur-sm">
+          <CardHeader>
+            <CardTitle className="text-2xl font-bold text-center font-display">Funding Distribution</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="h-[400px] w-full">
+              {!isLoading && fundingData.length > 0 && (
+                <ResponsiveContainer width="100%" height="100%">
+                  <PieChart>
+                    <Pie
+                      data={fundingData}
+                      cx="50%"
+                      cy="50%"
+                      innerRadius={80}
+                      outerRadius={120}
+                      paddingAngle={5}
+                      dataKey="value"
+                    >
+                      {fundingData.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                      ))}
+                    </Pie>
+                    <Tooltip 
+                      contentStyle={{ backgroundColor: 'hsl(var(--secondary))', border: 'none', borderRadius: '8px' }}
+                      itemStyle={{ color: 'hsl(var(--foreground))' }}
+                    />
+                    <Legend verticalAlign="bottom" height={36}/>
+                  </PieChart>
+                </ResponsiveContainer>
+              )}
+            </div>
+          </CardContent>
+        </Card>
       </section>
 
       {/* Sponsors Grid */}
