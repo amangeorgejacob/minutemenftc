@@ -55,6 +55,17 @@ export default function Sponsors() {
     );
   };
 
+  const sortedSponsors = sponsors?.sort((a, b) => {
+    const priority = ["Boeing", "Microsoft"];
+    const aPriority = priority.indexOf(a.name);
+    const bPriority = priority.indexOf(b.name);
+    
+    if (aPriority !== -1 && bPriority !== -1) return aPriority - bPriority;
+    if (aPriority !== -1) return -1;
+    if (bPriority !== -1) return 1;
+    return 0;
+  });
+
   return (
     <div className="min-h-screen pt-24 pb-16">
       <section className="container mx-auto px-4 text-center mb-20">
@@ -120,7 +131,7 @@ export default function Sponsors() {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center items-center">
-            {sponsors?.map((sponsor) => {
+            {sortedSponsors?.map((sponsor) => {
               // Priority: Local explicit mapping -> Database URL
               const logoSrc = LOCAL_LOGOS[sponsor.name] || sponsor.logoUrl;
               
