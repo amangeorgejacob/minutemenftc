@@ -12,7 +12,7 @@ const LOCAL_LOGOS: Record<string, string> = {
   "Maywood Middle School PTSA": `/Maywood-PTSA-Logo.png?v=${Date.now()}`,
 };
 
-const COLORS = ["#0ea5e9", "#6366f1", "#8b5cf6", "#ec4899", "#f43f5e"];
+const COLORS = ["#22c55e", "#84cc16", "#eab308", "#16a34a", "#ca8a04"];
 
 export default function Sponsors() {
   const { data: sponsors, isLoading } = useSponsors();
