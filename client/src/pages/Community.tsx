@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { BookOpen, Users, Globe, Heart } from "lucide-react";
-import stemFairImg from "@assets/StemFair.png";
+import stemFairImg from "@assets/ImpactPics/StemFair.png";
 import img1 from "@assets/stock_images/robotics_team_studen_2e3dd691.jpg";
 import img2 from "@assets/stock_images/robotics_team_studen_5851dda1.jpg";
 import img3 from "@assets/stock_images/robotics_team_studen_ce1e670c.jpg";
