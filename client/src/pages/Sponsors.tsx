@@ -25,6 +25,36 @@ export default function Sponsors() {
     { name: sponsors.find(s => s.name === "Maywood Middle School PTSA")?.name || "Maywood PTSA", value: 40 },
   ] : [];
 
+  const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index, name, value }: any) => {
+    const RADIAN = Math.PI / 180;
+    const radius = outerRadius * 1.2;
+    const x = cx + radius * Math.cos(-midAngle * RADIAN);
+    const y = cy + radius * Math.sin(-midAngle * RADIAN);
+    
+    // Split long names like "Issaquah Schools Foundation"
+    const displayName = name.length > 20 ? `${name.substring(0, 20)}...` : name;
+
+    return (
+      <text 
+        x={x} 
+        y={y} 
+        fill="currentColor" 
+        textAnchor={x > cx ? 'start' : 'end'} 
+        dominantBaseline="central"
+        className="text-[10px] md:text-xs font-medium fill-muted-foreground"
+      >
+        {name.includes("Issaquah") ? (
+          <>
+            <tspan x={x} dy="-0.5em">Issaquah Schools</tspan>
+            <tspan x={x} dy="1.2em">Foundation: {value}%</tspan>
+          </>
+        ) : (
+          `${displayName}: ${value}%`
+        )}
+      </text>
+    );
+  };
+
   return (
     <div className="min-h-screen pt-24 pb-16">
       <section className="container mx-auto px-4 text-center mb-20">
@@ -50,7 +80,7 @@ export default function Sponsors() {
             <CardTitle className="text-2xl font-bold text-center font-display">Funding Distribution</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="h-[400px] w-full">
+            <div className="h-[450px] w-full">
               {!isLoading && fundingData.length > 0 && (
                 <ResponsiveContainer width="100%" height="100%">
                   <PieChart>
@@ -58,11 +88,12 @@ export default function Sponsors() {
                       data={fundingData}
                       cx="50%"
                       cy="50%"
-                      innerRadius={80}
-                      outerRadius={120}
+                      innerRadius={60}
+                      outerRadius={100}
                       paddingAngle={5}
                       dataKey="value"
-                      label={({ name, value }) => `${name}: ${value}%`}
+                      label={renderCustomizedLabel}
+                      labelLine={{ stroke: 'hsl(var(--muted-foreground))', strokeWidth: 1 }}
                     >
                       {fundingData.map((entry, index) => (
                         <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
