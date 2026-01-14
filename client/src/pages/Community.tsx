@@ -9,6 +9,12 @@ const impactStats = [
   { icon: Heart, value: "~100h", label: "Volunteer Hours" },
 ];
 
+const projectedStats = [
+  { icon: Globe, value: "4", label: "Projected Outreach Areas" },
+  { icon: Users, value: "75+", label: "Possible Students Reached" },
+  { icon: BookOpen, value: "50-100", label: "Additional Volunteer Hours" },
+];
+
 const outreachItems = [
   {
     title: "Science Fair Demonstrations",
@@ -48,6 +54,7 @@ export default function Community() {
 
       {/* Stats */}
       <section className="container mx-auto px-4 mb-24">
+        <h2 className="text-2xl font-bold text-foreground mb-8 text-center uppercase tracking-widest opacity-50">Current Impact</h2>
         <div className="flex flex-wrap justify-center gap-6">
           {impactStats.map((stat, idx) => (
             <motion.div
@@ -58,6 +65,26 @@ export default function Community() {
               className="p-6 rounded-2xl bg-secondary/20 border border-white/5 text-center hover:bg-secondary/30 transition-colors min-w-[200px] flex-1 md:flex-none"
             >
               <stat.icon className="w-8 h-8 text-primary mx-auto mb-4" />
+              <div className="text-3xl font-bold text-foreground mb-2 font-display">{stat.value}</div>
+              <div className="text-sm text-muted-foreground uppercase tracking-wider">{stat.label}</div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Projected Outreach */}
+      <section className="container mx-auto px-4 mb-24">
+        <h2 className="text-2xl font-bold text-foreground mb-8 text-center uppercase tracking-widest opacity-50">Projected Outreach</h2>
+        <div className="flex flex-wrap justify-center gap-6">
+          {projectedStats.map((stat, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: idx * 0.1 }}
+              className="p-6 rounded-2xl bg-primary/5 border border-primary/10 text-center hover:bg-primary/10 transition-colors min-w-[200px] flex-1 md:flex-none"
+            >
+              <stat.icon className="w-8 h-8 text-accent mx-auto mb-4" />
               <div className="text-3xl font-bold text-foreground mb-2 font-display">{stat.value}</div>
               <div className="text-sm text-muted-foreground uppercase tracking-wider">{stat.label}</div>
             </motion.div>
