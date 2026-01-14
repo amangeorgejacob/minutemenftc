@@ -1,9 +1,33 @@
 import { motion } from "framer-motion";
 import { BookOpen, Users, Globe, Heart } from "lucide-react";
+import img1 from "@assets/stock_images/robotics_team_studen_2e3dd691.jpg";
+import img2 from "@assets/stock_images/robotics_team_studen_5851dda1.jpg";
+import img3 from "@assets/stock_images/robotics_team_studen_ce1e670c.jpg";
 
 const impactStats = [
   { icon: Users, value: "50-100+", label: "Students Mentored" },
   { icon: Heart, value: "~100h", label: "Volunteer Hours" },
+];
+
+const outreachItems = [
+  {
+    title: "Science Fair Demonstrations",
+    description: "Interactive robot demos at science fairs where we let students see the technology up close.",
+    image: img1,
+    bullet: "Interactive robot demos at science fairs"
+  },
+  {
+    title: "6th Grade Mentorship",
+    description: "Mentoring new 6th graders on how to build and program demo robots, sparking early interest.",
+    image: img2,
+    bullet: "Mentoring new 6th graders how to build and program demo robots"
+  },
+  {
+    title: "Regional Community Events",
+    description: "Visiting places like Seafair in Seattle to reach out further and inspire more kids into STEM.",
+    image: img3,
+    bullet: "Going to places like Seafair in Seattle to reach out further to inspire kids into taking STEM paths"
+  }
 ];
 
 export default function Community() {
@@ -42,41 +66,31 @@ export default function Community() {
       </section>
 
       {/* Features */}
-      <section className="container mx-auto px-4 space-y-24">
-        {/* Outreach */}
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="order-2 md:order-1">
-            <h2 className="text-3xl font-bold text-foreground mb-6">STEM Outreach</h2>
-            <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-              We visit local elementary schools to demonstrate our robots and inspire young students to pursue careers in STEM.
-            </p>
-            <ul className="space-y-4">
-              <li className="flex items-start gap-3">
-                <div className="w-2 h-2 rounded-full bg-accent mt-2" />
-                <span className="text-muted-foreground">Interactive robot demos at science fairs</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <div className="w-2 h-2 rounded-full bg-accent mt-2" />
-                <span className="text-muted-foreground">Mentoring new 6th graders how to build and program demo robots</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <div className="w-2 h-2 rounded-full bg-accent mt-2" />
-                <span className="text-muted-foreground">Going to places like Seafair in Seattle to reach out further to inspire kids into taking STEM paths</span>
-              </li>
-            </ul>
+      <section className="container mx-auto px-4 space-y-32">
+        {outreachItems.map((item, index) => (
+          <div key={index} className="grid md:grid-cols-2 gap-12 items-center">
+            <div className={index % 2 === 1 ? "md:order-2" : "md:order-1"}>
+              <h2 className="text-3xl font-bold text-foreground mb-6">{item.title}</h2>
+              <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+                {item.description}
+              </p>
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3">
+                  <div className="w-2 h-2 rounded-full bg-accent mt-2" />
+                  <span className="text-muted-foreground">{item.bullet}</span>
+                </li>
+              </ul>
+            </div>
+            <div className={`${index % 2 === 1 ? "md:order-1" : "md:order-2"} rounded-2xl overflow-hidden border border-white/10 h-[400px] relative group shadow-2xl`}>
+              <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity z-10" />
+              <img 
+                src={item.image}
+                alt={item.title} 
+                className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+              />
+            </div>
           </div>
-          <div className="order-1 md:order-2 rounded-2xl overflow-hidden border border-white/10 h-[400px] relative group">
-            <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity z-10" />
-            {/* teaching kids robotics */}
-            <img 
-              src="https://pixabay.com/get/g6faa0cdb80045d25fe332cf7174dc242cc7e0208de35eb7d20be226ad1bc43ade20603ac8574c7a541b7ef5a85bebd4bca8b7a3ce9095eb50d4e4b16c302b60b_1280.jpg"
-              alt="STEM Outreach" 
-              className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-            />
-          </div>
-        </div>
-
-        
+        ))}
       </section>
     </div>
   );
