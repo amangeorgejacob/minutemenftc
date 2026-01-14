@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { BookOpen, Users, Globe, Heart } from "lucide-react";
 import stemFairImg from "@assets/ImpactPics/StemFair.png";
+import sixthOneImg from "@assets/ImpactPics/sixthone.jpg";
+import sixthTwoImg from "@assets/ImpactPics/sixthtwo.jpg";
 import img1 from "@assets/stock_images/robotics_team_studen_2e3dd691.jpg";
 import img2 from "@assets/stock_images/robotics_team_studen_5851dda1.jpg";
 import img3 from "@assets/stock_images/robotics_team_studen_ce1e670c.jpg";
@@ -26,7 +28,8 @@ const outreachItems = [
   {
     title: "6th Grade Mentorship",
     description: "Mentoring new 6th graders on how to build and program demo robots, sparking early interest.",
-    image: img2,
+    image: sixthOneImg,
+    image2: sixthTwoImg,
     bullet: "Mentoring new 6th graders how to build and program demo robots"
   },
   {
@@ -111,11 +114,26 @@ export default function Community() {
             </div>
             <div className={`${index % 2 === 1 ? "md:order-1" : "md:order-2"} rounded-2xl overflow-hidden border border-white/10 h-[400px] relative group shadow-2xl`}>
               <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity z-10" />
-              <img 
-                src={item.image}
-                alt={item.title} 
-                className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-              />
+              {item.image2 ? (
+                <div className="grid grid-cols-2 h-full w-full">
+                  <img 
+                    src={item.image}
+                    alt={`${item.title} 1`} 
+                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <img 
+                    src={item.image2}
+                    alt={`${item.title} 2`} 
+                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                  />
+                </div>
+              ) : (
+                <img 
+                  src={item.image}
+                  alt={item.title} 
+                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                />
+              )}
             </div>
           </div>
         ))}
