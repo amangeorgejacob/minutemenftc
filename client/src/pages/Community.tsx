@@ -35,7 +35,7 @@ const outreachItems = [
   {
     title: "Regional Community Events",
     description: "Visiting places like Seafair in Seattle to reach out further and inspire more kids into STEM.",
-    image: img3,
+    image: null,
     bullet: "Going to places like Seafair in Seattle to reach out further to inspire kids into taking STEM paths"
   }
 ];
@@ -114,25 +114,31 @@ export default function Community() {
             </div>
             <div className={`${index % 2 === 1 ? "md:order-1" : "md:order-2"} rounded-2xl overflow-hidden border border-white/10 h-[400px] relative group shadow-2xl`}>
               <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity z-10" />
-              {item.image2 ? (
-                <div className="grid grid-cols-2 h-full w-full">
+              {item.image ? (
+                item.image2 ? (
+                  <div className="grid grid-cols-2 h-full w-full">
+                    <img 
+                      src={item.image}
+                      alt={`${item.title} 1`} 
+                      className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                    />
+                    <img 
+                      src={item.image2}
+                      alt={`${item.title} 2`} 
+                      className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                    />
+                  </div>
+                ) : (
                   <img 
                     src={item.image}
-                    alt={`${item.title} 1`} 
+                    alt={item.title} 
                     className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                   />
-                  <img 
-                    src={item.image2}
-                    alt={`${item.title} 2`} 
-                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-                  />
-                </div>
+                )
               ) : (
-                <img 
-                  src={item.image}
-                  alt={item.title} 
-                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-                />
+                <div className="w-full h-full flex items-center justify-center bg-secondary/10">
+                  <span className="text-muted-foreground font-medium uppercase tracking-widest">No picture found</span>
+                </div>
               )}
             </div>
           </div>
