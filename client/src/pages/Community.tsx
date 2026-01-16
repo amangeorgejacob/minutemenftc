@@ -3,6 +3,7 @@ import { BookOpen, Users, Globe, Heart } from "lucide-react";
 import stemFairImg from "@assets/ImpactPics/StemFair.png";
 import sixthOneImg from "@assets/ImpactPics/sixthone.jpg";
 import sixthTwoImg from "@assets/ImpactPics/sixthtwo.jpg";
+import seafairImg from "@assets/ImpactPics/Seafair.png";
 import img1 from "@assets/stock_images/robotics_team_studen_2e3dd691.jpg";
 import img2 from "@assets/stock_images/robotics_team_studen_5851dda1.jpg";
 import img3 from "@assets/stock_images/robotics_team_studen_ce1e670c.jpg";
@@ -15,7 +16,7 @@ const impactStats = [
 const projectedStats = [
   { icon: Globe, value: "4", label: "Projected Outreach Areas" },
   { icon: Users, value: "75+", label: "Possible Students Reached" },
-  { icon: BookOpen, value: "50-100", label: "Additional Volunteer Hours" },
+  { icon: Heart, value: "50-100", label: "Additional Volunteer Hours" },
 ];
 
 const outreachItems = [
@@ -35,7 +36,7 @@ const outreachItems = [
   {
     title: "Regional Community Events",
     description: "Visiting places like Seafair in Seattle to reach out further and inspire more kids into STEM.",
-    image: null,
+    image: seafairImg,
     bullet: "Going to places like Seafair in Seattle to reach out further to inspire kids into taking STEM paths"
   }
 ];
