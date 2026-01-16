@@ -18,11 +18,11 @@ export default function Sponsors() {
   const { data: sponsors, isLoading } = useSponsors();
 
   const fundingData = sponsors ? [
-    { name: sponsors.find(s => s.name === "Boeing")?.name || "Boeing", value: 15 },
-    { name: sponsors.find(s => s.name === "Microsoft")?.name || "Microsoft", value: 15 },
-    { name: sponsors.find(s => s.name === "FIRST Washington")?.name || "FIRST Washington", value: 15 },
-    { name: sponsors.find(s => s.name === "Issaquah Schools Foundation")?.name || "Issaquah Schools Foundation", value: 15 },
-    { name: sponsors.find(s => s.name === "Maywood Middle School PTSA")?.name || "Maywood PTSA", value: 40 },
+    { name: sponsors.find(s => s.name === "Boeing")?.name || "Boeing", value: 16 },
+    { name: sponsors.find(s => s.name === "Microsoft")?.name || "Microsoft", value: 8 },
+    { name: sponsors.find(s => s.name === "FIRST Washington")?.name || "FIRST Washington", value: 17 },
+    { name: sponsors.find(s => s.name === "Issaquah Schools Foundation")?.name || "Issaquah Schools Foundation", value: 49 },
+    { name: sponsors.find(s => s.name === "Maywood Middle School PTSA")?.name || "Maywood PTSA", value: 10 },
   ] : [];
 
   const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index, name, value }: any) => {
