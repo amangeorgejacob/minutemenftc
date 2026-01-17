@@ -7,7 +7,7 @@ import { QRCodeSVG } from "qrcode.react";
 
 export default function Portfolio() {
   const { data: members, isLoading } = useMembers();
-  const portfolioUrl = "https://docs.google.com/presentation/d/your-portfolio-id/view";
+  const portfolioUrl = `${window.location.origin}/portfolio-planning.pdf`;
 
   return (
     <div className="min-h-screen pt-24 pb-16">
@@ -36,11 +36,11 @@ export default function Portfolio() {
               <div className="space-y-4 w-full">
                 <h2 className="text-2xl font-bold text-foreground">Meet the team here</h2>
                 <p className="text-muted-foreground">
-                  Scan the QR code or click the button below to check out our full Engineering Portfolio and see our journey in detail.
+                  Scan the QR code or click the button below to check out our full Engineering Portfolio Planning Document and see our journey in detail.
                 </p>
                 
                 <Button asChild size="lg" className="w-full sm:w-auto">
-                  <a href="https://docs.google.com/presentation/d/your-portfolio-id/view" target="_blank" rel="noopener noreferrer" className="gap-2">
+                  <a href="/portfolio-planning.pdf" target="_blank" rel="noopener noreferrer" className="gap-2">
                     Check out our Engineering Portfolio
                     <ExternalLink className="w-4 h-4" />
                   </a>
