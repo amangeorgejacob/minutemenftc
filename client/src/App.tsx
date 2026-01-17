@@ -13,6 +13,7 @@ import Community from "@/pages/Community";
 import Sponsors from "@/pages/Sponsors";
 import Contact from "@/pages/Contact";
 import Admin from "@/pages/Admin";
+import YouTube from "@/pages/YouTube";
 
 function Router() {
   return (
@@ -23,6 +24,7 @@ function Router() {
       <Route path="/sponsors" component={Sponsors} />
       <Route path="/contact" component={Contact} />
       <Route path="/admin" component={Admin} />
+      <Route path="/youtube" component={YouTube} />
       <Route component={NotFound} />
     </Switch>
   );
