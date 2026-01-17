@@ -5,7 +5,7 @@ import { QRCodeSVG } from "qrcode.react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function YouTubePage() {
-  const youtubeUrl = "https://www.youtube.com/@example"; // Placeholder URL
+  const youtubeUrl = "https://www.youtube.com/@TotalChaos24621";
 
   return (
     <div className="min-h-screen pt-24 pb-16">
@@ -22,7 +22,7 @@ export default function YouTubePage() {
             OUR <span className="text-red-600">YOUTUBE</span>
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Subscribe to our channel to see our robot reveals, match highlights, and behind-the-scenes engineering vlogs.
+            Subscribe to our channel to see our robots and behind-the-scene videos.
           </p>
         </motion.div>
       </section>
@@ -44,7 +44,7 @@ export default function YouTubePage() {
 
               <div className="space-y-6 w-full text-center">
                 <div className="space-y-2">
-                  <h3 className="text-xl font-bold">Scan to Subscribe</h3>
+                  <h3 className="text-xl font-bold">Scan to open YouTube</h3>
                   <p className="text-sm text-muted-foreground">
                     Point your camera at the QR code to open our YouTube channel directly on your device.
                   </p>
