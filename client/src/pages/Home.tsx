@@ -11,7 +11,7 @@ export default function Home() {
         <div className="absolute inset-0 z-0">
           {/* robotics competition arena */}
           <img 
-            src="https://images.unsplash.com/photo-1561557944-6e7860d1a7eb?auto=format&fit=crop&q=80"
+            src="/grouppic.jpg"
             alt="Robotics Competition" 
             className="w-full h-full object-cover opacity-20"
           />
