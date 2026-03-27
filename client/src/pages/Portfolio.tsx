@@ -120,7 +120,7 @@ export default function Portfolio() {
             <div className="relative h-[400px] rounded-2xl overflow-hidden border border-white/10">
               {/* students working on robot */}
               <img 
-                src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80"
+                src="/picone.jpg"
                 alt="Team Collaboration"
                 className="w-full h-full object-cover"
               />
