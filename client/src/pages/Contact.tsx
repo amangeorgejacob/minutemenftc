@@ -47,7 +47,7 @@ export default function Contact() {
               <h3 className="text-xl font-bold text-foreground mb-2">
                 Email Us
               </h3>
-              <p className="text-muted-foreground">kreink@issaquah.wednet.edu</p>
+              <p className="text-muted-foreground">amangeorgejacob@gmail.com</p>
             </div>
             <div className="p-6 bg-secondary/30 rounded-2xl border border-foreground/10">
               <MapPin className="w-8 h-8 text-accent mb-4" />

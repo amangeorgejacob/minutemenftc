@@ -15,7 +15,7 @@ export function Footer() {
             </p>
             <div className="flex gap-4">
               
-              <a href="mailto:kreink@issaquah.wednet.edu" className="p-2 bg-foreground/5 rounded-full hover:bg-primary/20 hover:text-primary transition-colors">
+              <a href="mailto:amangeorgejacob@gmail.com" className="p-2 bg-foreground/5 rounded-full hover:bg-primary/20 hover:text-primary transition-colors">
                 <Mail className="w-5 h-5" />
               </a>
               <a href="https://www.youtube.com/@TotalChaos24621" target="_blank" rel="noopener noreferrer" className="p-2 bg-foreground/5 rounded-full hover:bg-red-500/20 hover:text-red-500 transition-colors">
