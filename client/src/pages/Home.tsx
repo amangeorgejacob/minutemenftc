@@ -96,7 +96,7 @@ export default function Home() {
       {/* Call to Action */}
       <section className="py-32 relative overflow-hidden">
         <div className="absolute inset-0 bg-primary/5 -skew-y-3 transform origin-top-left" />
-        <div className="container mx-auto px-4 relative z-10 text-center">
+        {/* <div className="container mx-auto px-4 relative z-10 text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-8">Ready to support Total Chaos?</h2>
           <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
             Your support helps us buy parts, register for competitions, and travel to events. Become a part of our journey.
@@ -104,7 +104,7 @@ export default function Home() {
           <Link href="/sponsors" className="inline-flex items-center gap-2 text-lg font-bold text-primary hover:text-accent transition-colors">
             See our Sponsors <ArrowRight className="w-5 h-5" />
           </Link>
-        </div>
+        </div> */}
       </section>
     </div>
   );
