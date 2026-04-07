@@ -35,7 +35,7 @@ export function Footer() {
             </ul>
           </div>
 
-          <div>
+          {/* <div>
             <h4 className="font-bold mb-4 text-foreground">Support Us</h4>
             <p className="text-muted-foreground mb-4 text-sm">
               We rely on community support to build robots and compete.
@@ -43,7 +43,7 @@ export function Footer() {
             <Link href="/contact" className="inline-flex items-center gap-2 text-primary font-bold hover:text-accent transition-colors">
               Become a Sponsor <Heart className="w-4 h-4" />
             </Link>
-          </div>
+          </div> */}
         </div>
 
         
