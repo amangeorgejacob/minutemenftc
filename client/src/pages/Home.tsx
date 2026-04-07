@@ -94,7 +94,7 @@ export default function Home() {
       </section>
 
       {/* Call to Action */}
-      {/* <section className="py-32 relative overflow-hidden">
+      <section className="py-32 relative overflow-hidden">
         <div className="absolute inset-0 bg-primary/5 -skew-y-3 transform origin-top-left" />
         <div className="container mx-auto px-4 relative z-10 text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-8">Ready to support Total Chaos?</h2>
@@ -105,7 +105,7 @@ export default function Home() {
             See our Sponsors <ArrowRight className="w-5 h-5" />
           </Link>
         </div>
-      </section> */}
+      </section>
     </div>
   );
 }
