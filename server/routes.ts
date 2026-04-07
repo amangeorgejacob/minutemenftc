@@ -37,6 +37,29 @@ export async function registerRoutes(
     try {
       const input = api.contact.submit.input.parse(req.body);
       const message = await storage.createMessage(input);
+
+      const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
+      if (webhookUrl) {
+        await fetch(webhookUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            embeds: [
+              {
+                title: "📬 New Contact Form Submission",
+                color: 0x5865f2,
+                fields: [
+                  { name: "Name", value: input.name, inline: true },
+                  { name: "Email", value: input.email, inline: true },
+                  { name: "Message", value: input.message },
+                ],
+                timestamp: new Date().toISOString(),
+              },
+            ],
+          }),
+        });
+      }
+
       res.status(201).json(message);
     } catch (err) {
       if (err instanceof z.ZodError) {
