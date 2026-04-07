@@ -38,7 +38,7 @@ export default function Home() {
                 Our Impact
               </Link>
               <Link href="/contact" className="inline-flex items-center justify-center px-8 py-4 rounded-lg bg-foreground/5 text-foreground font-bold border border-foreground/10 hover:bg-foreground/10 transition-all backdrop-blur-sm">
-                Contact Us
+                Questions?
               </Link>
             </div>
           </motion.div>
