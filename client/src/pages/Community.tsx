@@ -9,14 +9,14 @@ import img2 from "@assets/stock_images/robotics_team_studen_5851dda1.jpg";
 import img3 from "@assets/stock_images/robotics_team_studen_ce1e670c.jpg";
 
 const impactStats = [
-  { icon: Users, value: "50-100+", label: "Students Reached" },
-  { icon: Heart, value: "~100h", label: "Volunteer Hours" },
+  { icon: Users, value: "~100+", label: "Students Reached" },
+  { icon: Heart, value: "~50h+", label: "Volunteer Hours" },
 ];
 
 const projectedStats = [
-  { icon: Globe, value: "4", label: "Projected Outreach Areas" },
-  { icon: Users, value: "75+", label: "Possible Students Reached" },
-  { icon: Heart, value: "50-100", label: "Additional Volunteer Hours" },
+  { icon: Globe, value: "3", label: "Projected Outreach Areas" },
+  { icon: Users, value: "50+", label: "Possible Students Reached" },
+  { icon: Heart, value: "~25+", label: "Additional Volunteer Hours" },
 ];
 
 const outreachItems = [

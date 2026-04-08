@@ -72,7 +72,7 @@ export default function Home() {
               <Users className="w-12 h-12 text-primary mb-6" />
               <h3 className="text-2xl font-bold text-foreground mb-4">Community</h3>
               <p className="text-muted-foreground">
-                Introducing local elementary schools and mentoring kids to spread STEM education throughout our, and other local schools.
+                Introducing local elementary schools and mentoring kids to spread STEM education throughout our community.
               </p>
             </motion.div>
 
@@ -86,7 +86,7 @@ export default function Home() {
               <Trophy className="w-12 h-12 text-yellow-500 mb-6" />
               <h3 className="text-2xl font-bold text-foreground mb-4">Excellence</h3>
               <p className="text-muted-foreground">
-                We compete at the highest level and earning victories through precision engineering and match-winning strategy.
+                We compete together and earn victories through team engineering and match-winning strategies.
               </p>
             </motion.div>
           </div>
