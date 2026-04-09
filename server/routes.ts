@@ -32,6 +32,33 @@ export async function registerRoutes(
     res.json(sponsors);
   });
 
+  // Visit tracker
+  app.post("/api/visit", async (req, res) => {
+    const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
+    if (webhookUrl) {
+      const { page } = req.body;
+      const ip = req.headers["x-forwarded-for"] || req.socket.remoteAddress || "Unknown";
+      await fetch(webhookUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          embeds: [
+            {
+              title: "👀 New Website Visitor",
+              color: 0x00b0f4,
+              fields: [
+                { name: "Page", value: page || "/", inline: true },
+                { name: "IP", value: String(ip).split(",")[0].trim(), inline: true },
+              ],
+              timestamp: new Date().toISOString(),
+            },
+          ],
+        }),
+      });
+    }
+    res.status(200).json({ ok: true });
+  });
+
   // Contact
   app.post(api.contact.submit.path, async (req, res) => {
     try {
