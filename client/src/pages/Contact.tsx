@@ -5,9 +5,24 @@ import { insertMessageSchema } from "@shared/schema";
 import type { InsertMessage } from "@shared/routes";
 import { motion } from "framer-motion";
 import { MapPin, Mail, Calendar } from "lucide-react";
+import { useState, useEffect } from "react";
+
+const contactPlaceholders = [
+  "you@example.com",
+  "@yourdiscord",
+  "+1 (555) 000-0000",
+];
 
 export default function Contact() {
   const { mutate, isPending } = useContactForm();
+  const [placeholderIndex, setPlaceholderIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPlaceholderIndex((i) => (i + 1) % contactPlaceholders.length);
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
   const form = useForm<InsertMessage>({
     resolver: zodResolver(insertMessageSchema),
     defaultValues: {
@@ -34,7 +49,7 @@ export default function Contact() {
           GET IN <span className="text-primary">TOUCH</span>
         </motion.h1>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Have a question? Want to learn more, or just want to sponsor us? Send us a message!
+          Have a question or want to learn more? Send us a message!
         </p>
       </section>
 
@@ -94,13 +109,13 @@ export default function Contact() {
 
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-muted-foreground">
-                      Email
+                      Email, Discord or Phone
                     </label>
                     <input
                       {...form.register("email")}
-                      type="email"
+                      type="text"
                       className="w-full px-4 py-3 rounded-lg bg-background/50 border border-foreground/10 text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
-                      placeholder="you@example.com"
+                      placeholder={contactPlaceholders[placeholderIndex]}
                     />
                     {form.formState.errors.email && (
                       <p className="text-sm text-destructive">

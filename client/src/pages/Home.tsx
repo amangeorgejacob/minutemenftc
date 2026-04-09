@@ -58,7 +58,7 @@ export default function Home() {
               <Zap className="w-12 h-12 text-accent mb-6" />
               <h3 className="text-2xl font-bold text-foreground mb-4">Innovation</h3>
               <p className="text-muted-foreground">
-                Pushing the boundaries of what student-built robots can achieve through custom CAD designs and advanced control algorithms.
+                Pushing the boundaries of what FTC robots can achieve through custom CAD designs and our advanced programming.
               </p>
             </motion.div>
 
