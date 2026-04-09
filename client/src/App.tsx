@@ -19,10 +19,11 @@ import YouTube from "@/pages/YouTube";
 function VisitTracker() {
   const [location] = useLocation();
   useEffect(() => {
+    const isAdmin = localStorage.getItem("isAdmin") === "true";
     fetch("/api/visit", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ page: location }),
+      body: JSON.stringify({ page: location, isAdmin }),
     }).catch(() => {});
   }, [location]);
   return null;

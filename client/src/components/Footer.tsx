@@ -1,8 +1,12 @@
 import { Link } from "wouter";
 import { Mail, Heart } from "lucide-react";
 import { SiYoutube } from "react-icons/si";
+import { useState } from "react";
+import { LoginModal } from "./LoginModal";
 
 export function Footer() {
+  const [loginOpen, setLoginOpen] = useState(false);
+
   return (
     <footer className="bg-background border-t border-foreground/10 pt-16 pb-8">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -49,9 +53,18 @@ export function Footer() {
         
         <div className="border-t border-foreground/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
           <p>© {new Date().getFullYear()} Total Chaos #24621. All rights reserved.</p>
-          <p className="flex items-center gap-1">Built with ❤️ and 🤖</p>
+          <div className="flex items-center gap-4">
+            <p className="flex items-center gap-1">Built with ❤️ and 🤖</p>
+            <button
+              onClick={() => setLoginOpen(true)}
+              className="text-xs text-muted-foreground/30 hover:text-muted-foreground/60 transition-colors"
+            >
+              ·
+            </button>
+          </div>
         </div>
       </div>
+      <LoginModal open={loginOpen} onClose={() => setLoginOpen(false)} />
     </footer>
   );
 }

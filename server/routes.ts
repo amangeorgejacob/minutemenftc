@@ -36,24 +36,31 @@ export async function registerRoutes(
   app.post("/api/visit", async (req, res) => {
     const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
     if (webhookUrl) {
-      const { page } = req.body;
+      const { page, isAdmin } = req.body;
       const ip = req.headers["x-forwarded-for"] || req.socket.remoteAddress || "Unknown";
+      const embed = isAdmin
+        ? {
+            title: "🔑 Admin Logged In",
+            color: 0xffd700,
+            fields: [
+              { name: "Page", value: page || "/", inline: true },
+              { name: "IP", value: String(ip).split(",")[0].trim(), inline: true },
+            ],
+            timestamp: new Date().toISOString(),
+          }
+        : {
+            title: "👀 New Website Visitor",
+            color: 0x00b0f4,
+            fields: [
+              { name: "Page", value: page || "/", inline: true },
+              { name: "IP", value: String(ip).split(",")[0].trim(), inline: true },
+            ],
+            timestamp: new Date().toISOString(),
+          };
       await fetch(webhookUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          embeds: [
-            {
-              title: "👀 New Website Visitor",
-              color: 0x00b0f4,
-              fields: [
-                { name: "Page", value: page || "/", inline: true },
-                { name: "IP", value: String(ip).split(",")[0].trim(), inline: true },
-              ],
-              timestamp: new Date().toISOString(),
-            },
-          ],
-        }),
+        body: JSON.stringify({ embeds: [embed] }),
       });
     }
     res.status(200).json({ ok: true });
