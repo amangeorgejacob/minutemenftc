@@ -20,6 +20,10 @@ function VisitTracker() {
   const [location] = useLocation();
   useEffect(() => {
     const isAdmin = localStorage.getItem("isAdmin") === "true";
+    if (isAdmin) {
+      if (sessionStorage.getItem("adminPinged")) return;
+      sessionStorage.setItem("adminPinged", "true");
+    }
     fetch("/api/visit", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
