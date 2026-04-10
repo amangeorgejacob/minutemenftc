@@ -44,7 +44,6 @@ export async function registerRoutes(
             color: 0xffd700,
             fields: [
               { name: "Page", value: page || "/", inline: true },
-              { name: "IP", value: String(ip).split(",")[0].trim(), inline: true },
             ],
             timestamp: new Date().toISOString(),
           }
