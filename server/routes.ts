@@ -42,9 +42,7 @@ export async function registerRoutes(
         ? {
             title: "🔑 Admin Logged In",
             color: 0xffd700,
-            fields: [
-              { name: "Page", value: page || "/", inline: true },
-            ],
+            fields: [],
             timestamp: new Date().toISOString(),
           }
         : {
