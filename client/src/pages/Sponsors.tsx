@@ -80,9 +80,9 @@ export default function Sponsors() {
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
           We wouldn't be able to achieve our goals without the generous support of our partners. Thank you for fueling our innovation.
         </p>
-        {/* <Link href="/contact" className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground transition-all font-bold border border-primary/20">
+        <Link href="/contact" className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground transition-all font-bold border border-primary/20">
           Become a Sponsor <ArrowUpRight className="w-4 h-4" />
-        </Link> */}
+        </Link >
       </section>
 
       {/* Funding Chart Section */}
