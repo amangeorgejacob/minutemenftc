@@ -13,6 +13,10 @@ const faqs = [
     answer:
       "FTC stands for FIRST Tech Challenge. It's a robotics competition for students in grades 7–12 where teams design, build, and program robots to compete in head-to-head challenges on a 12'x12' field. Each season has a unique game with new tasks like scoring objects, climbing structures, or working autonomously. Beyond engineering, FTC also emphasizes teamwork, outreach, and the FIRST values of Gracious Professionalism and Coopertition.",
   },
+  {
+    question: "What is the 2025-2026 game?",
+    answer: "Learn more in this video:",
+  },
 ];
 
 export default function FAQ() {
