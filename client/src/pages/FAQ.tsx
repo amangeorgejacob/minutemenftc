@@ -6,8 +6,9 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import type { ReactNode } from "react";
 
-const faqs = [
+const faqs: { question: string; answer: ReactNode }[] = [
   {
     question: "What is FTC?",
     answer:
@@ -15,7 +16,31 @@ const faqs = [
   },
   {
     question: "What is the 2025-2026 game?",
-    answer: "Learn more in this video:",
+    answer: (
+      <div className="space-y-3">
+        <p>Learn more in this video:</p>
+        <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+          <iframe
+            className="absolute top-0 left-0 w-full h-full rounded-xl"
+            src="https://www.youtube.com/embed/LCqWA6gSCXA"
+            title="FIRST Tech Challenge 2025-2026 Game"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        </div>
+        <p className="text-sm text-muted-foreground/70">
+          Video credit:{" "}
+          <a
+            href="https://www.youtube.com/@FIRSTinspires"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:underline"
+          >
+            FIRST YouTube
+          </a>
+        </p>
+      </div>
+    ),
   },
 ];
 
