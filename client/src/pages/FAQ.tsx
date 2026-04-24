@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
-import { HelpCircle } from "lucide-react";
+import { HelpCircle, MessageCircle } from "lucide-react";
+import { Link } from "wouter";
+import { Button } from "@/components/ui/button";
 import {
   Accordion,
   AccordionContent,
@@ -12,7 +14,7 @@ const faqs: { question: string; answer: ReactNode }[] = [
   {
     question: "What is FTC?",
     answer:
-      "FTC stands for FIRST Tech Challenge. It's a robotics competition for students in grades 7–12 where teams design, build, and program robots to compete in head-to-head challenges on a 12'x12' field. Each season has a unique game with new tasks like scoring objects, climbing structures, or working autonomously. Beyond engineering, FTC also emphasizes teamwork, outreach, and the FIRST values of Gracious Professionalism and Coopertition.",
+      "FTC stands for FIRST Tech Challenge. It's a robotics competition for students in grades 7–12 where teams design, build, and program robots to compete in head-to-head challenges on a 12'x12' field. Each season has a unique game with new tasks like scoring objects, climbing structures, or working autonomously. Beyond engineering, FTC also emphasizes teamwork, outreach, and the FIRST values of Gracious Professionalism.",
   },
   {
     question: "What is the 2025-2026 game?",
@@ -62,6 +64,17 @@ export default function FAQ() {
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Got a question about Total Chaos or FTC? You'll likely find the answer here.
           </p>
+          <Button
+            asChild
+            size="lg"
+            className="mt-4 gap-2"
+            data-testid="button-contact-from-faq"
+          >
+            <Link href="/contact">
+              <MessageCircle className="w-4 h-4" />
+              Didn't answer your question?
+            </Link>
+          </Button>
         </motion.div>
       </section>
 

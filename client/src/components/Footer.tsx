@@ -55,7 +55,7 @@ export function Footer() {
         <div className="border-t border-foreground/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
           <p>© {new Date().getFullYear()} Total Chaos #24621. All rights reserved.</p>
           <div className="flex items-center gap-4">
-            <p className="flex items-center gap-1">Built with ❤️ and 🤖</p>
+            <p className="flex items-center gap-1">Built with ❤️</p>
             <button
               onClick={() => setLoginOpen(true)}
               className="text-xs text-muted-foreground/30 hover:text-muted-foreground/60 transition-colors"
