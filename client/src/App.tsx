@@ -15,6 +15,7 @@ import Sponsors from "@/pages/Sponsors";
 import Contact from "@/pages/Contact";
 import Admin from "@/pages/Admin";
 import YouTube from "@/pages/YouTube";
+import FAQ from "@/pages/FAQ";
 
 function VisitTracker() {
   const [location] = useLocation();
@@ -43,6 +44,7 @@ function Router() {
       <Route path="/contact" component={Contact} />
       <Route path="/admin" component={Admin} />
       <Route path="/youtube" component={YouTube} />
+      <Route path="/faq" component={FAQ} />
       <Route component={NotFound} />
     </Switch>
   );

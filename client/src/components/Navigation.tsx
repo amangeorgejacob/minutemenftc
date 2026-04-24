@@ -9,6 +9,7 @@ const links = [
   { href: "/community", label: "Impact" },
   { href: "/sponsors", label: "Sponsors" },
   { href: "/youtube", label: "YouTube" },
+  { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
 ];
 
