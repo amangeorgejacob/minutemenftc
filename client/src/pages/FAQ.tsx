@@ -98,6 +98,21 @@ export default function FAQ() {
             ))}
           </Accordion>
         </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+          className="text-center mt-8"
+        >
+          <Link
+            href="/portfolio"
+            className="text-base text-primary hover:underline font-medium"
+            data-testid="link-portfolio-from-faq"
+          >
+            More questions? Visit our portfolio or dont hesitate contact us in the contact page!
+          </Link>
+        </motion.div>
       </section>
     </div>
   );
