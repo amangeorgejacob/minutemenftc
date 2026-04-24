@@ -31,7 +31,7 @@ const faqs: { question: string; answer: ReactNode }[] = [
         <p className="text-sm text-muted-foreground/70">
           Video credit:{" "}
           <a
-            href="https://www.youtube.com/@FIRSTinspires"
+            href="https://www.youtube.com/@FIRSTTechChallenge"
             target="_blank"
             rel="noopener noreferrer"
             className="text-primary hover:underline"
