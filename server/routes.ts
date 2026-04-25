@@ -35,6 +35,7 @@ export async function registerRoutes(
   // Visit tracker
   app.post("/api/visit", async (req, res) => {
     const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
+    let messageId: string | null = null;
     if (webhookUrl) {
       const { page, isAdmin } = req.body;
       const ip = req.headers["x-forwarded-for"] || req.socket.remoteAddress || "Unknown";
@@ -54,11 +55,29 @@ export async function registerRoutes(
             ],
             timestamp: new Date().toISOString(),
           };
-      await fetch(webhookUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ embeds: [embed] }),
-      });
+      try {
+        const r = await fetch(`${webhookUrl}?wait=true`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ embeds: [embed] }),
+        });
+        if (r.ok) {
+          const data = await r.json();
+          messageId = data?.id ?? null;
+        }
+      } catch {}
+    }
+    res.status(200).json({ ok: true, messageId });
+  });
+
+  // Delete a previous visitor ping (used when an admin logs in)
+  app.post("/api/visit/delete", async (req, res) => {
+    const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
+    const { messageId } = req.body ?? {};
+    if (webhookUrl && messageId) {
+      try {
+        await fetch(`${webhookUrl}/messages/${messageId}`, { method: "DELETE" });
+      } catch {}
     }
     res.status(200).json({ ok: true });
   });

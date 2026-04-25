@@ -13,10 +13,28 @@ export function LoginModal({ open, onClose }: LoginModalProps) {
 
   if (!open) return null;
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     if (username === "admin" && password === "admin") {
       localStorage.setItem("isAdmin", "true");
+
+      const visitorMsgId = sessionStorage.getItem("visitorMsgId");
+      if (visitorMsgId) {
+        sessionStorage.removeItem("visitorMsgId");
+        fetch("/api/visit/delete", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ messageId: visitorMsgId }),
+        }).catch(() => {});
+      }
+
+      sessionStorage.setItem("adminPinged", "true");
+      fetch("/api/visit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ page: window.location.pathname, isAdmin: true }),
+      }).catch(() => {});
+
       setError("");
       setUsername("");
       setPassword("");

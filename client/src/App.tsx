@@ -29,7 +29,14 @@ function VisitTracker() {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ page: location, isAdmin }),
-    }).catch(() => {});
+    })
+      .then((r) => r.json())
+      .then((data) => {
+        if (!isAdmin && data?.messageId) {
+          sessionStorage.setItem("visitorMsgId", data.messageId);
+        }
+      })
+      .catch(() => {});
   }, [location]);
   return null;
 }
