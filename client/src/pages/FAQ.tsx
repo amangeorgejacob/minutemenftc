@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { HelpCircle, MessageCircle } from "lucide-react";
-import { Link } from "wouter";
+import { Link, useSearch } from "wouter";
 import { Button } from "@/components/ui/button";
 import {
   Accordion,
@@ -10,13 +10,15 @@ import {
 } from "@/components/ui/accordion";
 import type { ReactNode } from "react";
 
-const faqs: { question: string; answer: ReactNode }[] = [
+const faqs: { id: string; question: string; answer: ReactNode }[] = [
   {
+    id: "ftc",
     question: "What is FTC?",
     answer:
       "FTC stands for FIRST Tech Challenge. It's a robotics competition for students in grades 7–12 where teams design, build, and program robots to compete in head-to-head challenges on a 12'x12' field. Each season has a unique game with new tasks like scoring objects, climbing structures, or working autonomously. Beyond engineering, FTC also emphasizes teamwork, outreach, and the FIRST values of Gracious Professionalism.",
   },
   {
+    id: "game",
     question: "What is the '25-'26 game?",
     answer: (
       <div className="space-y-3">
@@ -47,6 +49,10 @@ const faqs: { question: string; answer: ReactNode }[] = [
 ];
 
 export default function FAQ() {
+  const search = useSearch();
+  const openId = new URLSearchParams(search).get("open");
+  const defaultValue = openId && faqs.find((f) => f.id === openId) ? openId : undefined;
+
   return (
     <div className="min-h-screen pt-24 pb-16">
       <section className="container mx-auto px-4 text-center mb-12">
@@ -85,9 +91,9 @@ export default function FAQ() {
           transition={{ delay: 0.2 }}
           className="p-6 md:p-8 rounded-2xl bg-secondary/30 border border-foreground/10 backdrop-blur-sm"
         >
-          <Accordion type="single" collapsible className="w-full">
-            {faqs.map((faq, i) => (
-              <AccordionItem key={i} value={`item-${i}`} className="border-foreground/10">
+          <Accordion type="single" collapsible className="w-full" defaultValue={defaultValue}>
+            {faqs.map((faq) => (
+              <AccordionItem key={faq.id} value={faq.id} className="border-foreground/10">
                 <AccordionTrigger className="text-left text-lg font-semibold text-foreground hover:text-primary">
                   {faq.question}
                 </AccordionTrigger>

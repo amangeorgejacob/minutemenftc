@@ -37,8 +37,8 @@ export default function Home() {
               <Link href="/community" className="inline-flex items-center justify-center px-8 py-4 rounded-lg bg-primary text-primary-foreground font-bold hover:bg-primary/90 transition-all hover:scale-105">
                 Our Impact
               </Link>
-              <Link href="/contact" className="inline-flex items-center justify-center px-8 py-4 rounded-lg bg-foreground/5 text-foreground font-bold border border-foreground/10 hover:bg-foreground/10 transition-all backdrop-blur-sm">
-                Questions?
+              <Link href="/faq?open=ftc" className="inline-flex items-center justify-center px-8 py-4 rounded-lg bg-foreground/5 text-foreground font-bold border border-foreground/10 hover:bg-foreground/10 transition-all backdrop-blur-sm">
+                What is FTC?
               </Link>
             </div>
           </motion.div>
