@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { HelpCircle, MessageCircle } from "lucide-react";
 import { Link, useSearch } from "wouter";
@@ -53,6 +54,17 @@ export default function FAQ() {
   const openId = new URLSearchParams(search).get("open");
   const defaultValue = openId && faqs.find((f) => f.id === openId) ? openId : undefined;
 
+  useEffect(() => {
+    if (!defaultValue) return;
+    const timer = setTimeout(() => {
+      const el = document.querySelector(`[data-faq-id="${defaultValue}"]`);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    }, 300);
+    return () => clearTimeout(timer);
+  }, [defaultValue]);
+
   return (
     <div className="min-h-screen pt-24 pb-16">
       <section className="container mx-auto px-4 text-center mb-12">
@@ -93,7 +105,7 @@ export default function FAQ() {
         >
           <Accordion type="single" collapsible className="w-full" defaultValue={defaultValue}>
             {faqs.map((faq) => (
-              <AccordionItem key={faq.id} value={faq.id} className="border-foreground/10">
+              <AccordionItem key={faq.id} value={faq.id} data-faq-id={faq.id} className="border-foreground/10">
                 <AccordionTrigger className="text-left text-lg font-semibold text-foreground hover:text-primary">
                   {faq.question}
                 </AccordionTrigger>
