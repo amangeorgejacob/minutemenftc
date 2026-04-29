@@ -6,14 +6,62 @@ import { z } from "zod";
 import { db } from "./db";
 import { sponsors } from "@shared/schema";
 
+const FALLBACK_SPONSORS = [
+  {
+    id: 1,
+    name: "Boeing",
+    tier: "Gold",
+    logoUrl:
+      "https://upload.wikimedia.org/wikipedia/commons/4/4f/Boeing_full_logo.svg",
+    websiteUrl: "https://www.boeing.com",
+  },
+  {
+    id: 2,
+    name: "Microsoft",
+    tier: "Gold",
+    logoUrl:
+      "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg",
+    websiteUrl: "https://www.microsoft.com",
+  },
+  {
+    id: 3,
+    name: "FIRST Washington",
+    tier: "Gold",
+    logoUrl: "/FirstWashington.png",
+    websiteUrl: "https://firstwa.org",
+  },
+  {
+    id: 4,
+    name: "Issaquah Schools Foundation",
+    tier: "Gold",
+    logoUrl: "/FirstWashington.png",
+    websiteUrl: "https://isfdn.org",
+  },
+  {
+    id: 5,
+    name: "Maywood Middle School PTSA",
+    tier: "Gold",
+    logoUrl: "/FirstWashington.png",
+    websiteUrl: "https://maywoodptsa.org",
+  },
+];
+
 export async function registerRoutes(
   httpServer: Server,
   app: Express,
 ): Promise<Server> {
-  // Sponsors
+  // Sponsors — fall back to hardcoded list if DB is unavailable
   app.get(api.sponsors.list.path, async (req, res) => {
-    const sponsors = await storage.getSponsors();
-    res.json(sponsors);
+    try {
+      const list = await storage.getSponsors();
+      if (list.length === 0) {
+        return res.json(FALLBACK_SPONSORS);
+      }
+      res.json(list);
+    } catch (err) {
+      console.error("Sponsors DB unavailable, serving fallback:", err);
+      res.json(FALLBACK_SPONSORS);
+    }
   });
 
   // Visit tracker
@@ -66,35 +114,51 @@ export async function registerRoutes(
     res.status(200).json({ ok: true });
   });
 
-  // Contact
+  // Contact — succeeds via Discord even if DB is unavailable
   app.post(api.contact.submit.path, async (req, res) => {
     try {
       const input = api.contact.submit.input.parse(req.body);
-      const message = await storage.createMessage(input);
+
+      let savedMessage: any = null;
+      try {
+        savedMessage = await storage.createMessage(input);
+      } catch (err) {
+        console.error("Contact DB write failed (continuing via Discord):", err);
+      }
 
       const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
       if (webhookUrl) {
-        await fetch(webhookUrl, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            embeds: [
-              {
-                title: "📬 New Contact Form Submission",
-                color: 0x5865f2,
-                fields: [
-                  { name: "Name", value: input.name, inline: true },
-                  { name: "Email", value: input.email, inline: true },
-                  { name: "Message", value: input.message },
-                ],
-                timestamp: new Date().toISOString(),
-              },
-            ],
-          }),
-        });
+        try {
+          await fetch(webhookUrl, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              embeds: [
+                {
+                  title: "📬 New Contact Form Submission",
+                  color: 0x5865f2,
+                  fields: [
+                    { name: "Name", value: input.name, inline: true },
+                    { name: "Email", value: input.email, inline: true },
+                    { name: "Message", value: input.message },
+                  ],
+                  timestamp: new Date().toISOString(),
+                },
+              ],
+            }),
+          });
+        } catch (err) {
+          console.error("Discord webhook failed:", err);
+        }
       }
 
-      res.status(201).json(message);
+      res.status(201).json(
+        savedMessage ?? {
+          id: 0,
+          ...input,
+          createdAt: new Date().toISOString(),
+        },
+      );
     } catch (err) {
       if (err instanceof z.ZodError) {
         return res.status(400).json({
@@ -106,7 +170,10 @@ export async function registerRoutes(
     }
   });
 
-  await seedDatabase();
+  // Seed in background — never block startup or crash on DB failure
+  seedDatabase().catch((err) => {
+    console.error("Database seed skipped (DB unavailable):", err?.message ?? err);
+  });
 
   return httpServer;
 }
@@ -116,37 +183,13 @@ export async function seedDatabase() {
   if (existingSponsors.length <= 3) {
     // If we only have the example sponsors (or fewer), clear and seed with real ones
     await db.delete(sponsors);
-    await storage.createSponsor({
-      name: "Boeing",
-      tier: "Gold",
-      logoUrl:
-        "https://upload.wikimedia.org/wikipedia/commons/4/4f/Boeing_full_logo.svg",
-      websiteUrl: "https://www.boeing.com",
-    });
-    await storage.createSponsor({
-      name: "Microsoft",
-      tier: "Gold",
-      logoUrl:
-        "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg",
-      websiteUrl: "https://www.microsoft.com",
-    });
-    await storage.createSponsor({
-      name: "FIRST Washington",
-      tier: "Gold",
-      logoUrl: "/FirstWashington.png",
-      websiteUrl: "https://firstwa.org",
-    });
-    await storage.createSponsor({
-      name: "Issaquah Schools Foundation",
-      tier: "Gold",
-      logoUrl: "/FirstWashington.png",
-      websiteUrl: "https://isfdn.org",
-    });
-    await storage.createSponsor({
-      name: "Maywood Middle School PTSA",
-      tier: "Gold",
-      logoUrl: "/FirstWashington.png",
-      websiteUrl: "https://maywoodptsa.org",
-    });
+    for (const s of FALLBACK_SPONSORS) {
+      await storage.createSponsor({
+        name: s.name,
+        tier: s.tier,
+        logoUrl: s.logoUrl,
+        websiteUrl: s.websiteUrl,
+      });
+    }
   }
 }
