@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { insertMemberSchema, insertSponsorSchema, insertMessageSchema, members, sponsors, messages } from './schema';
+import { insertSponsorSchema, insertMessageSchema, sponsors, messages } from './schema';
 
 // ============================================
 // SHARED ERROR SCHEMAS
@@ -21,15 +21,6 @@ export const errorSchemas = {
 // API CONTRACT
 // ============================================
 export const api = {
-  members: {
-    list: {
-      method: 'GET' as const,
-      path: '/api/members',
-      responses: {
-        200: z.array(z.custom<typeof members.$inferSelect>()),
-      },
-    },
-  },
   sponsors: {
     list: {
       method: 'GET' as const,

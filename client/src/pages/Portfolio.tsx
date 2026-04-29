@@ -1,12 +1,9 @@
-import { useMembers } from "@/hooks/use-team-data";
 import { motion } from "framer-motion";
-import { Skeleton } from "@/components/ui/skeleton";
-import { Github, Linkedin, ExternalLink } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { QRCodeSVG } from "qrcode.react";
 
 export default function Portfolio() {
-  const { data: members, isLoading } = useMembers();
   const portfolioUrl = `${window.location.origin}/portfolio-planning.pdf`;
 
   return (
@@ -49,49 +46,6 @@ export default function Portfolio() {
             </div>
           </motion.div>
         </div>
-      </section>
-
-      {/* Team Grid (Hidden for now as requested) */}
-      <section className="container mx-auto px-4 hidden">
-        {isLoading ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-              <div key={i} className="aspect-square rounded-xl bg-secondary/20 animate-pulse" />
-            ))}
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {members?.map((member, index) => (
-              <motion.div
-                key={member.id}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: index * 0.1 }}
-                className="group relative overflow-hidden rounded-xl bg-secondary/30 border border-white/5 hover:border-primary/50 transition-all duration-300"
-              >
-                <div className="aspect-square relative">
-                  <img 
-                    src={member.imageUrl || `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&background=random`} 
-                    alt={member.name}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&background=random`;
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-80" />
-                </div>
-                
-                <div className="absolute bottom-0 left-0 right-0 p-4">
-                  <span className="inline-block px-2 py-0.5 rounded-full bg-primary/20 text-primary text-[10px] font-bold uppercase tracking-wider mb-1 backdrop-blur-sm border border-primary/20">
-                    {member.role}
-                  </span>
-                  <h3 className="text-lg font-bold text-foreground mb-1">{member.name}</h3>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        )}
       </section>
 
       {/* Values Section */}

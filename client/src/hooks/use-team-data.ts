@@ -1,18 +1,7 @@
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { useQuery, useMutation } from "@tanstack/react-query";
 import { api } from "@shared/routes";
 import { type InsertMessage } from "@shared/schema";
 import { useToast } from "@/hooks/use-toast";
-
-export function useMembers() {
-  return useQuery({
-    queryKey: [api.members.list.path],
-    queryFn: async () => {
-      const res = await fetch(api.members.list.path);
-      if (!res.ok) throw new Error("Failed to fetch members");
-      return api.members.list.responses[200].parse(await res.json());
-    },
-  });
-}
 
 export function useSponsors() {
   return useQuery({

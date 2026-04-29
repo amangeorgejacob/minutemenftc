@@ -13,7 +13,6 @@ import Portfolio from "@/pages/Portfolio";
 import Community from "@/pages/Community";
 import Sponsors from "@/pages/Sponsors";
 import Contact from "@/pages/Contact";
-import Admin from "@/pages/Admin";
 import YouTube from "@/pages/YouTube";
 import FAQ from "@/pages/FAQ";
 
@@ -49,7 +48,6 @@ function Router() {
       <Route path="/community" component={Community} />
       <Route path="/sponsors" component={Sponsors} />
       <Route path="/contact" component={Contact} />
-      <Route path="/admin" component={Admin} />
       <Route path="/youtube" component={YouTube} />
       <Route path="/faq" component={FAQ} />
       <Route component={NotFound} />
