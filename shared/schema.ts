@@ -4,14 +4,6 @@ import { z } from "zod";
 
 // === TABLE DEFINITIONS ===
 
-export const members = pgTable("members", {
-  id: serial("id").primaryKey(),
-  name: text("name").notNull(),
-  role: text("role").notNull(),
-  bio: text("bio").notNull(),
-  imageUrl: text("image_url"),
-});
-
 export const sponsors = pgTable("sponsors", {
   id: serial("id").primaryKey(),
   name: text("name").notNull(),
@@ -30,14 +22,10 @@ export const messages = pgTable("messages", {
 
 // === SCHEMAS ===
 
-export const insertMemberSchema = createInsertSchema(members).omit({ id: true });
 export const insertSponsorSchema = createInsertSchema(sponsors).omit({ id: true });
 export const insertMessageSchema = createInsertSchema(messages).omit({ id: true, createdAt: true });
 
 // === EXPLICIT TYPES ===
-
-export type Member = typeof members.$inferSelect;
-export type InsertMember = z.infer<typeof insertMemberSchema>;
 
 export type Sponsor = typeof sponsors.$inferSelect;
 export type InsertSponsor = z.infer<typeof insertSponsorSchema>;
