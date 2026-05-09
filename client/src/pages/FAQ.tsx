@@ -19,6 +19,17 @@ const faqs: { id: string; question: string; answer: ReactNode }[] = [
       "FTC stands for FIRST Tech Challenge. It's a robotics competition for students in grades 7–12 where teams design, build, and program robots to compete in head-to-head challenges on a 12'x12' field. Each season has a unique game with new tasks like scoring objects, climbing structures, or working autonomously. Beyond engineering, FTC also emphasizes teamwork, outreach, and the FIRST values of Gracious Professionalism.",
   },
   {
+    id: "ftc-vs-frc",
+    question: "What's the difference between FTC and FRC?",
+    answer: (
+      <div className="space-y-2">
+        <p><strong className="text-foreground">FTC (FIRST Tech Challenge)</strong> — Grades 7–12. Smaller robots (18" cube max), smaller field (12'×12'), teams of 2–15 people. More affordable and accessible, with a bigger focus on programming and hands-on building.</p>
+        <p><strong className="text-foreground">FRC (FIRST Robotics Competition)</strong> — Grades 9–12. Much larger robots (up to 125 lbs), full-sized field (~27'×54'), teams of 25+ people. Higher budget, more resources, and a more intense competition experience.</p>
+        <p><strong className="text-foreground">What they share:</strong> Both are run by FIRST, both emphasize engineering, teamwork, and Gracious Professionalism, and both can lead to college scholarships.</p>
+      </div>
+    ),
+  },
+  {
     id: "game",
     question: "What is the '25-'26 game?",
     answer: (
