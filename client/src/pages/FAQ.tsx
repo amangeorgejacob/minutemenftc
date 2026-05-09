@@ -10,6 +10,9 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import type { ReactNode } from "react";
+import { useVisibility } from "@/hooks/use-visibility";
+import { AdminVisibilityToggle } from "@/components/AdminVisibilityToggle";
+import { HiddenSection } from "@/components/HiddenSection";
 
 const faqs: { id: string; question: string; answer: ReactNode }[] = [
   {
@@ -62,12 +65,15 @@ const faqs: { id: string; question: string; answer: ReactNode }[] = [
 ];
 
 export default function FAQ() {
+  const isAdmin = localStorage.getItem("isAdmin") === "true";
+  const { data: visibility } = useVisibility();
+  const visible = visibility?.faq ?? true;
   const search = useSearch();
   const openId = new URLSearchParams(search).get("open");
   const defaultValue = openId && faqs.find((f) => f.id === openId) ? openId : undefined;
 
   useEffect(() => {
-    if (!defaultValue) return;
+    if (!defaultValue || (!visible && !isAdmin)) return;
     const timer = setTimeout(() => {
       const el = document.querySelector(`[data-faq-id="${defaultValue}"]`);
       if (el) {
@@ -75,7 +81,9 @@ export default function FAQ() {
       }
     }, 300);
     return () => clearTimeout(timer);
-  }, [defaultValue]);
+  }, [defaultValue, visible, isAdmin]);
+
+  if (!visible && !isAdmin) return <HiddenSection label="FAQ" />;
 
   return (
     <div className="min-h-screen pt-24 pb-16">
@@ -144,6 +152,7 @@ export default function FAQ() {
           </Link>
         </motion.div>
       </section>
+      <AdminVisibilityToggle sectionId="faq" visible={visible} label="FAQ page" />
     </div>
   );
 }

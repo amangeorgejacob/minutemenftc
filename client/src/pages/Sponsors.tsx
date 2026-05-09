@@ -4,6 +4,9 @@ import { Link } from "wouter";
 import { ArrowUpRight, Trophy } from "lucide-react";
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from "recharts";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useVisibility } from "@/hooks/use-visibility";
+import { AdminVisibilityToggle } from "@/components/AdminVisibilityToggle";
+import { HiddenSection } from "@/components/HiddenSection";
 
 // Use public URLs directly with cache busting for reliability
 const LOCAL_LOGOS: Record<string, string> = {
@@ -15,7 +18,12 @@ const LOCAL_LOGOS: Record<string, string> = {
 const COLORS = ["#22c55e", "#84cc16", "#eab308", "#16a34a", "#ca8a04"];
 
 export default function Sponsors() {
+  const isAdmin = localStorage.getItem("isAdmin") === "true";
+  const { data: visibility } = useVisibility();
+  const visible = visibility?.sponsors ?? true;
   const { data: sponsors, isLoading } = useSponsors();
+
+  if (!visible && !isAdmin) return <HiddenSection label="Sponsors" />;
 
   const fundingData = sponsors ? [
     { name: sponsors.find(s => s.name === "Boeing")?.name || "Boeing", value: 16, amount: "$1000" },
@@ -170,6 +178,7 @@ export default function Sponsors() {
           </div>
         )}
       </div>
+      <AdminVisibilityToggle sectionId="sponsors" visible={visible} label="Sponsors page" />
     </div>
   );
 }

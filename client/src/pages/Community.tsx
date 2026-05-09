@@ -1,5 +1,8 @@
 import { motion } from "framer-motion";
 import { BookOpen, Users, Globe, Heart } from "lucide-react";
+import { useVisibility } from "@/hooks/use-visibility";
+import { AdminVisibilityToggle } from "@/components/AdminVisibilityToggle";
+import { HiddenSection } from "@/components/HiddenSection";
 import stemFairImg from "@assets/ImpactPics/StemFair.png";
 import sixthOneImg from "@assets/ImpactPics/sixthone.jpg";
 import sixthTwoImg from "@assets/ImpactPics/sixthtwo.jpg";
@@ -42,6 +45,12 @@ const outreachItems = [
 ];
 
 export default function Community() {
+  const isAdmin = localStorage.getItem("isAdmin") === "true";
+  const { data: visibility } = useVisibility();
+  const visible = visibility?.community ?? true;
+
+  if (!visible && !isAdmin) return <HiddenSection label="Community Impact" />;
+
   return (
     <div className="min-h-screen pt-24 pb-16">
       <section className="container mx-auto px-4 text-center mb-20">
@@ -145,6 +154,7 @@ export default function Community() {
           </div>
         ))}
       </section>
+      <AdminVisibilityToggle sectionId="community" visible={visible} label="Impact page" />
     </div>
   );
 }

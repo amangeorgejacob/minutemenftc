@@ -6,6 +6,14 @@ import { z } from "zod";
 import { db } from "./db";
 import { sponsors } from "@shared/schema";
 
+// In-memory visibility settings (resets on server restart — intentional for simplicity)
+const sectionVisibility: Record<string, boolean> = {
+  youtube: true,
+  sponsors: true,
+  community: true,
+  faq: true,
+};
+
 const FALLBACK_SPONSORS = [
   {
     id: 1,
@@ -50,6 +58,20 @@ export async function registerRoutes(
   httpServer: Server,
   app: Express,
 ): Promise<Server> {
+  // Visibility settings
+  app.get("/api/visibility", (req, res) => {
+    res.json(sectionVisibility);
+  });
+
+  app.post("/api/visibility", (req, res) => {
+    const { sectionId, visible } = req.body ?? {};
+    if (typeof sectionId !== "string" || typeof visible !== "boolean") {
+      return res.status(400).json({ message: "Invalid request" });
+    }
+    sectionVisibility[sectionId] = visible;
+    res.json({ ok: true, sectionId, visible });
+  });
+
   // Sponsors — fall back to hardcoded list if DB is unavailable
   app.get(api.sponsors.list.path, async (req, res) => {
     try {

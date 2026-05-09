@@ -3,9 +3,17 @@ import { Youtube, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { QRCodeSVG } from "qrcode.react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useVisibility } from "@/hooks/use-visibility";
+import { AdminVisibilityToggle } from "@/components/AdminVisibilityToggle";
+import { HiddenSection } from "@/components/HiddenSection";
 
 export default function YouTubePage() {
   const youtubeUrl = "https://www.youtube.com/@TotalChaos24621";
+  const isAdmin = localStorage.getItem("isAdmin") === "true";
+  const { data: visibility } = useVisibility();
+  const visible = visibility?.youtube ?? true;
+
+  if (!visible && !isAdmin) return <HiddenSection label="YouTube" />;
 
   return (
     <div className="min-h-screen pt-24 pb-16">
@@ -61,6 +69,7 @@ export default function YouTubePage() {
           </Card>
         </motion.div>
       </section>
+      <AdminVisibilityToggle sectionId="youtube" visible={visible} label="YouTube page" />
     </div>
   );
 }
