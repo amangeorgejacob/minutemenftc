@@ -35,7 +35,7 @@ export function Navigation() {
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-8">
             {links.map((link) => (
               <Link 
                 key={link.href} 
@@ -57,7 +57,7 @@ export function Navigation() {
 
           {/* Mobile Menu Button */}
           <button 
-            className="md:hidden p-2 text-muted-foreground hover:text-primary transition-colors"
+            className="lg:hidden p-2 text-muted-foreground hover:text-primary transition-colors"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <X /> : <Menu />}
