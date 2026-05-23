@@ -12,6 +12,7 @@ const sectionVisibility: Record<string, boolean> = {
   sponsors: true,
   community: true,
   faq: true,
+  portfolio: true,
 };
 
 const FALLBACK_SPONSORS = [

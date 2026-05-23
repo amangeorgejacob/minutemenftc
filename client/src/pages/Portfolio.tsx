@@ -2,9 +2,17 @@ import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { QRCodeSVG } from "qrcode.react";
+import { useVisibility } from "@/hooks/use-visibility";
+import { AdminVisibilityToggle } from "@/components/AdminVisibilityToggle";
+import { HiddenSection } from "@/components/HiddenSection";
 
 export default function Portfolio() {
   const portfolioUrl = `${window.location.origin}/portfolio-planning.pdf`;
+  const isAdmin = localStorage.getItem("isAdmin") === "true";
+  const { data: visibility } = useVisibility();
+  const visible = visibility?.portfolio ?? true;
+
+  if (!visible && !isAdmin) return <HiddenSection label="Portfolio" />;
 
   return (
     <div className="min-h-screen pt-24 pb-16">
@@ -67,12 +75,11 @@ export default function Portfolio() {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-primary mb-2">Inspiration First</h3>
-                  <p className="text-muted-foreground">In FTC, Inspiration First means the robot is only the beginning. The real victory is the curiosity, confidence, and courage we build along the way. When we inspire others to believe they can learn, create, and lead, we’re building a future far greater than any trophy.</p>
+                  <p className="text-muted-foreground">In FTC, Inspiration First means the robot is only the beginning. The real victory is the curiosity, confidence, and courage we build along the way. When we inspire others to believe they can learn, create, and lead, we're building a future far greater than any trophy.</p>
                 </div>
               </div>
             </div>
             <div className="relative h-[400px] rounded-2xl overflow-hidden border border-white/10">
-              {/* students working on robot */}
               <img 
                 src="/picone.jpg"
                 alt="Team Collaboration"
@@ -82,6 +89,8 @@ export default function Portfolio() {
           </div>
         </div>
       </section>
+
+      <AdminVisibilityToggle sectionId="portfolio" visible={visible} label="Portfolio page" />
     </div>
   );
 }
