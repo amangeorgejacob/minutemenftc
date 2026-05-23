@@ -8,29 +8,33 @@
   --font-display: 'Orbitron', sans-serif;
   --font-body: 'Inter', sans-serif;
 
-  /* Total Chaos - Green and Yellow Theme */
-  --background: 60 30% 98%;
-  --foreground: 142 76% 15%;
+  /* Total Chaos — Green, Blue & Sky Theme */
+  /* Primary  : #19C200  → hsl(112 100% 38%) */
+  /* Secondary: #4274B7  → hsl(214  47% 49%) */
+  /* Accent   : #90D0DB  → hsl(189  51% 71%) */
 
-  --primary: 142 76% 36%;
-  --primary-foreground: 60 100% 95%;
+  --background: 215 25% 97%;
+  --foreground: 215 35% 14%;
 
-  --secondary: 47 95% 50%;
-  --secondary-foreground: 142 76% 10%;
+  --primary: 112 100% 38%;
+  --primary-foreground: 0 0% 100%;
 
-  --muted: 60 20% 92%;
-  --muted-foreground: 142 20% 40%;
+  --secondary: 214 40% 88%;
+  --secondary-foreground: 214 40% 14%;
 
-  --accent: 47 95% 50%;
-  --accent-foreground: 142 76% 10%;
+  --muted: 214 20% 92%;
+  --muted-foreground: 214 18% 42%;
+
+  --accent: 189 51% 71%;
+  --accent-foreground: 215 35% 14%;
 
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 100%;
 
-  --border: 142 30% 90%;
-  --input: 142 30% 85%;
-  --ring: 142 76% 36%;
-  
+  --border: 214 28% 86%;
+  --input: 214 28% 82%;
+  --ring: 112 100% 38%;
+
   --radius: 0.5rem;
 }
 
