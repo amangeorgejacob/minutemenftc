@@ -15,7 +15,7 @@ const LOCAL_LOGOS: Record<string, string> = {
   "Maywood Middle School PTSA": `/Maywood-PTSA-Logo.png?v=${Date.now()}`,
 };
 
-const COLORS = ["#22c55e", "#84cc16", "#eab308", "#16a34a", "#ca8a04"];
+const COLORS = ["#19C200", "#4274B7", "#90D0DB", "#0d8f00", "#2d5490"];
 
 export default function Sponsors() {
   const isAdmin = localStorage.getItem("isAdmin") === "true";
