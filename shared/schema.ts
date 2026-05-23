@@ -1,4 +1,4 @@
-import { pgTable, text, serial, varchar, timestamp } from "drizzle-orm/pg-core";
+import { pgTable, text, serial, varchar, timestamp, boolean } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -10,6 +10,11 @@ export const sponsors = pgTable("sponsors", {
   tier: text("tier").notNull(), // e.g., "Gold", "Silver", "Bronze"
   logoUrl: text("logo_url"),
   websiteUrl: text("website_url"),
+});
+
+export const settings = pgTable("settings", {
+  key: text("key").primaryKey(),
+  value: text("value").notNull(),
 });
 
 export const messages = pgTable("messages", {

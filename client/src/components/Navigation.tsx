@@ -71,7 +71,7 @@ export function Navigation() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
-          className="md:hidden bg-background border-b border-white/10"
+          className="lg:hidden bg-background border-b border-white/10"
         >
           <div className="px-4 pt-2 pb-6 space-y-2">
             {links.map((link) => (

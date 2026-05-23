@@ -4,16 +4,36 @@ import { storage } from "./storage";
 import { api } from "@shared/routes";
 import { z } from "zod";
 import { db } from "./db";
-import { sponsors } from "@shared/schema";
+import { sponsors, settings } from "@shared/schema";
+import { eq } from "drizzle-orm";
 
-// In-memory visibility settings (resets on server restart — intentional for simplicity)
-const sectionVisibility: Record<string, boolean> = {
+const VISIBILITY_KEY = "visibility";
+const DEFAULT_VISIBILITY: Record<string, boolean> = {
   youtube: true,
   sponsors: true,
   community: true,
   faq: true,
   portfolio: true,
 };
+
+// Load visibility from DB, falling back to defaults
+async function loadVisibility(): Promise<Record<string, boolean>> {
+  try {
+    const row = await db.select().from(settings).where(eq(settings.key, VISIBILITY_KEY));
+    if (row.length > 0) return JSON.parse(row[0].value);
+  } catch {}
+  return { ...DEFAULT_VISIBILITY };
+}
+
+async function saveVisibility(vis: Record<string, boolean>) {
+  try {
+    await db.insert(settings)
+      .values({ key: VISIBILITY_KEY, value: JSON.stringify(vis) })
+      .onConflictDoUpdate({ target: settings.key, set: { value: JSON.stringify(vis) } });
+  } catch {}
+}
+
+let sectionVisibility: Record<string, boolean> = { ...DEFAULT_VISIBILITY };
 
 const FALLBACK_SPONSORS = [
   {
@@ -59,17 +79,21 @@ export async function registerRoutes(
   httpServer: Server,
   app: Express,
 ): Promise<Server> {
+  // Load persisted visibility on startup
+  sectionVisibility = await loadVisibility();
+
   // Visibility settings
   app.get("/api/visibility", (req, res) => {
     res.json(sectionVisibility);
   });
 
-  app.post("/api/visibility", (req, res) => {
+  app.post("/api/visibility", async (req, res) => {
     const { sectionId, visible } = req.body ?? {};
     if (typeof sectionId !== "string" || typeof visible !== "boolean") {
       return res.status(400).json({ message: "Invalid request" });
     }
     sectionVisibility[sectionId] = visible;
+    await saveVisibility(sectionVisibility);
     res.json({ ok: true, sectionId, visible });
   });
 
