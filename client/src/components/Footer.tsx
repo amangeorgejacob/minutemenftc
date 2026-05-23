@@ -12,7 +12,7 @@ export function Footer() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <div className="col-span-1 md:col-span-2">
-            <h3 className="text-2xl font-bold mb-4 text-foreground">TOTAL CHAOS</h3>
+            <h3 className="text-2xl font-bold mb-4 text-foreground">MINUTEMEN</h3>
             <p className="text-muted-foreground max-w-md mb-6">
               Inspiring the next generation of engineers and innovators through competitive robotics.
               First Tech Challenge Team #24621.
@@ -53,7 +53,7 @@ export function Footer() {
 
         
         <div className="border-t border-foreground/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} Total Chaos #24621. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Minutemen #24621. All rights reserved.</p>
           <div className="flex items-center gap-4">
             <p className="flex items-center gap-1">Built with ❤️</p>
             <button

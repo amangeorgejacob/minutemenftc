@@ -28,7 +28,7 @@ export default function Home() {
               FTC Team #24621
             </span>
             <h1 className="text-5xl md:text-7xl font-display font-black mb-6 text-foreground leading-tight">
-              TOTAL <span className="tech-gradient-text">CHAOS</span>
+              <span className="tech-gradient-text">MINUTEMEN</span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
               We are a passionate team of student engineers designing, building, and programming robots to compete in the FIRST Tech Challenge.
@@ -97,7 +97,7 @@ export default function Home() {
       <section className="py-32 relative overflow-hidden">
         <div className="absolute inset-0 bg-primary/5 -skew-y-3 transform origin-top-left" />
         <div className="container mx-auto px-4 relative z-10 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-8">Ready to support Total Chaos?</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-8">Ready to support Minutemen?</h2>
           <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
             Your support helps us buy parts, register for competitions, and travel to events. Become a part of our journey.
           </p>

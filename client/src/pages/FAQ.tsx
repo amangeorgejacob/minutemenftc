@@ -100,7 +100,7 @@ export default function FAQ() {
             FREQUENTLY ASKED <span className="text-primary">QUESTIONS</span>
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Got a question about Total Chaos or FTC? You'll likely find the answer here.
+            Got a question about Minutemen or FTC? You'll likely find the answer here.
           </p>
           <Button
             asChild
