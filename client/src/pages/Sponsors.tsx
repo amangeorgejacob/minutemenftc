@@ -26,22 +26,20 @@ export default function Sponsors() {
   if (!visible && !isAdmin) return <HiddenSection label="Sponsors" />;
 
   const fundingData = sponsors ? [
-    { name: sponsors.find(s => s.name === "Boeing")?.name || "Boeing", value: 16, amount: "$1000" },
-    { name: sponsors.find(s => s.name === "Microsoft")?.name || "Microsoft", value: 8, amount: "$500" },
-    { name: sponsors.find(s => s.name === "FIRST Washington")?.name || "FIRST Washington", value: 17, amount: "$1016" },
-    { name: sponsors.find(s => s.name === "Issaquah Schools Foundation")?.name || "Issaquah Schools Foundation", value: 49, amount: "$3000" },
-    { name: sponsors.find(s => s.name === "Maywood Middle School PTSA")?.name || "Maywood PTSA", value: 10, amount: "$600" },
+    { name: sponsors.find(s => s.name === "Boeing")?.name || "Boeing", value: 16 },
+    { name: sponsors.find(s => s.name === "Microsoft")?.name || "Microsoft", value: 8 },
+    { name: sponsors.find(s => s.name === "FIRST Washington")?.name || "FIRST Washington", value: 17 },
+    { name: sponsors.find(s => s.name === "Issaquah Schools Foundation")?.name || "Issaquah Schools Foundation", value: 49 },
+    { name: sponsors.find(s => s.name === "Maywood Middle School PTSA")?.name || "Maywood PTSA", value: 10 },
   ] : [];
 
-  const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index, name, value, payload }: any) => {
+  const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index, name, value }: any) => {
     const RADIAN = Math.PI / 180;
     const radius = outerRadius * 1.2;
     const x = cx + radius * Math.cos(-midAngle * RADIAN);
     const y = cy + radius * Math.sin(-midAngle * RADIAN);
     
-    // Split long names like "Issaquah Schools Foundation"
     const displayName = name.length > 20 ? `${name.substring(0, 20)}...` : name;
-    const amountStr = payload?.amount ? ` (${payload.amount})` : "";
 
     return (
       <text 
@@ -55,10 +53,10 @@ export default function Sponsors() {
         {name.includes("Issaquah") ? (
           <>
             <tspan x={x} dy="-0.5em">Issaquah Schools</tspan>
-            <tspan x={x} dy="1.2em">Foundation: {value}%{amountStr}</tspan>
+            <tspan x={x} dy="1.2em">Foundation: {value}%</tspan>
           </>
         ) : (
-          `${displayName}: ${value}%${amountStr}`
+          `${displayName}: ${value}%`
         )}
       </text>
     );

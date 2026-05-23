@@ -70,11 +70,11 @@ export default function Contact() {
                 Location
               </h3>
               <p className="text-muted-foreground">
-                Maywood Middle School
+                Liberty High School
                 <br />
-                168th Ave SE
+                16655 SE 136th St
                 <br />
-                Renton, WA 14490
+                Renton, WA 98059
               </p>
             </div>
           </div>
