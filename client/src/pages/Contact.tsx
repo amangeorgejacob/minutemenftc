@@ -49,7 +49,8 @@ export default function Contact() {
           GET IN <span className="text-primary">TOUCH</span>
         </motion.h1>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Have FTC questions, want to learn more, or have website suggestions? Please dont hesitate to send us a message!
+          Have FTC questions, want to learn more, or have website suggestions?
+          Please dont hesitate to send us a message!
         </p>
       </section>
 
@@ -62,7 +63,7 @@ export default function Contact() {
               <h3 className="text-xl font-bold text-foreground mb-2">
                 Email Us
               </h3>
-              <p className="text-muted-foreground">amangeorgejacob@gmail.com</p>
+              <p className="text-muted-foreground">lhsftc24131@gmail.com</p>
             </div>
             <div className="p-6 bg-secondary/30 rounded-2xl border border-foreground/10">
               <MapPin className="w-8 h-8 text-accent mb-4" />
