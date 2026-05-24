@@ -53,9 +53,13 @@ export default function SocialMediaPage() {
       {/* HERO */}
       <section className="container mx-auto px-4 mb-20">
         <motion.div
-          initial={{ opacity: 0, y: 25 }}
+          initial={{ opacity: 0, y: -25 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
+          transition={{
+            type: "spring",
+            stiffness: 540,
+            damping: 28,
+          }}
           className="relative px-8 py-12 md:px-16 text-center"
         >
           <div className="relative z-10">
@@ -116,9 +120,7 @@ export default function SocialMediaPage() {
                       >
                         <Icon
                           className={`w-8 h-8 ${
-                            social.active
-                              ? "text-white"
-                              : "text-white/40"
+                            social.active ? "text-white" : "text-white/40"
                           }`}
                         />
                       </div>
@@ -152,9 +154,7 @@ export default function SocialMediaPage() {
                         asChild
                         size="lg"
                         className="w-full rounded-xl font-bold text-white transition-transform hover:scale-[1.02]"
-                        style={{
-                          background: social.color,
-                        }}
+                        style={{ background: social.color }}
                       >
                         <a
                           href={social.href}
