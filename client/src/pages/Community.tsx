@@ -86,7 +86,7 @@ export default function Community() {
         </div>
       </section>
 
-      {/* Projected Outreach */}
+   {/* Projected Outreach */}
       <section className="container mx-auto px-4 mb-24">
         <h2 className="text-2xl font-bold text-foreground mb-8 text-center uppercase tracking-widest opacity-50">Projected Outreach</h2>
         <div className="flex flex-wrap justify-center gap-6">
