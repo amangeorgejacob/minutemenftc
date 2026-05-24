@@ -56,21 +56,15 @@ export default function SocialMediaPage() {
           initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          className="relative rounded-[2.5rem] border border-white/10 bg-gradient-to-br from-secondary/40 via-background to-primary/10 px-8 py-20 md:px-16 text-center overflow-hidden"
+          className="relative px-8 py-12 md:px-16 text-center"
         >
-          {/* Background Glow */}
-          <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-primary/10 blur-3xl rounded-full" />
-          </div>
-
           <div className="relative z-10">
             <p className="uppercase tracking-[0.35em] text-sm text-accent mb-4">
               Stay Connected
             </p>
 
             <h1 className="text-5xl md:text-7xl font-black tracking-tight text-foreground mb-6">
-              SOCIAL{" "}
-              <span className="text-primary italic">MEDIA</span>
+              SOCIAL <span className="text-primary">MEDIA</span>
             </h1>
 
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
