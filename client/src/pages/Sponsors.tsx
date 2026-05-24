@@ -72,7 +72,7 @@ export default function Sponsors() {
     const bPriority = priority.indexOf(b.name);
 
     if (aPriority !== -1 && bPriority !== -1)
-      return aPriority - bPriority;
+      return aPriority - priority.indexOf(b.name);
     if (aPriority !== -1) return -1;
     if (bPriority !== -1) return 1;
     return 0;
@@ -104,7 +104,7 @@ export default function Sponsors() {
   return (
     <div className="min-h-screen pt-24 pb-20 overflow-hidden">
       {/* HERO */}
-      <section className="container mx-auto px-4 pt-16 md:pt-24 mb-20 text-center">
+      <section className="container mx-auto px-4 mb-20 text-center">
         <motion.div
           initial={{ opacity: 0, y: -25 }}
           animate={{ opacity: 1, y: 0 }}

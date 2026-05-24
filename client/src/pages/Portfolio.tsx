@@ -18,7 +18,7 @@ export default function Portfolio() {
   return (
     <div className="min-h-screen pt-24 pb-20 overflow-hidden">
       {/* HERO */}
-      <section className="container mx-auto px-4 pt-16 md:pt-24 mb-20 text-center">
+      <section className="container mx-auto px-4 mb-20 text-center">
         <motion.div
           initial={{ opacity: 0, y: -25 }}
           animate={{ opacity: 1, y: 0 }}
