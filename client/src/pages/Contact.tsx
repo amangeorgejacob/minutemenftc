@@ -49,7 +49,7 @@ export default function Contact() {
           GET IN <span className="text-primary">TOUCH</span>
         </motion.h1>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Have FTC questions, want to learn more, or have website suggestions?
+          Have FTC questions, have website suggestions, or want to sponsor us?
           Please dont hesitate to send us a message!
         </p>
       </section>
