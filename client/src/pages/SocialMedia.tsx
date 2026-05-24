@@ -68,7 +68,7 @@ export default function SocialMediaPage() {
             </p>
 
             <h1 className="text-5xl md:text-7xl font-black tracking-tight text-foreground mb-6">
-              SOCIAL <span className="text-primary">MEDIA</span>
+              SOCIAL <span className="text-accent">MEDIA</span>
             </h1>
 
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
