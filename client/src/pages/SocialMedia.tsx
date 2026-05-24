@@ -1,131 +1,196 @@
 import { motion } from "framer-motion";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, ArrowUpRight } from "lucide-react";
 import { SiInstagram, SiYoutube, SiFacebook } from "react-icons/si";
+
 import { Button } from "@/components/ui/button";
-import { QRCodeSVG } from "qrcode.react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
+
 import { useVisibility } from "@/hooks/use-visibility";
 import { AdminVisibilityToggle } from "@/components/AdminVisibilityToggle";
 import { HiddenSection } from "@/components/HiddenSection";
 
-const instagramUrl = "https://www.instagram.com/minutemen.24131?igsh=MW90aWxqMDdpN3k4MA%3D%3D";
+const instagramUrl =
+  "https://www.instagram.com/minutemen.24131?igsh=MW90aWxqMDdpN3k4MA%3D%3D";
+
+const socials = [
+  {
+    name: "Instagram",
+    icon: SiInstagram,
+    href: instagramUrl,
+    active: true,
+    color: "#d62976",
+    description:
+      "Follow our team journey, competitions, outreach, and behind-the-scenes moments.",
+  },
+  {
+    name: "YouTube",
+    icon: SiYoutube,
+    active: false,
+    color: "#ff0000",
+    description:
+      "Match recaps, robot reveals, and build season videos coming soon.",
+  },
+  {
+    name: "Facebook",
+    icon: SiFacebook,
+    active: false,
+    color: "#1877f2",
+    description:
+      "Community updates and event highlights will be posted here soon.",
+  },
+];
 
 export default function SocialMediaPage() {
   const isAdmin = localStorage.getItem("isAdmin") === "true";
   const { data: visibility } = useVisibility();
   const visible = visibility?.social ?? true;
 
-  if (!visible && !isAdmin) return <HiddenSection label="Social Media" />;
+  if (!visible && !isAdmin)
+    return <HiddenSection label="Social Media" />;
 
   return (
-    <div className="min-h-screen pt-24 pb-16">
-      <section className="container mx-auto px-4 text-center mb-12">
+    <div className="min-h-screen pt-24 pb-20 overflow-hidden">
+      {/* HERO */}
+      <section className="container mx-auto px-4 mb-20">
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
+          initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
-          className="flex flex-col items-center gap-4"
+          transition={{ duration: 0.7 }}
+          className="relative rounded-[2.5rem] border border-white/10 bg-gradient-to-br from-secondary/40 via-background to-primary/10 px-8 py-20 md:px-16 text-center overflow-hidden"
         >
-          <h1 className="text-4xl md:text-6xl font-bold text-foreground">
-            OUR <span className="text-primary">SOCIAL MEDIA</span>
-          </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Follow us to stay up to date with our journey, events, and behind-the-scenes content.
-          </p>
+          {/* Background Glow */}
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-primary/10 blur-3xl rounded-full" />
+          </div>
+
+          <div className="relative z-10">
+            <p className="uppercase tracking-[0.35em] text-sm text-accent mb-4">
+              Stay Connected
+            </p>
+
+            <h1 className="text-5xl md:text-7xl font-black tracking-tight text-foreground mb-6">
+              SOCIAL{" "}
+              <span className="text-primary italic">MEDIA</span>
+            </h1>
+
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              Follow our robotics journey, competitions, outreach events, and
+              team updates across our platforms.
+            </p>
+          </div>
         </motion.div>
       </section>
 
-      <section className="container mx-auto px-4 max-w-4xl grid grid-cols-1 md:grid-cols-3 gap-6">
+      {/* SOCIAL CARDS */}
+      <section className="container mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-7 max-w-6xl mx-auto">
+          {socials.map((social, idx) => {
+            const Icon = social.icon;
 
-        {/* Instagram — Active */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="md:col-span-1"
-        >
-          <Card className="h-full bg-secondary/30 border-[#d62976]/20 backdrop-blur-sm overflow-hidden">
-            <CardHeader className="text-center pb-2">
-              <div className="flex justify-center mb-2">
-                <div className="p-3 bg-[#d62976] rounded-xl shadow-lg shadow-[#d62976]/20">
-                  <SiInstagram className="w-8 h-8 text-white" />
-                </div>
-              </div>
-              <CardTitle className="text-xl font-bold">Instagram</CardTitle>
-            </CardHeader>
-            <CardContent className="flex flex-col items-center gap-5 pt-4">
-              <div className="p-4 bg-white rounded-xl shadow-lg">
-                <QRCodeSVG value={instagramUrl} size={160} level="H" includeMargin={true} />
-              </div>
-              <p className="text-sm text-muted-foreground text-center">
-                Scan or tap to follow us on Instagram.
-              </p>
-              <Button asChild size="lg" className="w-full bg-[#d62976] hover:bg-[#b5225f] text-white font-bold gap-2">
-                <a href={instagramUrl} target="_blank" rel="noopener noreferrer">
-                  Follow Us
-                  <ExternalLink className="w-4 h-4" />
-                </a>
-              </Button>
-            </CardContent>
-          </Card>
-        </motion.div>
+            return (
+              <motion.div
+                key={social.name}
+                initial={{ opacity: 0, y: 25 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: idx * 0.12 }}
+              >
+                <Card
+                  className={`group relative h-full overflow-hidden rounded-[2rem] border transition-all duration-500 backdrop-blur-xl ${
+                    social.active
+                      ? "border-white/10 bg-white/[0.04] hover:border-primary/30 hover:-translate-y-2"
+                      : "border-white/5 bg-white/[0.02] opacity-70"
+                  }`}
+                >
+                  {/* Accent Glow */}
+                  <div
+                    className="absolute inset-0 opacity-10 blur-3xl transition-opacity duration-500 group-hover:opacity-20"
+                    style={{
+                      background: `radial-gradient(circle at top, ${social.color}, transparent 70%)`,
+                    }}
+                  />
 
-        {/* YouTube — Not Available */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-        >
-          <Card className="h-full bg-secondary/20 border-foreground/5 backdrop-blur-sm overflow-hidden opacity-60">
-            <CardHeader className="text-center pb-2">
-              <div className="flex justify-center mb-2">
-                <div className="p-3 bg-foreground/10 rounded-xl">
-                  <SiYoutube className="w-8 h-8 text-foreground/40" />
-                </div>
-              </div>
-              <CardTitle className="text-xl font-bold text-foreground/50">YouTube</CardTitle>
-            </CardHeader>
-            <CardContent className="flex flex-col items-center gap-4 pt-4 text-center">
-              <div className="w-full py-12 rounded-xl bg-foreground/5 flex flex-col items-center justify-center gap-2">
-                <span className="text-3xl">🚧</span>
-                <p className="text-sm text-muted-foreground font-medium">Not available yet</p>
-              </div>
-              <p className="text-xs text-muted-foreground">
-                Our YouTube channel is coming soon. Check back later!
-              </p>
-            </CardContent>
-          </Card>
-        </motion.div>
+                  <CardContent className="relative z-10 flex flex-col h-full p-8">
+                    {/* Top */}
+                    <div className="flex items-start justify-between mb-10">
+                      <div
+                        className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg"
+                        style={{
+                          background: social.active
+                            ? social.color
+                            : "rgba(255,255,255,0.06)",
+                        }}
+                      >
+                        <Icon
+                          className={`w-8 h-8 ${
+                            social.active
+                              ? "text-white"
+                              : "text-white/40"
+                          }`}
+                        />
+                      </div>
 
-        {/* Facebook — Not Available */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-        >
-          <Card className="h-full bg-secondary/20 border-foreground/5 backdrop-blur-sm overflow-hidden opacity-60">
-            <CardHeader className="text-center pb-2">
-              <div className="flex justify-center mb-2">
-                <div className="p-3 bg-foreground/10 rounded-xl">
-                  <SiFacebook className="w-8 h-8 text-foreground/40" />
-                </div>
-              </div>
-              <CardTitle className="text-xl font-bold text-foreground/50">Facebook</CardTitle>
-            </CardHeader>
-            <CardContent className="flex flex-col items-center gap-4 pt-4 text-center">
-              <div className="w-full py-12 rounded-xl bg-foreground/5 flex flex-col items-center justify-center gap-2">
-                <span className="text-3xl">🚧</span>
-                <p className="text-sm text-muted-foreground font-medium">Not available yet</p>
-              </div>
-              <p className="text-xs text-muted-foreground">
-                Our Facebook page is coming soon. Check back later!
-              </p>
-            </CardContent>
-          </Card>
-        </motion.div>
+                      {social.active && (
+                        <ArrowUpRight className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                      )}
+                    </div>
 
+                    {/* Title */}
+                    <div className="mb-5">
+                      <h2
+                        className={`text-3xl font-black tracking-tight ${
+                          social.active
+                            ? "text-foreground"
+                            : "text-foreground/50"
+                        }`}
+                      >
+                        {social.name}
+                      </h2>
+                    </div>
+
+                    {/* Description */}
+                    <p className="text-muted-foreground leading-relaxed mb-8 flex-grow">
+                      {social.description}
+                    </p>
+
+                    {/* Footer */}
+                    {social.active ? (
+                      <Button
+                        asChild
+                        size="lg"
+                        className="w-full rounded-xl font-bold text-white transition-transform hover:scale-[1.02]"
+                        style={{
+                          background: social.color,
+                        }}
+                      >
+                        <a
+                          href={social.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Follow Us
+                          <ExternalLink className="w-4 h-4 ml-2" />
+                        </a>
+                      </Button>
+                    ) : (
+                      <div className="w-full rounded-xl border border-white/10 bg-white/[0.03] py-4 text-center">
+                        <p className="text-sm font-medium text-muted-foreground uppercase tracking-[0.2em]">
+                          Coming Soon
+                        </p>
+                      </div>
+                    )}
+                  </CardContent>
+                </Card>
+              </motion.div>
+            );
+          })}
+        </div>
       </section>
 
-      <AdminVisibilityToggle sectionId="social" visible={visible} label="Social Media page" />
+      <AdminVisibilityToggle
+        sectionId="social"
+        visible={visible}
+        label="Social Media page"
+      />
     </div>
   );
 }
