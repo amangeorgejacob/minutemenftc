@@ -13,7 +13,7 @@ import Portfolio from "@/pages/Portfolio";
 import Community from "@/pages/Community";
 import Sponsors from "@/pages/Sponsors";
 import Contact from "@/pages/Contact";
-import YouTube from "@/pages/YouTube";
+import SocialMedia from "@/pages/SocialMedia";
 import FAQ from "@/pages/FAQ";
 
 function VisitTracker() {
@@ -48,7 +48,7 @@ function Router() {
       <Route path="/community" component={Community} />
       <Route path="/sponsors" component={Sponsors} />
       <Route path="/contact" component={Contact} />
-      <Route path="/youtube" component={YouTube} />
+      <Route path="/social" component={SocialMedia} />
       <Route path="/faq" component={FAQ} />
       <Route component={NotFound} />
     </Switch>

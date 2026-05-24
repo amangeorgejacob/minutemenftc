@@ -14,6 +14,7 @@ const DEFAULT_VISIBILITY: Record<string, boolean> = {
   community: true,
   faq: true,
   portfolio: true,
+  social: true,
 };
 
 // Load visibility from DB, falling back to defaults

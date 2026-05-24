@@ -34,7 +34,7 @@ export function Footer() {
               <li><Link href="/portfolio" className="text-muted-foreground hover:text-primary transition-colors">Portfolio</Link></li>
               <li><Link href="/community" className="text-muted-foreground hover:text-primary transition-colors">Community Impact</Link></li>
               <li><Link href="/sponsors" className="text-muted-foreground hover:text-primary transition-colors">Sponsors</Link></li>
-              <li><Link href="/youtube" className="text-muted-foreground hover:text-primary transition-colors">YouTube</Link></li>
+              <li><Link href="/social" className="text-muted-foreground hover:text-primary transition-colors">Social Media</Link></li>
               <li><Link href="/faq" className="text-muted-foreground hover:text-primary transition-colors">FAQ</Link></li>
               <li><Link href="/contact" className="text-muted-foreground hover:text-primary transition-colors">Contact Us</Link></li>
             </ul>
