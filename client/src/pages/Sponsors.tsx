@@ -17,7 +17,7 @@ import { HiddenSection } from "@/components/HiddenSection";
  * SPONSORS
  */
 const SPONSORS = [
-  { name: "Aireps", value: 3000, websiteUrl: "", logo: "Aireps.png" },
+  { name: "AirReps", value: 3000, websiteUrl: "", logo: "AirReps.png" },
   { name: "Polymaker ($1000 worth of filament)", value: 1000, websiteUrl: "https://polymaker.com", logo: "Polymaker.png" },
   { name: "Les Schwab", value: 1000, websiteUrl: "https://lesschwab.com", logo: "LesSchwab.png" },
   { name: "AFEW", value: 1000, websiteUrl: "", logo: "AfeW.png" },
