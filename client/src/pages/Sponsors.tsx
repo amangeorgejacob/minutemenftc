@@ -17,13 +17,13 @@ import { HiddenSection } from "@/components/HiddenSection";
  * SPONSORS
  */
 const SPONSORS = [
-  { name: "AirReps", value: 3000, websiteUrl: "", logo: "AirReps.png" },
+  { name: "AirReps", value: 3000, websiteUrl: "https://airreps.com", logo: "AirReps.png" },
   { name: "Polymaker ($1000 worth of filament)", value: 1000, websiteUrl: "https://polymaker.com", logo: "Polymaker.png" },
   { name: "Les Schwab", value: 1000, websiteUrl: "https://lesschwab.com", logo: "LesSchwab.png" },
-  { name: "AFEW", value: 1000, websiteUrl: "", logo: "AfeW.png" },
+  { name: "AFEW", value: 1000, websiteUrl: "https://afewglobal.com", logo: "AFEW.png" },
   { name: "Microsoft", value: 1200, websiteUrl: "https://microsoft.com", logo: "Microsoft.png" },
   { name: "Starbucks", value: 2000, websiteUrl: "https://starbucks.com", logo: "Starbucks.png" },
-  { name: "King and Bunny", value: 500, websiteUrl: "", logo: "KingAndBunny.png" },
+  { name: "King and Bunnys", value: 500, websiteUrl: "https://www.kingandbunnys.com", logo: "KingAndBunnys.png" },
   { name: "Farmers Insurance", value: 300, websiteUrl: "https://farmers.com", logo: "FarmersInsurance.png" },
 ];
 
