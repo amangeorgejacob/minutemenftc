@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { insertMessageSchema } from "@shared/schema";
 import type { InsertMessage } from "@shared/routes";
 import { motion } from "framer-motion";
-import { MapPin, Mail, Calendar } from "lucide-react";
+import { MapPin, Mail } from "lucide-react";
 import { useState, useEffect } from "react";
 
 const contactPlaceholders = [
@@ -21,8 +21,10 @@ export default function Contact() {
     const interval = setInterval(() => {
       setPlaceholderIndex((i) => (i + 1) % contactPlaceholders.length);
     }, 2000);
+
     return () => clearInterval(interval);
   }, []);
+
   const form = useForm<InsertMessage>({
     resolver: zodResolver(insertMessageSchema),
     defaultValues: {
@@ -46,8 +48,9 @@ export default function Contact() {
           animate={{ opacity: 1, y: 0 }}
           className="text-4xl md:text-6xl font-bold text-foreground mb-6"
         >
-          GET IN <span className="text-primary">TOUCH</span>
+          GET IN <span className="text-accent">TOUCH</span>
         </motion.h1>
+
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
           Have FTC questions, have website suggestions, or want to sponsor us?
           Please dont hesitate to send us a message!
@@ -65,11 +68,13 @@ export default function Contact() {
               </h3>
               <p className="text-muted-foreground">lhsftc24131@gmail.com</p>
             </div>
+
             <div className="p-6 bg-secondary/30 rounded-2xl border border-foreground/10">
               <MapPin className="w-8 h-8 text-accent mb-4" />
               <h3 className="text-xl font-bold text-foreground mb-2">
                 Location
               </h3>
+
               <p className="text-muted-foreground">
                 Liberty High School
                 <br />
@@ -96,11 +101,13 @@ export default function Contact() {
                     <label className="text-sm font-medium text-muted-foreground">
                       Name
                     </label>
+
                     <input
                       {...form.register("name")}
                       className="w-full px-4 py-3 rounded-lg bg-background/50 border border-foreground/10 text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
                       placeholder="Your name"
                     />
+
                     {form.formState.errors.name && (
                       <p className="text-sm text-destructive">
                         {form.formState.errors.name.message}
@@ -112,12 +119,14 @@ export default function Contact() {
                     <label className="text-sm font-medium text-muted-foreground">
                       Email, Discord or Phone
                     </label>
+
                     <input
                       {...form.register("email")}
                       type="text"
                       className="w-full px-4 py-3 rounded-lg bg-background/50 border border-foreground/10 text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
                       placeholder={contactPlaceholders[placeholderIndex]}
                     />
+
                     {form.formState.errors.email && (
                       <p className="text-sm text-destructive">
                         {form.formState.errors.email.message}
@@ -130,12 +139,14 @@ export default function Contact() {
                   <label className="text-sm font-medium text-muted-foreground">
                     Message
                   </label>
+
                   <textarea
                     {...form.register("message")}
                     rows={6}
                     className="w-full px-4 py-3 rounded-lg bg-background/50 border border-foreground/10 text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all resize-none"
                     placeholder="How can we help you?"
                   />
+
                   {form.formState.errors.message && (
                     <p className="text-sm text-destructive">
                       {form.formState.errors.message.message}

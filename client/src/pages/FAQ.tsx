@@ -26,10 +26,40 @@ const faqs: { id: string; question: string; answer: ReactNode }[] = [
     question: "What's the difference between FLL, FTC, and FRC?",
     answer: (
       <div className="space-y-2">
-        <p><strong className="text-foreground">FLL (FIRST LEGO League)</strong> — Ages 4–16 (split into Explorer and Challenge divisions). Teams use LEGO Mindstorms robots on a small tabletop field. Focused on introducing younger kids to science, technology, and problem-solving through a research project and a robot game.</p>
-        <p><strong className="text-foreground">FTC (FIRST Tech Challenge)</strong> — Grades 7–12. Smaller robots (18" cube max), smaller field (12'×12'), teams of 2–15 people. More affordable and accessible, with a bigger focus on programming and hands-on building.</p>
-        <p><strong className="text-foreground">FRC (FIRST Robotics Competition)</strong> — Grades 9–12. Much larger robots (up to 125 lbs), full-sized field (~27'×54'), teams of 25+ people. Higher budget, more resources, and a more intense competition experience.</p>
-        <p><strong className="text-foreground">What they all share:</strong> All three are run by FIRST, emphasize teamwork and Gracious Professionalism, and are designed as a progression — many FRC and FTC students started in FLL.</p>
+        <p>
+          <strong className="text-foreground">
+            FLL (FIRST LEGO League)
+          </strong>{" "}
+          — Ages 4–16 (split into Explorer and Challenge divisions). Teams use
+          LEGO Mindstorms robots on a small tabletop field. Focused on
+          introducing younger kids to science, technology, and problem-solving
+          through a research project and a robot game.
+        </p>
+
+        <p>
+          <strong className="text-foreground">
+            FTC (FIRST Tech Challenge)
+          </strong>{" "}
+          — Grades 7–12. Smaller robots (18" cube max), smaller field
+          (12'×12'), teams of 2–15 people. More affordable and accessible, with
+          a bigger focus on programming and hands-on building.
+        </p>
+
+        <p>
+          <strong className="text-foreground">
+            FRC (FIRST Robotics Competition)
+          </strong>{" "}
+          — Grades 9–12. Much larger robots (up to 125 lbs), full-sized field
+          (~27'×54'), teams of 25+ people. Higher budget, more resources, and a
+          more intense competition experience.
+        </p>
+
+        <p>
+          <strong className="text-foreground">What they all share:</strong> All
+          three are run by FIRST, emphasize teamwork and Gracious
+          Professionalism, and are designed as a progression — many FRC and FTC
+          students started in FLL.
+        </p>
       </div>
     ),
   },
@@ -39,6 +69,7 @@ const faqs: { id: string; question: string; answer: ReactNode }[] = [
     answer: (
       <div className="space-y-3">
         <p>Learn more in this video:</p>
+
         <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
           <iframe
             className="absolute top-0 left-0 w-full h-full rounded-xl"
@@ -48,6 +79,7 @@ const faqs: { id: string; question: string; answer: ReactNode }[] = [
             allowFullScreen
           />
         </div>
+
         <p className="text-sm text-muted-foreground/70">
           Video credit:{" "}
           <a
@@ -62,28 +94,50 @@ const faqs: { id: string; question: string; answer: ReactNode }[] = [
       </div>
     ),
   },
+  {
+    id: "2026-2027-game",
+    question: "What is the '26-'27 FTC game?",
+    answer:
+      "The 2026–2027 FIRST Tech Challenge season is officially called BIOBUZZ and is part of the larger FIRST CANOPY theme. So far, FIRST has only released teaser material, but the season appears heavily focused on nature, ecosystems, biodiversity, and environmental exploration. Community speculation points toward possible terrain navigation, stacking, mapping/scanning mechanics, or ecosystem-style scoring systems. FIRST has also announced that some field elements and robot skill requirements will be revealed earlier than usual at the 2026 Championship event. The full game reveal and kickoff are scheduled for September 12, 2026.",
+  },
 ];
 
 export default function FAQ() {
   const isAdmin = localStorage.getItem("isAdmin") === "true";
+
   const { data: visibility } = useVisibility();
+
   const visible = visibility?.faq ?? true;
+
   const search = useSearch();
+
   const openId = new URLSearchParams(search).get("open");
-  const defaultValue = openId && faqs.find((f) => f.id === openId) ? openId : undefined;
+
+  const defaultValue =
+    openId && faqs.find((f) => f.id === openId) ? openId : undefined;
 
   useEffect(() => {
     if (!defaultValue || (!visible && !isAdmin)) return;
+
     const timer = setTimeout(() => {
-      const el = document.querySelector(`[data-faq-id="${defaultValue}"]`);
+      const el = document.querySelector(
+        `[data-faq-id="${defaultValue}"]`
+      );
+
       if (el) {
-        el.scrollIntoView({ behavior: "smooth", block: "center" });
+        el.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
       }
     }, 300);
+
     return () => clearTimeout(timer);
   }, [defaultValue, visible, isAdmin]);
 
-  if (!visible && !isAdmin) return <HiddenSection label="FAQ" />;
+  if (!visible && !isAdmin) {
+    return <HiddenSection label="FAQ" />;
+  }
 
   return (
     <div className="min-h-screen pt-24 pb-16">
@@ -96,12 +150,17 @@ export default function FAQ() {
           <div className="p-4 bg-primary rounded-2xl shadow-lg shadow-primary/20">
             <HelpCircle className="w-12 h-12 text-primary-foreground" />
           </div>
+
           <h1 className="text-4xl md:text-6xl font-bold text-foreground">
-            FREQUENTLY ASKED <span className="text-primary">QUESTIONS</span>
+            FREQUENTLY ASKED{" "}
+            <span className="text-primary">QUESTIONS</span>
           </h1>
+
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Got a question about Minutemen or FTC? You'll likely find the answer here.
+            Got a question about Minutemen or FTC? You'll likely find the answer
+            here.
           </p>
+
           <Button
             asChild
             size="lg"
@@ -123,12 +182,23 @@ export default function FAQ() {
           transition={{ delay: 0.2 }}
           className="p-6 md:p-8 rounded-2xl bg-secondary/30 border border-foreground/10 backdrop-blur-sm"
         >
-          <Accordion type="single" collapsible className="w-full" defaultValue={defaultValue}>
+          <Accordion
+            type="single"
+            collapsible
+            className="w-full"
+            defaultValue={defaultValue}
+          >
             {faqs.map((faq) => (
-              <AccordionItem key={faq.id} value={faq.id} data-faq-id={faq.id} className="border-foreground/10">
+              <AccordionItem
+                key={faq.id}
+                value={faq.id}
+                data-faq-id={faq.id}
+                className="border-foreground/10"
+              >
                 <AccordionTrigger className="text-left text-lg font-semibold text-foreground hover:text-primary">
                   {faq.question}
                 </AccordionTrigger>
+
                 <AccordionContent className="text-muted-foreground leading-relaxed text-base">
                   {faq.answer}
                 </AccordionContent>
@@ -148,11 +218,17 @@ export default function FAQ() {
             className="text-base text-primary hover:underline font-medium"
             data-testid="link-portfolio-from-faq"
           >
-            More questions? Visit our portfolio or dont hesitate contact us in the contact page!
+            More questions? Visit our portfolio or dont hesitate contact us in
+            the contact page!
           </Link>
         </motion.div>
       </section>
-      <AdminVisibilityToggle sectionId="faq" visible={visible} label="FAQ page" />
+
+      <AdminVisibilityToggle
+        sectionId="faq"
+        visible={visible}
+        label="FAQ page"
+      />
     </div>
   );
 }
