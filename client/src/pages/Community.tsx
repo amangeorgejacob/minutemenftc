@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { Users, Globe, Heart } from "lucide-react";
 
 import { useVisibility } from "@/hooks/use-visibility";
 import { AdminVisibilityToggle } from "@/components/AdminVisibilityToggle";
@@ -9,17 +8,6 @@ import stemFairImg from "@assets/ImpactPics/StemFair.png";
 import sixthOneImg from "@assets/ImpactPics/sixthone.jpg";
 import sixthTwoImg from "@assets/ImpactPics/sixthtwo.jpg";
 import seafairImg from "@assets/ImpactPics/Seafair.png";
-
-const impactStats = [
-  { icon: Users, value: "~200+", label: "Students Reached" },
-  { icon: Heart, value: "~50h+", label: "Volunteer Hours" },
-];
-
-const projectedStats = [
-  { icon: Globe, value: "1", label: "Projected Outreach Areas" },
-  { icon: Users, value: "25+", label: "Possible Students Reached" },
-  { icon: Heart, value: "~10", label: "Additional Volunteer Hours" },
-];
 
 const outreachItems = [
   {
@@ -59,7 +47,7 @@ export default function Community() {
 
   return (
     <div className="min-h-screen pt-24 pb-20 overflow-hidden">
-      {/* HERO (matches SocialMediaPage animation style) */}
+      {/* HERO */}
       <section className="container mx-auto px-4 mb-20">
         <motion.div
           initial={{ opacity: 0, y: -25 }}
@@ -85,66 +73,11 @@ export default function Community() {
         </motion.div>
       </section>
 
-      {/* STATS */}
+      {/* CURRENT IMPACT TITLE ONLY */}
       <section className="container mx-auto px-4 mb-24">
-        <h2 className="text-2xl font-bold text-center uppercase tracking-widest opacity-50 mb-10">
+        <h2 className="text-4xl md:text-5xl font-bold text-center uppercase tracking-widest text-muted-foreground">
           Current Impact
         </h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-7 max-w-4xl mx-auto">
-          {impactStats.map((stat, idx) => {
-            const Icon = stat.icon;
-
-            return (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 25 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: idx * 0.12 }}
-                className="p-8 rounded-2xl bg-white/[0.04] border border-white/10 text-center hover:border-primary/20 hover:-translate-y-1 transition-all"
-              >
-                <Icon className="w-8 h-8 text-primary mx-auto mb-4" />
-                <div className="text-3xl font-bold mb-2">
-                  {stat.value}
-                </div>
-                <div className="text-sm uppercase tracking-wider text-muted-foreground">
-                  {stat.label}
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* PROJECTED STATS */}
-      <section className="container mx-auto px-4 mb-24">
-        <h2 className="text-2xl font-bold text-center uppercase tracking-widest opacity-50 mb-10">
-          Projected Outreach
-        </h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-7 max-w-6xl mx-auto">
-          {projectedStats.map((stat, idx) => {
-            const Icon = stat.icon;
-
-            return (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 25 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: idx * 0.12 }}
-                className="p-8 rounded-2xl bg-primary/5 border border-primary/10 text-center hover:-translate-y-1 hover:border-primary/20 transition-all"
-              >
-                <Icon className="w-8 h-8 text-accent mx-auto mb-4" />
-                <div className="text-3xl font-bold mb-2">
-                  {stat.value}
-                </div>
-                <div className="text-sm uppercase tracking-wider text-muted-foreground">
-                  {stat.label}
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
       </section>
 
       {/* OUTREACH SECTIONS */}
@@ -166,7 +99,9 @@ export default function Community() {
 
               <div className="flex items-start gap-3">
                 <div className="w-2 h-2 rounded-full bg-accent mt-2" />
-                <span className="text-muted-foreground">{item.bullet}</span>
+                <span className="text-muted-foreground">
+                  {item.bullet}
+                </span>
               </div>
             </div>
 
