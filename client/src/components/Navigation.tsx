@@ -1,6 +1,6 @@
 import { Link, useLocation } from "wouter";
 import { motion } from "framer-motion";
-import { Menu, X, Cpu, Zap } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState } from "react";
 
 const links = [
@@ -21,27 +21,36 @@ export function Navigation() {
     <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-foreground/10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
+
+          {/* Logo + Title */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative w-12 h-12 flex items-center justify-center">
-              <img 
-                src={`/LogoImproved.png?v=${Date.now()}`} 
-                alt="Minutemen Logo" 
+
+            {/* BIGGER LOGO */}
+            <div className="relative w-24 h-24 flex-shrink-0 flex items-center justify-center">
+              <img
+                src={`/LogoImproved.png?v=${Date.now()}`}
+                alt="Minutemen Logo"
                 className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
               />
             </div>
+
+            {/* Title unchanged */}
             <span className="font-display font-bold text-xl tracking-wider text-foreground">
               <span className="text-primary">MINUTEMEN</span>
             </span>
+
           </Link>
 
           {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-8">
             {links.map((link) => (
-              <Link 
-                key={link.href} 
+              <Link
+                key={link.href}
                 href={link.href}
                 className={`relative text-sm font-medium transition-colors hover:text-primary ${
-                  location === link.href ? "text-primary" : "text-muted-foreground"
+                  location === link.href
+                    ? "text-primary"
+                    : "text-muted-foreground"
                 }`}
               >
                 {link.label}
@@ -56,7 +65,7 @@ export function Navigation() {
           </div>
 
           {/* Mobile Menu Button */}
-          <button 
+          <button
             className="lg:hidden p-2 text-muted-foreground hover:text-primary transition-colors"
             onClick={() => setIsOpen(!isOpen)}
           >
@@ -67,20 +76,19 @@ export function Navigation() {
 
       {/* Mobile Nav */}
       {isOpen && (
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
           className="lg:hidden bg-background border-b border-white/10"
         >
           <div className="px-4 pt-2 pb-6 space-y-2">
             {links.map((link) => (
-              <Link 
-                key={link.href} 
+              <Link
+                key={link.href}
                 href={link.href}
                 className={`block px-3 py-3 rounded-md text-base font-medium ${
-                  location === link.href 
-                    ? "bg-primary/10 text-primary" 
+                  location === link.href
+                    ? "bg-primary/10 text-primary"
                     : "text-muted-foreground hover:bg-white/5 hover:text-white"
                 }`}
                 onClick={() => setIsOpen(false)}
