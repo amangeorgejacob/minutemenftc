@@ -13,11 +13,11 @@ const outreachItems = [
   {
     title: "Science Fair Demonstrations",
     description:
-      "Interactive robot demos at science fairs where we let students see the technology up close.",
+      "Interactive robot demos at local elementrary school science fairs where we let students see the technology up close.",
     image: stemFairImg,
     bullet: "Interactive robot demos at science fairs",
   },
-  {
+  /*{
     title: "6th Grade Mentorship",
     description:
       "Mentoring new 6th graders on how to build and program demo robots, sparking early interest.",
@@ -25,15 +25,15 @@ const outreachItems = [
     image2: sixthTwoImg,
     bullet:
       "Mentoring new 6th graders how to build and program demo robots",
-  },
-  {
+  },*/
+  /*{
     title: "Regional Community Events",
     description:
       "Visiting places like Seafair in Seattle to reach out further and inspire more kids into STEM.",
     image: seafairImg,
     bullet:
       "Going to places like Seafair in Seattle to inspire kids into STEM paths",
-  },
+  },*/
 ];
 
 export default function Community() {
