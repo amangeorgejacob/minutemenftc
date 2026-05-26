@@ -4,7 +4,7 @@ import { useVisibility } from "@/hooks/use-visibility";
 import { AdminVisibilityToggle } from "@/components/AdminVisibilityToggle";
 import { HiddenSection } from "@/components/HiddenSection";
 
-import stemFairImg from "@assets/ImpactPics/StemFair.png";
+import stemFairImg from "@assets/ImpactPics/StemFair.jpg";
 import sixthOneImg from "@assets/ImpactPics/sixthone.jpg";
 import sixthTwoImg from "@assets/ImpactPics/sixthtwo.jpg";
 import seafairImg from "@assets/ImpactPics/Seafair.png";
@@ -68,7 +68,8 @@ export default function Community() {
           </h1>
 
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Robotics is more than building machines — it's about building people and communities.
+            Robotics is more than building machines — it's about building people
+            and communities.
           </p>
         </motion.div>
       </section>
@@ -90,6 +91,7 @@ export default function Community() {
             transition={{ delay: idx * 0.12 }}
             className="grid md:grid-cols-2 gap-12 items-center"
           >
+            {/* TEXT */}
             <div className={idx % 2 === 1 ? "md:order-2" : "md:order-1"}>
               <h2 className="text-3xl font-bold mb-6">{item.title}</h2>
 
@@ -99,32 +101,35 @@ export default function Community() {
 
               <div className="flex items-start gap-3">
                 <div className="w-2 h-2 rounded-full bg-accent mt-2" />
-                <span className="text-muted-foreground">
-                  {item.bullet}
-                </span>
+                <span className="text-muted-foreground">{item.bullet}</span>
               </div>
             </div>
 
+            {/* IMAGE */}
             <div
               className={`${
                 idx % 2 === 1 ? "md:order-1" : "md:order-2"
-              } rounded-2xl overflow-hidden border border-white/10 h-[400px] relative`}
+              } rounded-2xl overflow-hidden border border-white/10 h-[400px] relative group`}
             >
+              {/* Blue hover overlay */}
+              <div className="absolute inset-0 bg-cyan-300/0 group-hover:bg-cyan-300/10 transition-all duration-500 z-10 pointer-events-none" />
+
               {item.image2 ? (
                 <div className="grid grid-cols-2 h-full">
                   <img
                     src={item.image}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                   />
+
                   <img
                     src={item.image2}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                   />
                 </div>
               ) : (
                 <img
                   src={item.image}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                 />
               )}
             </div>
