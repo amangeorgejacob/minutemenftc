@@ -1,13 +1,11 @@
 import type { Express } from "express";
 import type { Server } from "http";
-import { storage } from "./storage";
 import { api } from "@shared/routes";
 import { z } from "zod";
-import { db } from "./db";
-import { sponsors, settings } from "@shared/schema";
-import { eq } from "drizzle-orm";
 
-const VISIBILITY_KEY = "visibility";
+/**
+ * VISIBILITY (memory only)
+ */
 const DEFAULT_VISIBILITY: Record<string, boolean> = {
   youtube: true,
   sponsors: true,
@@ -17,169 +15,250 @@ const DEFAULT_VISIBILITY: Record<string, boolean> = {
   social: true,
 };
 
-// Load visibility from DB, falling back to defaults
-async function loadVisibility(): Promise<Record<string, boolean>> {
-  try {
-    const row = await db.select().from(settings).where(eq(settings.key, VISIBILITY_KEY));
-    if (row.length > 0) return JSON.parse(row[0].value);
-  } catch {}
-  return { ...DEFAULT_VISIBILITY };
+let sectionVisibility: Record<string, boolean> = {
+  ...DEFAULT_VISIBILITY,
+};
+
+/**
+ * ✅ Properly typed visitor sessions (fixes red squiggles)
+ */
+type VisitorSession = {
+  messageId: string;
+  pages: Set<string>;
+};
+
+const visitorSessions: Record<string, VisitorSession> = {};
+
+/**
+ * Format routes into readable names
+ * "/" → home
+ * "/sponsors" → sponsors
+ */
+function formatPage(page: string) {
+  if (!page || page === "/") return "home";
+  return page.replace("/", "").toLowerCase();
 }
-
-async function saveVisibility(vis: Record<string, boolean>) {
-  try {
-    await db.insert(settings)
-      .values({ key: VISIBILITY_KEY, value: JSON.stringify(vis) })
-      .onConflictDoUpdate({ target: settings.key, set: { value: JSON.stringify(vis) } });
-  } catch {}
-}
-
-let sectionVisibility: Record<string, boolean> = { ...DEFAULT_VISIBILITY };
-
-const FALLBACK_SPONSORS = [
-  {
-    id: 1,
-    name: "Boeing",
-    tier: "Gold",
-    logoUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/4/4f/Boeing_full_logo.svg",
-    websiteUrl: "https://www.boeing.com",
-  },
-  {
-    id: 2,
-    name: "Microsoft",
-    tier: "Gold",
-    logoUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg",
-    websiteUrl: "https://www.microsoft.com",
-  },
-  {
-    id: 3,
-    name: "FIRST Washington",
-    tier: "Gold",
-    logoUrl: "/FirstWashington.png",
-    websiteUrl: "https://firstwa.org",
-  },
-  {
-    id: 4,
-    name: "Issaquah Schools Foundation",
-    tier: "Gold",
-    logoUrl: "/FirstWashington.png",
-    websiteUrl: "https://isfdn.org",
-  },
-  {
-    id: 5,
-    name: "Maywood Middle School PTSA",
-    tier: "Gold",
-    logoUrl: "/FirstWashington.png",
-    websiteUrl: "https://maywoodptsa.org",
-  },
-];
 
 export async function registerRoutes(
   httpServer: Server,
   app: Express,
 ): Promise<Server> {
-  // Load persisted visibility on startup
-  sectionVisibility = await loadVisibility();
 
-  // Visibility settings
+  /**
+   * VISIBILITY API
+   */
   app.get("/api/visibility", (req, res) => {
     res.json(sectionVisibility);
   });
 
-  app.post("/api/visibility", async (req, res) => {
+  app.post("/api/visibility", (req, res) => {
     const { sectionId, visible } = req.body ?? {};
-    if (typeof sectionId !== "string" || typeof visible !== "boolean") {
+
+    if (
+      typeof sectionId !== "string" ||
+      typeof visible !== "boolean"
+    ) {
       return res.status(400).json({ message: "Invalid request" });
     }
+
     sectionVisibility[sectionId] = visible;
-    await saveVisibility(sectionVisibility);
-    res.json({ ok: true, sectionId, visible });
+
+    res.json({
+      ok: true,
+      sectionId,
+      visible,
+    });
   });
 
-  // Sponsors — fall back to hardcoded list if DB is unavailable
-  app.get(api.sponsors.list.path, async (req, res) => {
-    try {
-      const list = await storage.getSponsors();
-      if (list.length === 0) {
-        return res.json(FALLBACK_SPONSORS);
-      }
-      res.json(list);
-    } catch (err) {
-      console.error("Sponsors DB unavailable, serving fallback:", err);
-      res.json(FALLBACK_SPONSORS);
-    }
-  });
-
-  // Visit tracker
+  /**
+   * VISITOR TRACKING (Discord single-message system)
+   */
   app.post("/api/visit", async (req, res) => {
     const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
-    let messageId: string | null = null;
-    if (webhookUrl) {
-      const { page, isAdmin } = req.body;
-      const ip = req.headers["x-forwarded-for"] || req.socket.remoteAddress || "Unknown";
-      const embed = isAdmin
-        ? {
-            title: "🔑 Admin Logged In",
-            color: 0xffd700,
-            fields: [],
-            timestamp: new Date().toISOString(),
-          }
-        : {
-            title: "👀 New Website Visitor",
-            color: 0x00b0f4,
-            fields: [
-              { name: "Page", value: page || "/", inline: true },
-              { name: "IP", value: String(ip).split(",")[0].trim(), inline: true },
-            ],
-            timestamp: new Date().toISOString(),
-          };
-      try {
-        const r = await fetch(`${webhookUrl}?wait=true`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ embeds: [embed] }),
-        });
-        if (r.ok) {
-          const data = await r.json();
-          messageId = data?.id ?? null;
-        }
-      } catch {}
-    }
-    res.status(200).json({ ok: true, messageId });
-  });
 
-  // Delete a previous visitor ping (used when an admin logs in)
-  app.post("/api/visit/delete", async (req, res) => {
-    const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
-    const { messageId } = req.body ?? {};
-    if (webhookUrl && messageId) {
-      try {
-        await fetch(`${webhookUrl}/messages/${messageId}`, { method: "DELETE" });
-      } catch {}
+    if (!webhookUrl) {
+      return res.status(200).json({ ok: true });
     }
+
+    const { page, isAdmin } = req.body;
+
+    const ip = String(
+      req.headers["x-forwarded-for"] ||
+      req.socket.remoteAddress ||
+      "Unknown",
+    )
+      .split(",")[0]
+      .trim();
+
+    // Admin log only (no tracking)
+    if (isAdmin) {
+      try {
+        await fetch(`${webhookUrl}?wait=true`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            embeds: [
+              {
+                title: "🔑 Admin Logged In",
+                color: 0xffd700,
+                timestamp: new Date().toISOString(),
+              },
+            ],
+          }),
+        });
+      } catch {}
+
+      return res.status(200).json({ ok: true });
+    }
+
+    const formattedPage = formatPage(page);
+    const existing = visitorSessions[ip];
+
+    /**
+     * UPDATE EXISTING VISITOR MESSAGE
+     */
+    if (existing) {
+      existing.pages.add(formattedPage);
+
+      const pagesList = Array.from(existing.pages)
+        .map((p) => `• ${p}`)
+        .join("\n");
+
+      try {
+        await fetch(
+          `${webhookUrl}/messages/${existing.messageId}`,
+          {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              embeds: [
+                {
+                  title: "👀 Visitor Activity",
+                  color: 0x00b0f4,
+                  fields: [
+                    {
+                      name: "IP",
+                      value: ip,
+                      inline: true,
+                    },
+                    {
+                      name: "Pages Visited",
+                      value: pagesList,
+                    },
+                  ],
+                  timestamp: new Date().toISOString(),
+                },
+              ],
+            }),
+          },
+        );
+      } catch {}
+
+      return res.status(200).json({
+        ok: true,
+        messageId: existing.messageId,
+      });
+    }
+
+    /**
+     * FIRST VISIT → create Discord message
+     */
+    const pages = new Set<string>([formattedPage]);
+
+    const pagesList = Array.from(pages)
+      .map((p) => `• ${p}`)
+      .join("\n");
+
+    try {
+      const response = await fetch(
+        `${webhookUrl}?wait=true`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            embeds: [
+              {
+                title: "👀 Visitor Activity",
+                color: 0x00b0f4,
+                fields: [
+                  {
+                    name: "IP",
+                    value: ip,
+                    inline: true,
+                  },
+                  {
+                    name: "Pages Visited",
+                    value: pagesList,
+                  },
+                ],
+                timestamp: new Date().toISOString(),
+              },
+            ],
+          }),
+        },
+      );
+
+      if (response.ok) {
+        const data = await response.json();
+
+        visitorSessions[ip] = {
+          messageId: data.id,
+          pages,
+        };
+
+        return res.status(200).json({
+          ok: true,
+          messageId: data.id,
+        });
+      }
+    } catch {}
+
     res.status(200).json({ ok: true });
   });
 
-  // Contact — succeeds via Discord even if DB is unavailable
+  /**
+   * DELETE VISITOR MESSAGE
+   */
+  app.post("/api/visit/delete", async (req, res) => {
+    const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
+    const { messageId } = req.body ?? {};
+
+    if (webhookUrl && messageId) {
+      try {
+        await fetch(
+          `${webhookUrl}/messages/${messageId}`,
+          { method: "DELETE" },
+        );
+      } catch {}
+    }
+
+    res.status(200).json({ ok: true });
+  });
+
+  /**
+   * CONTACT FORM → DISCORD ONLY
+   */
   app.post(api.contact.submit.path, async (req, res) => {
     try {
-      const input = api.contact.submit.input.parse(req.body);
+      const input =
+        api.contact.submit.input.parse(req.body);
 
-      let savedMessage: any = null;
-      try {
-        savedMessage = await storage.createMessage(input);
-      } catch (err) {
-        console.error("Contact DB write failed (continuing via Discord):", err);
-      }
+      const webhookUrl =
+        process.env.DISCORD_WEBHOOK_URL;
 
-      const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
       if (webhookUrl) {
         try {
           await fetch(webhookUrl, {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: {
+              "Content-Type": "application/json",
+            },
             body: JSON.stringify({
               embeds: [
                 {
@@ -195,18 +274,15 @@ export async function registerRoutes(
               ],
             }),
           });
-        } catch (err) {
-          console.error("Discord webhook failed:", err);
-        }
+        } catch {}
       }
 
-      res.status(201).json(
-        savedMessage ?? {
-          id: 0,
-          ...input,
-          createdAt: new Date().toISOString(),
-        },
-      );
+      res.status(201).json({
+        id: 0,
+        ...input,
+        createdAt: new Date().toISOString(),
+      });
+
     } catch (err) {
       if (err instanceof z.ZodError) {
         return res.status(400).json({
@@ -214,30 +290,10 @@ export async function registerRoutes(
           field: err.errors[0].path.join("."),
         });
       }
+
       throw err;
     }
   });
 
-  // Seed in background — never block startup or crash on DB failure
-  seedDatabase().catch((err) => {
-    console.error("Database seed skipped (DB unavailable):", err?.message ?? err);
-  });
-
   return httpServer;
-}
-
-export async function seedDatabase() {
-  const existingSponsors = await storage.getSponsors();
-  if (existingSponsors.length <= 3) {
-    // If we only have the example sponsors (or fewer), clear and seed with real ones
-    await db.delete(sponsors);
-    for (const s of FALLBACK_SPONSORS) {
-      await storage.createSponsor({
-        name: s.name,
-        tier: s.tier,
-        logoUrl: s.logoUrl,
-        websiteUrl: s.websiteUrl,
-      });
-    }
-  }
 }
