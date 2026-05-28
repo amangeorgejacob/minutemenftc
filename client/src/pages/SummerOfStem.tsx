@@ -33,6 +33,39 @@ const stemSections = [
   },
 ];
 
+const camps = [
+  {
+    title: "Robotics Foundations",
+    age: "Ages 8–11",
+    price: "$120",
+    desc: "Intro to building, simple mechanisms, and teamwork-based robot challenges. Contact us for more info.",
+  },
+  {
+    title: "Coding Adventures",
+    age: "Ages 10–13",
+    price: "$150",
+    desc: "Learn programming basics through fun interactive problem-solving activities. Contact us for more info.",
+  },
+  {
+    title: "Engineering Design",
+    age: "Ages 11–14",
+    price: "$160",
+    desc: "Hands-on design challenges focused on prototyping and iteration. Contact us for more info.",
+  },
+  {
+    title: "Advanced Robotics",
+    age: "Ages 13–16",
+    price: "$180",
+    desc: "More complex builds, sensors, and competition-style problem solving. Contact us for more info.",
+  },
+  {
+    title: "Innovation Lab",
+    age: "Ages 12–17",
+    price: "$200",
+    desc: "Open-ended engineering projects focused on creativity and real-world impact. Contact us for more info.",
+  },
+];
+
 export default function SummerOfStem() {
   const isAdmin = localStorage.getItem("isAdmin") === "true";
 
@@ -120,7 +153,6 @@ export default function SummerOfStem() {
 
           {/* RIGHT SIDE */}
           <div className="relative z-10 rounded-3xl border border-white/10 bg-background/70 backdrop-blur-xl p-8">
-
             <div className="absolute -top-16 -right-16 h-64 w-64 rounded-full bg-emerald-400/15 blur-3xl" />
             <div className="absolute -bottom-16 -left-16 h-64 w-64 rounded-full bg-cyan-400/15 blur-3xl" />
 
@@ -162,30 +194,27 @@ export default function SummerOfStem() {
         </motion.div>
       </section>
 
-      {/* QUICK HIGHLIGHTS */}
+      {/* NEW CAMP CARDS SECTION */}
       <section className="container mx-auto px-4 mb-28">
-        <div className="grid md:grid-cols-3 gap-8">
-          {[
-            { icon: Bot, title: "Robotics", desc: "Robot design and teamwork." },
-            { icon: Cpu, title: "Programming", desc: "Coding and problem solving." },
-            { icon: Rocket, title: "Innovation", desc: "Creative engineering challenges." },
-          ].map((item) => {
-            const Icon = item.icon;
-            return (
-              <div
-                key={item.title}
-                className="p-8 rounded-3xl bg-secondary/20 border border-white/5"
-              >
-                <Icon className="w-10 h-10 text-primary mb-4" />
-                <h3 className="text-xl font-bold text-foreground mb-3">
-                  {item.title}
-                </h3>
-                <p className="text-muted-foreground">
-                  {item.desc}
-                </p>
-              </div>
-            );
-          })}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {camps.map((camp) => (
+            <div
+              key={camp.title}
+              className="p-8 rounded-3xl border border-white/10 bg-secondary/10 hover:bg-secondary/20 transition-colors"
+            >
+              <h3 className="text-xl font-bold text-foreground mb-2">
+                {camp.title}
+              </h3>
+
+              <p className="text-sm text-primary font-semibold mb-4">
+                {camp.age} • {camp.price}
+              </p>
+
+              <p className="text-muted-foreground leading-relaxed">
+                {camp.desc}
+              </p>
+            </div>
+          ))}
         </div>
       </section>
 

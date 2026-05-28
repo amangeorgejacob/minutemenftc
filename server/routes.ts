@@ -2,22 +2,12 @@ import type { Express } from "express";
 import type { Server } from "http";
 import { api } from "@shared/routes";
 import { z } from "zod";
+import { getVisibility, setVisibility } from "./visibility-store";
 
 /**
- * VISIBILITY (memory only)
+ * VISIBILITY (NOW PERSISTENT — FIXED BUG)
  */
-const DEFAULT_VISIBILITY: Record<string, boolean> = {
-  youtube: true,
-  sponsors: true,
-  community: true,
-  faq: true,
-  portfolio: true,
-  social: true,
-};
-
-let sectionVisibility: Record<string, boolean> = {
-  ...DEFAULT_VISIBILITY,
-};
+// ❌ removed memory-based state completely
 
 /**
  * ✅ Properly typed visitor sessions (fixes red squiggles)
@@ -45,10 +35,11 @@ export async function registerRoutes(
 ): Promise<Server> {
 
   /**
-   * VISIBILITY API
+   * VISIBILITY API (FIXED — NOW USES FILE STORAGE)
    */
+
   app.get("/api/visibility", (req, res) => {
-    res.json(sectionVisibility);
+    res.json(getVisibility());
   });
 
   app.post("/api/visibility", (req, res) => {
@@ -61,7 +52,7 @@ export async function registerRoutes(
       return res.status(400).json({ message: "Invalid request" });
     }
 
-    sectionVisibility[sectionId] = visible;
+    setVisibility(sectionId, visible);
 
     res.json({
       ok: true,
@@ -90,7 +81,6 @@ export async function registerRoutes(
       .split(",")[0]
       .trim();
 
-    // Admin log only (no tracking)
     if (isAdmin) {
       try {
         await fetch(`${webhookUrl}?wait=true`, {
@@ -116,9 +106,6 @@ export async function registerRoutes(
     const formattedPage = formatPage(page);
     const existing = visitorSessions[ip];
 
-    /**
-     * UPDATE EXISTING VISITOR MESSAGE
-     */
     if (existing) {
       existing.pages.add(formattedPage);
 
@@ -140,15 +127,8 @@ export async function registerRoutes(
                   title: "👀 Visitor Activity",
                   color: 0x00b0f4,
                   fields: [
-                    {
-                      name: "IP",
-                      value: ip,
-                      inline: true,
-                    },
-                    {
-                      name: "Pages Visited",
-                      value: pagesList,
-                    },
+                    { name: "IP", value: ip, inline: true },
+                    { name: "Pages Visited", value: pagesList },
                   ],
                   timestamp: new Date().toISOString(),
                 },
@@ -164,9 +144,6 @@ export async function registerRoutes(
       });
     }
 
-    /**
-     * FIRST VISIT → create Discord message
-     */
     const pages = new Set<string>([formattedPage]);
 
     const pagesList = Array.from(pages)
@@ -187,15 +164,8 @@ export async function registerRoutes(
                 title: "👀 Visitor Activity",
                 color: 0x00b0f4,
                 fields: [
-                  {
-                    name: "IP",
-                    value: ip,
-                    inline: true,
-                  },
-                  {
-                    name: "Pages Visited",
-                    value: pagesList,
-                  },
+                  { name: "IP", value: ip, inline: true },
+                  { name: "Pages Visited", value: pagesList },
                 ],
                 timestamp: new Date().toISOString(),
               },
