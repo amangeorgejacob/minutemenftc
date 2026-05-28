@@ -66,7 +66,7 @@ export default function SummerOfStem() {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(34,197,94,0.2),transparent_45%),radial-gradient(circle_at_bottom_right,rgba(34,211,238,0.2),transparent_45%)]" />
 
           <div className="relative z-10 px-8 py-20 md:px-16 md:py-28 max-w-5xl">
-            <h1 className="text-5xl md:text-7xl font-black mb-8 text-white">
+            <h1 className="text-5xl md:text-7xl font-black mb-8 text-foreground">
               SUMMER OF <span className="text-primary">STEM</span>
             </h1>
 
@@ -101,20 +101,19 @@ export default function SummerOfStem() {
           viewport={{ once: true }}
           className="relative grid md:grid-cols-2 gap-10 p-8 md:p-12 rounded-3xl border border-white/10 overflow-hidden"
         >
-
           <div className="absolute inset-0 bg-gradient-to-br from-background via-background/85 to-background/70" />
 
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,0.14),transparent_45%),radial-gradient(circle_at_bottom_right,rgba(147,197,253,0.14),transparent_45%)]" />
 
           {/* LEFT SIDE */}
           <div className="relative z-10">
-            <h2 className="text-3xl md:text-5xl font-black mb-6 text-white">
-              Designed By The <span className="text-primary">Iron Patriots</span>
+            <h2 className="text-3xl md:text-5xl font-black mb-6 text-foreground">
+              Designed By <span className="text-primary">Liberty High School</span>
             </h2>
 
             <p className="text-muted-foreground text-lg">
-              The Iron Patriots, in partnership with the Liberty HS Booster Club,
-              are offering <span className="text-white font-semibold">5 STEM camps</span>{" "}
+              The Minutemen, in partnership with our sister FRC team "Iron Patriots 4131" and the Liberty HS Booster Club,
+              are offering <span className="text-foreground font-semibold">5 STEM camps</span>{" "}
               designed and led entirely by our team.
             </p>
           </div>
@@ -130,7 +129,7 @@ export default function SummerOfStem() {
                 All Camps Located At
               </p>
 
-              <h3 className="text-3xl font-black text-white mb-3">
+              <h3 className="text-3xl font-black text-foreground mb-3">
                 Liberty High School
               </h3>
 
@@ -140,7 +139,6 @@ export default function SummerOfStem() {
                 Renton, WA 98059
               </p>
 
-              {/* UPDATED BUTTON */}
               <a
                 href="https://maps.google.com/?q=16655+SE+136th+St+Renton+WA+98059"
                 target="_blank"
@@ -179,10 +177,12 @@ export default function SummerOfStem() {
                 className="p-8 rounded-3xl bg-secondary/20 border border-white/5"
               >
                 <Icon className="w-10 h-10 text-primary mb-4" />
-                <h3 className="text-xl font-bold text-white mb-3">
+                <h3 className="text-xl font-bold text-foreground mb-3">
                   {item.title}
                 </h3>
-                <p className="text-muted-foreground">{item.desc}</p>
+                <p className="text-muted-foreground">
+                  {item.desc}
+                </p>
               </div>
             );
           })}
@@ -194,7 +194,7 @@ export default function SummerOfStem() {
         {stemSections.map((item) => (
           <div key={item.title} className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-4xl font-black mb-6 text-white">
+              <h2 className="text-4xl font-black mb-6 text-foreground">
                 {item.title}
               </h2>
               <p className="text-muted-foreground mb-6">
@@ -215,7 +215,7 @@ export default function SummerOfStem() {
       {/* CTA */}
       <section className="container mx-auto px-4 mt-32">
         <motion.div className="text-center p-12 rounded-3xl border border-white/10 bg-background/40 backdrop-blur-xl">
-          <h2 className="text-4xl font-black mb-6 text-white">
+          <h2 className="text-4xl font-black mb-6 text-foreground">
             Inspiring Future Engineers
           </h2>
           <p className="text-muted-foreground mb-8">
