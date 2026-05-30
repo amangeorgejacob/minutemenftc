@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { ArrowDown } from "lucide-react";
 
 import { useVisibility } from "@/hooks/use-visibility";
 import { AdminVisibilityToggle } from "@/components/AdminVisibilityToggle";
@@ -41,6 +42,13 @@ export default function Community() {
   const { data: visibility } = useVisibility();
   const visible = visibility?.community ?? true;
 
+  const scrollToSection = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
   if (!visible && !isAdmin) {
     return <HiddenSection label="Community Impact" />;
   }
@@ -71,18 +79,45 @@ export default function Community() {
             Robotics is more than building machines — it's about building people
             and communities.
           </p>
+
+          <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8">
+            <button
+              onClick={() => scrollToSection("community-impact")}
+              className="group inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-accent text-black font-semibold hover:scale-105 transition"
+            >
+              Community Impact
+              <ArrowDown
+                size={18}
+                className="transition-transform duration-300 group-hover:translate-y-1"
+              />
+            </button>
+
+            <button
+              onClick={() => scrollToSection("minutemen-kits")}
+              className="group inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl border border-accent text-accent font-semibold hover:bg-accent/10 transition"
+            >
+              Minutemen Kits
+              <ArrowDown
+                size={18}
+                className="transition-transform duration-300 group-hover:translate-y-1"
+              />
+            </button>
+          </div>
         </motion.div>
       </section>
 
-      {/* CURRENT IMPACT TITLE ONLY */}
-      <section className="container mx-auto px-4 mb-24">
+      {/* CURRENT IMPACT TITLE */}
+      <section
+        id="community-impact"
+        className="container mx-auto px-4 mb-24 scroll-mt-24"
+      >
         <h2 className="text-4xl md:text-5xl font-bold text-center uppercase tracking-widest text-muted-foreground">
           Current Impact
         </h2>
       </section>
 
       {/* OUTREACH SECTIONS */}
-      <section className="container mx-auto px-4 space-y-32">
+      <section className="container mx-auto px-4 space-y-32 mb-32">
         {outreachItems.map((item, idx) => (
           <motion.div
             key={item.title}
@@ -111,30 +146,46 @@ export default function Community() {
                 idx % 2 === 1 ? "md:order-1" : "md:order-2"
               } rounded-2xl overflow-hidden border border-white/10 h-[400px] relative group`}
             >
-              {/* Blue hover overlay */}
               <div className="absolute inset-0 bg-cyan-300/0 group-hover:bg-cyan-300/10 transition-all duration-500 z-10 pointer-events-none" />
 
               {item.image2 ? (
                 <div className="grid grid-cols-2 h-full">
                   <img
                     src={item.image}
+                    alt=""
                     className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                   />
 
                   <img
                     src={item.image2}
+                    alt=""
                     className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                   />
                 </div>
               ) : (
                 <img
                   src={item.image}
+                  alt=""
                   className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                 />
               )}
             </div>
           </motion.div>
         ))}
+      </section>
+
+      {/* MINUTEMEN KITS */}
+      <section
+        id="minutemen-kits"
+        className="container mx-auto px-4 mb-24 scroll-mt-24"
+      >
+        <h2 className="text-4xl md:text-5xl font-bold text-center uppercase tracking-widest text-muted-foreground">
+          Minutemen Kits
+        </h2>
+
+        <p className="mt-6 text-center text-lg md:text-xl text-accent font-medium">
+          Coming Soon
+        </p>
       </section>
 
       <AdminVisibilityToggle

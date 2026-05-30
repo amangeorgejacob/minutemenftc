@@ -1,6 +1,6 @@
 {
   "youtube": true,
-  "sponsors": false,
+  "sponsors": true,
   "community": true,
   "faq": true,
   "portfolio": false,
