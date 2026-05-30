@@ -262,7 +262,7 @@ export default function SummerOfStem() {
           </p>
 
           <Button asChild size="lg">
-            <a href="https://www.frc4131.org/summer">
+            <a href="https://libertyhighboosters.sportngin.com/register/form/273088200">
               Explore Camps <ArrowUpRight className="ml-2 w-4 h-4" />
             </a>
           </Button>
