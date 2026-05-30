@@ -10,7 +10,8 @@ import { HiddenSection } from "@/components/HiddenSection";
 
 import stemOne from "@assets/ImpactPics/StemFair.jpg";
 import stemTwo from "@assets/ImpactPics/sixthone.jpg";
-import stemThree from "@assets/ImpactPics/sixthtwo.jpg";
+import stemThree from "@assets/ImpactPics/GroupPicSOS.jpg";
+//import stemFour from //"@assets/ImpactPics/GroupPicSOS.jpg";
 
 const stemSections = [
   {
@@ -25,8 +26,7 @@ const stemSections = [
     title: "Built By Students",
     description:
       "Summer Of STEM is led by Liberty High School robotics students who mentor younger students and create an energetic environment focused on curiosity and innovation.",
-    image: stemTwo,
-    image2: stemThree,
+    image: stemThree,
     bullet:
       "High school mentors helping the next generation discover STEM.",
   },
