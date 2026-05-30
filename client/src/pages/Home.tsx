@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { ArrowRight, Zap, Users, Trophy } from "lucide-react";
+import groupPic from "@assets/ImpactPics/GroupPic.png";
 
 export default function Home() {
   return (
@@ -11,7 +12,7 @@ export default function Home() {
         <div className="absolute inset-0 z-0">
           {/* robotics competition arena */}
           <img 
-            src="/grouppic.jpg"
+            src={groupPic}
             alt="Robotics Competition" 
             className="w-full h-full object-cover opacity-20"
           />
