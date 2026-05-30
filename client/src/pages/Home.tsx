@@ -34,10 +34,10 @@ export default function Home() {
               We are a passionate team of student engineers designing, building, and programming robots to compete in the FIRST Tech Challenge.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/community" className="inline-flex items-center justify-center px-8 py-4 rounded-lg bg-primary text-primary-foreground font-bold hover:bg-primary/90 transition-all hover:scale-105">
-                Our Impact
+              <Link href="/summerofstem" className="inline-flex items-center justify-center px-8 py-4 rounded-lg bg-primary text-primary-foreground font-bold hover:bg-primary/90 transition-all hover:scale-105">
+                Check out our Summer of STEM program!
               </Link>
-              <Link href="/faq?open=ftc" className="inline-flex items-center justify-center px-8 py-4 rounded-lg bg-foreground/5 text-foreground font-bold border border-foreground/10 hover:bg-foreground/10 transition-all backdrop-blur-sm">
+              <Link href="/faq" className="inline-flex items-center justify-center px-8 py-4 rounded-lg bg-foreground/5 text-foreground font-bold border border-foreground/10 hover:bg-foreground/10 transition-all backdrop-blur-sm">
                 What is FTC?
               </Link>
             </div>

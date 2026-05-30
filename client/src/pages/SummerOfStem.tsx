@@ -1,7 +1,7 @@
 // src/pages/SummerOfStem.tsx
 
 import { motion } from "framer-motion";
-import { ArrowUpRight, Bot, Cpu, Rocket } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Bot, Cpu, Rocket } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { useVisibility } from "@/hooks/use-visibility";
@@ -91,7 +91,7 @@ export default function SummerOfStem() {
   }
 
   return (
-    <div className="min-h-screen pt-24 pb-20 overflow-hidden">
+    <div className="min-h-screen pt-24 pb-20 overflow-hidden scroll-smooth">
 
       {/* HERO */}
       <section className="relative container mx-auto px-4 mb-10">
@@ -116,20 +116,24 @@ export default function SummerOfStem() {
             </h1>
 
             <p className="text-lg md:text-2xl text-muted-foreground max-w-3xl mb-8">
-              Build robots. Code games. Design real engineering projects — led by
+              Build robots. Code games. Design real engineering projects. Led by
               high school robotics students from Liberty High School.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button asChild size="lg">
-                <a href="https://www.frc4131.org/summer">
-                  Explore Camps
-                  <ArrowUpRight className="w-4 h-4 ml-2" />
-                </a>
-              </Button>
-
-              <Button asChild size="lg" variant="outline">
-                <a href="#camps">See Programs</a>
+              <Button
+                size="lg"
+                onClick={() => {
+                  document
+                    .getElementById("camps")
+                    ?.scrollIntoView({
+                      behavior: "smooth",
+                      block: "start",
+                    });
+                }}
+              >
+                Explore Camps
+                <ArrowDown className="w-4 h-4 ml-2" />
               </Button>
             </div>
           </div>
@@ -220,7 +224,7 @@ export default function SummerOfStem() {
                   <p className="text-muted-foreground mb-6">{camp.desc}</p>
 
                   <Button asChild variant="outline">
-                    <a href="https://www.frc4131.org/summer">
+                    <a href="https://libertyhighboosters.sportngin.com/register/form/273088200">
                       Reserve Spot <ArrowUpRight className="ml-2 w-4 h-4" />
                     </a>
                   </Button>

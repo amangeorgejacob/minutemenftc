@@ -1,9 +1,9 @@
 {
   "youtube": true,
-  "sponsors": true,
+  "sponsors": false,
   "community": true,
   "faq": true,
-  "portfolio": true,
+  "portfolio": false,
   "social": true,
   "summerOfStem": true
 }
