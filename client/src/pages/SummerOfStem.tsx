@@ -8,10 +8,8 @@ import { useVisibility } from "@/hooks/use-visibility";
 import { AdminVisibilityToggle } from "@/components/AdminVisibilityToggle";
 import { HiddenSection } from "@/components/HiddenSection";
 
-import stemOne from "@assets/ImpactPics/StemFair.jpg";
-import stemTwo from "@assets/ImpactPics/sixthone.jpg";
-import stemThree from "@assets/ImpactPics/GroupPicSOS.jpg";
-//import stemFour from //"@assets/ImpactPics/GroupPicSOS.jpg";
+import stemOne from "@assets/ImpactPics/SOS1.jpg";
+import stemTwo from "@assets/ImpactPics/GroupPicSOS.jpg";
 
 const stemSections = [
   {
@@ -26,9 +24,8 @@ const stemSections = [
     title: "Built By Students",
     description:
       "Summer Of STEM is led by Liberty High School robotics students who mentor younger students and create an energetic environment focused on curiosity and innovation.",
-    image: stemThree,
-    bullet:
-      "High school mentors helping the next generation discover STEM.",
+    image: stemTwo,
+    bullet: "High school mentors helping the next generation discover STEM.",
   },
 ];
 
@@ -39,8 +36,7 @@ const camps = [
     price: "$330",
     icon: Bot,
     color: "from-emerald-400/25 to-emerald-900/35",
-    desc:
-      "Take your LEGO robotics skills to the next level! Students will work in teams to complete complex robot challenges using advanced software and engineering concepts. Perfect for FLL experience or future FLL students.",
+    desc: "Take your LEGO robotics skills to the next level! Students will work in teams to complete complex robot challenges using advanced software and engineering concepts. Perfect for FLL experience or future FLL students.",
   },
   {
     title: "Video Game Development With Scratch",
@@ -48,8 +44,7 @@ const camps = [
     price: "$270",
     icon: Rocket,
     color: "from-sky-400/25 to-blue-900/35",
-    desc:
-      "Use Scratch to learn programming while building interactive games. Students will combine coding with LEGO EV3 motors and sensors. Laptops provided.",
+    desc: "Use Scratch to learn programming while building interactive games. Students will combine coding with LEGO EV3 motors and sensors. Laptops provided.",
   },
   {
     title: "LEGO Engineering Challenge",
@@ -57,8 +52,7 @@ const camps = [
     price: "$240",
     icon: Cpu,
     color: "from-emerald-400/25 to-emerald-900/35",
-    desc:
-      "Build with endless LEGO while learning engineering fundamentals. Design cities, bridges, skyscrapers, and more in a creative environment.",
+    desc: "Build with endless LEGO while learning engineering fundamentals. Design cities, bridges, skyscrapers, and more in a creative environment.",
   },
   {
     title: "Intro To Engineering & 3D Printing",
@@ -66,8 +60,7 @@ const camps = [
     price: "$300",
     icon: Rocket,
     color: "from-sky-400/25 to-blue-900/35",
-    desc:
-      "Learn CAD design, robotics mechanisms, and create your own 3D printed project to take home. Bring your own laptop if possible.",
+    desc: "Learn CAD design, robotics mechanisms, and create your own 3D printed project to take home. Bring your own laptop if possible.",
   },
   {
     title: "Advanced Robotics Experience",
@@ -75,8 +68,7 @@ const camps = [
     price: "$360",
     icon: Bot,
     color: "from-emerald-500/30 to-green-900/40",
-    desc:
-      "Build, wire, and program robots using REV robotics parts. Compete in an end-of-camp robotics challenge with student mentors.",
+    desc: "Build, wire, and program robots using REV robotics parts. Compete in an end-of-camp robotics challenge with student mentors.",
   },
 ];
 
@@ -92,7 +84,6 @@ export default function SummerOfStem() {
 
   return (
     <div className="min-h-screen pt-24 pb-20 overflow-hidden scroll-smooth">
-
       {/* HERO */}
       <section className="relative container mx-auto px-4 mb-10">
         <motion.div
@@ -124,12 +115,10 @@ export default function SummerOfStem() {
               <Button
                 size="lg"
                 onClick={() => {
-                  document
-                    .getElementById("camps")
-                    ?.scrollIntoView({
-                      behavior: "smooth",
-                      block: "start",
-                    });
+                  document.getElementById("camps")?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                  });
                 }}
               >
                 Explore Camps
@@ -170,15 +159,16 @@ export default function SummerOfStem() {
             </h2>
 
             <p className="text-muted-foreground text-lg">
-              Created by Liberty High School robotics students in partnership with
-              FRC team Iron Patriots 4131 and the Liberty HS Booster Club.
+              Created by Liberty High School robotics students in partnership
+              with FRC team Iron Patriots 4131 and the Liberty HS Booster Club.
             </p>
           </div>
 
           <div className="relative z-10 rounded-3xl border border-white/10 bg-background/70 backdrop-blur-xl p-8">
             <h3 className="text-2xl font-black mb-2">Liberty High School</h3>
             <p className="text-muted-foreground mb-5">
-              16655 SE 136th St<br />
+              16655 SE 136th St
+              <br />
               Renton, WA 98059
             </p>
 
@@ -209,13 +199,17 @@ export default function SummerOfStem() {
                 key={camp.title}
                 className="relative overflow-hidden rounded-3xl border border-white/10 bg-background/50 p-8"
               >
-                <div className={`absolute inset-0 opacity-60 bg-gradient-to-br ${camp.color}`} />
+                <div
+                  className={`absolute inset-0 opacity-60 bg-gradient-to-br ${camp.color}`}
+                />
 
                 <div className="relative z-10">
                   <div className="flex justify-between mb-6">
                     <Icon className="w-8 h-8 text-primary" />
                     <div className="text-right">
-                      <p className="text-sm text-primary font-semibold">{camp.age}</p>
+                      <p className="text-sm text-primary font-semibold">
+                        {camp.age}
+                      </p>
                       <p className="text-xl font-black">{camp.price}</p>
                     </div>
                   </div>
@@ -238,7 +232,10 @@ export default function SummerOfStem() {
       {/* DETAILS */}
       <section className="container mx-auto px-4 space-y-28">
         {stemSections.map((item) => (
-          <div key={item.title} className="grid md:grid-cols-2 gap-12 items-center">
+          <div
+            key={item.title}
+            className="grid md:grid-cols-2 gap-12 items-center"
+          >
             <div>
               <h2 className="text-4xl font-black mb-6">{item.title}</h2>
               <p className="text-muted-foreground mb-6">{item.description}</p>
@@ -260,7 +257,8 @@ export default function SummerOfStem() {
           </h2>
 
           <p className="text-muted-foreground mb-8">
-            Hands-on STEM learning led by student mentors — designed to inspire future engineers.
+            Hands-on STEM learning led by student mentors — designed to inspire
+            future engineers.
           </p>
 
           <Button asChild size="lg">
