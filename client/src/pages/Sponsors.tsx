@@ -18,7 +18,7 @@ import { HiddenSection } from "@/components/HiddenSection";
  */
 const SPONSORS = [
   { name: "AirReps", value: 3000, websiteUrl: "https://airreps.com", logo: "AirReps.png" },
-  { name: "Polymaker ($1000 worth of filament)", value: 1000, websiteUrl: "https://polymaker.com", logo: "Polymaker.png" },
+  { name: "Polymaker", value: 1000, websiteUrl: "https://polymaker.com", logo: "Polymaker.png" },
   { name: "Les Schwab", value: 1000, websiteUrl: "https://lesschwab.com", logo: "LesSchwab.png" },
   { name: "AFEW", value: 1000, websiteUrl: "https://afewglobal.com", logo: "AFEW.png" },
   { name: "Microsoft", value: 1200, websiteUrl: "https://microsoft.com", logo: "Microsoft.png" },
@@ -36,7 +36,7 @@ const GRANTS = [
 ];
 
 /**
- * PEOPLE (NO IMAGE SPACE)
+ * PEOPLE
  */
 const PEOPLE = [
   { name: "Lucas G.", value: 1500, websiteUrl: "" },
@@ -71,6 +71,11 @@ export default function Sponsors() {
 
   const fundingData = [...SPONSORS, ...GRANTS, ...PEOPLE];
 
+  const totalFunding = fundingData.reduce(
+    (sum, item) => sum + item.value,
+    0
+  );
+
   const renderCustomizedLabel = (props: any) => {
     const { cx, cy, midAngle, outerRadius, name } = props;
 
@@ -96,7 +101,7 @@ export default function Sponsors() {
   };
 
   /**
-   * SPONSOR + GRANT CARD (WITH IMAGE)
+   * SPONSOR + GRANT CARD
    */
   const LogoCard = ({ item }: any) => {
     const content = (
@@ -116,8 +121,6 @@ export default function Sponsors() {
         <div className="text-lg font-bold group-hover:text-primary transition-colors">
           {item.name}
         </div>
-
-        <div className="text-sm text-muted-foreground">${item.value}</div>
       </div>
     );
 
@@ -133,15 +136,12 @@ export default function Sponsors() {
   };
 
   /**
-   * PEOPLE CARD (NO IMAGE AREA)
+   * PEOPLE CARD
    */
   const PeopleCard = ({ item }: any) => {
     const content = (
       <div className="p-8 bg-secondary/20 border border-white/5 rounded-2xl text-center hover:border-primary/40 transition-all">
         <div className="text-2xl font-bold">{item.name}</div>
-        <div className="text-sm text-muted-foreground mt-2">
-          ${item.value}
-        </div>
       </div>
     );
 
@@ -158,10 +158,12 @@ export default function Sponsors() {
 
   return (
     <div className="min-h-screen pt-24 pb-20 overflow-hidden">
-
       {/* HERO */}
       <section className="container mx-auto px-4 mb-20 text-center">
-        <motion.div initial={{ opacity: 0, y: -25 }} animate={{ opacity: 1, y: 0 }}>
+        <motion.div
+          initial={{ opacity: 0, y: -25 }}
+          animate={{ opacity: 1, y: 0 }}
+        >
           <p className="uppercase tracking-[0.35em] text-sm text-accent mb-4">
             Partnerships & Support
           </p>
@@ -210,7 +212,17 @@ export default function Sponsors() {
                     ))}
                   </Pie>
 
-                  <Tooltip formatter={(v: number) => `$${v}`} />
+                  <Tooltip
+                    formatter={(value: number) => {
+                      const percentage = (
+                        (value / totalFunding) *
+                        100
+                      ).toFixed(1);
+
+                      return [`${percentage}%`, "Share"];
+                    }}
+                  />
+
                   <Legend />
                 </PieChart>
               </ResponsiveContainer>
@@ -221,7 +233,9 @@ export default function Sponsors() {
 
       {/* SPONSORS */}
       <section className="container mx-auto px-4 max-w-6xl mb-24">
-        <h2 className="text-4xl font-black text-center mb-10">Sponsors</h2>
+        <h2 className="text-4xl font-black text-center mb-10">
+          Sponsors
+        </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {SPONSORS.map((s) => (
@@ -232,7 +246,9 @@ export default function Sponsors() {
 
       {/* GRANTS */}
       <section className="container mx-auto px-4 max-w-6xl mb-24">
-        <h2 className="text-4xl font-black text-center mb-10">Grants</h2>
+        <h2 className="text-4xl font-black text-center mb-10">
+          Grants
+        </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {GRANTS.map((g) => (
@@ -241,7 +257,7 @@ export default function Sponsors() {
         </div>
       </section>
 
-      {/* PEOPLE (NO IMAGE SPACE VERSION) */}
+      {/* INDIVIDUAL DONORS */}
       <section className="container mx-auto px-4 max-w-5xl">
         <h2 className="text-4xl font-black text-center mb-10">
           Individual Donors
