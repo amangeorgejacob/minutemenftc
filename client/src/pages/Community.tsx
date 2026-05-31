@@ -5,18 +5,21 @@ import { useVisibility } from "@/hooks/use-visibility";
 import { AdminVisibilityToggle } from "@/components/AdminVisibilityToggle";
 import { HiddenSection } from "@/components/HiddenSection";
 
-import stemFairImg from "@assets/ImpactPics/StemFair.jpg";
-import sixthOneImg from "@assets/ImpactPics/sixthone.jpg";
-import sixthTwoImg from "@assets/ImpactPics/sixthtwo.jpg";
-import seafairImg from "@assets/ImpactPics/Seafair.png";
+import stemFairImg1 from "@assets/ImpactPics/StemFair1.png";
+import stemFairImg2 from "@assets/ImpactPics/StemFair2.png";
+//import sixthOneImg from "@assets/ImpactPics/sixthone.jpg";
+//import sixthTwoImg from "@assets/ImpactPics/sixthtwo.jpg";
+import AADImg1 from "@assets/ImpactPics/AADImg1.png";
+import AADImg2 from "@assets/ImpactPics/AADImg2.png";
 
 const outreachItems = [
   {
     title: "Science Fair Demonstrations",
     description:
-      "Interactive robot demos at local elementrary school science fairs where we let students see the technology up close.",
-    image: stemFairImg,
-    bullet: "Interactive robot demos at science fairs",
+      "Interactive robot demos at local elementrary school science fairs where we let students see the technology up close. These elementary schools include Maple Hills, Apollo, and Briarwood.",
+    image: stemFairImg1,
+    image2: stemFairImg2,
+    bullet: "At the Briarwood carnival, Liberty robotics had a great time spreading STEM to local students and families! Alongside our sister FRC team 4131, the Iron Patriots, Many elementary schoolers were able to drive around our Decode FTC robot, make buttons, and learn what it means to be a part of a robotics team!",
   },
   /*{
     title: "6th Grade Mentorship",
@@ -27,14 +30,15 @@ const outreachItems = [
     bullet:
       "Mentoring new 6th graders how to build and program demo robots",
   },*/
-  /*{
-    title: "Regional Community Events",
+  {
+    title: "Regional Community Events (Alaska Aviation Day)",
     description:
-      "Visiting places like Seafair in Seattle to reach out further and inspire more kids into STEM.",
-    image: seafairImg,
+      "We visit many events such as Alaska Aviation Day to reach out further and inspire more kids into STEM.",
+    image: AADImg1,
+    image2: AADImg2,
     bullet:
-      "Going to places like Seafair in Seattle to inspire kids into STEM paths",
-  },*/
+      "Alaska Aviation day was a massive success! This year the Minutemen were able to visit SeaTac to spread the joy of robotics and FIRST. Liberty robotics was able to bring both their FRC robot and FTC robot, so kids and adults alike could learn and drive the robots! The Minutemen were even able to drive the Port of Seattle’s bomb robot!",
+  },
 ];
 
 export default function Community() {
@@ -76,7 +80,7 @@ export default function Community() {
           </h1>
 
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Robotics is more than building machines — it's about building people
+            Robotics is more than building machines, it's about building people
             and communities.
           </p>
 
@@ -111,9 +115,23 @@ export default function Community() {
         id="community-impact"
         className="container mx-auto px-4 mb-24 scroll-mt-24"
       >
-        <h2 className="text-4xl md:text-5xl font-bold text-center uppercase tracking-widest text-muted-foreground">
-          Current Impact
-        </h2>
+        <div className="text-center">
+          <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-widest text-muted-foreground">
+            Current Impact
+          </h2>
+
+          <p className="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-muted-foreground leading-relaxed">
+            Over the years, we've connected with countless students and community
+            members through STEM outreach, mentorship, and hands-on robotics
+            experiences. While we can't showcase everything we've accomplished,
+            here's a glimpse of our impact this year.
+          </p>
+
+          <ArrowDown
+            size={30}
+            className="mx-auto mt-6 text-accent animate-bounce"
+          />
+        </div>
       </section>
 
       {/* OUTREACH SECTIONS */}
