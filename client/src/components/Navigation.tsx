@@ -5,13 +5,14 @@ import { useState } from "react";
 
 const links = [
   { href: "/", label: "Home" },
-  { href: "/summerofstem", label: "Summer of STEM"},
-  { href: "/portfolio", label: "Portfolio" },
-  { href: "/community", label: "Impact" },
-  { href: "/sponsors", label: "Sponsors" },
-  { href: "/social", label: "Social" },
-  { href: "/faq", label: "FAQ" },
-  { href: "/contact", label: "Contact" },
+  { href: "/SummerOfStem", label: "Summer of STEM"},
+  { href: "/OurMentors", label: "Our Mentors" },
+  { href: "/Portfolio", label: "Portfolio" },
+  { href: "/Community", label: "Impact" },
+  { href: "/Sponsors", label: "Sponsors" },
+  { href: "/Social", label: "Social" },
+  { href: "/FAQ", label: "FAQ" },
+  { href: "/Contact", label: "Contact" },
 ];
 
 export function Navigation() {

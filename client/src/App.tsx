@@ -10,6 +10,7 @@ import { useEffect } from "react";
 // Pages
 import Home from "@/pages/Home";
 import SummerOfStem from "@/pages/SummerOfStem";
+import OurMentors from "@/pages/OurMentors";
 import Portfolio from "@/pages/Portfolio";
 import Community from "@/pages/Community";
 import Sponsors from "@/pages/Sponsors";
@@ -46,6 +47,7 @@ function Router() {
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/summerofstem" component={SummerOfStem} />
+      <Route path="/summerofstem" component={OurMentors} />
       <Route path="/portfolio" component={Portfolio}/>
       <Route path="/community" component={Community}/>
       <Route path="/sponsors" component={Sponsors} />
