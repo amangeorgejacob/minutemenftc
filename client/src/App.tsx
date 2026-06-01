@@ -46,14 +46,14 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
-      <Route path="/summerofstem" component={SummerOfStem} />
-      <Route path="/summerofstem" component={OurMentors} />
-      <Route path="/portfolio" component={Portfolio}/>
-      <Route path="/community" component={Community}/>
-      <Route path="/sponsors" component={Sponsors} />
-      <Route path="/contact" component={Contact} />
-      <Route path="/social" component={SocialMedia} />
-      <Route path="/faq" component={FAQ} />
+      <Route path="/SummerOfStem" component={SummerOfStem} />
+      <Route path="/OurMentors" component={OurMentors} />
+      <Route path="/Portfolio" component={Portfolio}/>
+      <Route path="/Community" component={Community}/>
+      <Route path="/Sponsors" component={Sponsors} />
+      <Route path="/Contact" component={Contact} />
+      <Route path="/Social" component={SocialMedia} />
+      <Route path="/FAQ" component={FAQ} />
       <Route component={NotFound} />
     </Switch>
   );
