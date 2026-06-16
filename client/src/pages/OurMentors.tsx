@@ -1,5 +1,8 @@
 import { motion } from "framer-motion";
-import { Users, ArrowDown } from "lucide-react";
+import { ArrowDown } from "lucide-react";
+import { useVisibility } from "@/hooks/use-visibility";
+import { AdminVisibilityToggle } from "@/components/AdminVisibilityToggle";
+import { HiddenSection } from "@/components/HiddenSection";
 
 import Nate from "@assets/Mentors/Nate.png";
 import Jeff from "@assets/Mentors/Jeff.png";
@@ -38,6 +41,12 @@ const mentors = [
 ];
 
 export default function Mentors() {
+  const isAdmin = localStorage.getItem("isAdmin") === "true";
+  const { data: visibility } = useVisibility();
+  const visible = visibility?.ourMentors ?? true;
+
+  if (!visible && !isAdmin) return <HiddenSection label="Our Mentors" />;
+
   return (
     <div className="min-h-screen pt-24 pb-20 overflow-hidden">
       {/* HERO */}
@@ -61,7 +70,7 @@ export default function Mentors() {
           </h1>
 
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            The mentors behind Team 24131 dedicate countless hours helping students
+            The mentors behind Team 24621 dedicate countless hours helping students
             grow as engineers, programmers, leaders, and problem-solvers. Their
             guidance makes everything we accomplish possible.
           </p>
@@ -151,10 +160,12 @@ export default function Mentors() {
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Our mentors make it possible for students to explore STEM,
             strengthen leadership skills, and tackle engineering challenges.
-            Their dedication has a lasting impact on every member of Team 24131.
+            Their dedication has a lasting impact on every member of Team 24621.
           </p>
         </motion.div>
       </section>
+
+      <AdminVisibilityToggle sectionId="ourMentors" visible={visible} />
     </div>
   );
 }

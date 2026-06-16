@@ -1,10 +1,9 @@
 {
-  "Youtube": true,
-  "Sponsors": true,
-  "Community": true,
-  "FAQ": true,
-  "Portfolio": false,
-  "Social": true,
-  "SummerOfStem": true
-  "OurMentors": true
+  "sponsors": true,
+  "community": true,
+  "faq": true,
+  "portfolio": false,
+  "social": true,
+  "summerOfStem": true,
+  "ourMentors": true
 }

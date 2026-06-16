@@ -6,14 +6,13 @@ export type VisibilityMap = Record<string, boolean>;
 const FILE_PATH = path.join(process.cwd(), "visibility.json");
 
 const DEFAULT_VISIBILITY: VisibilityMap = {
-  Youtube: true,
-  Sponsors: true,
-  Community: true,
-  FAQ: true,
-  Portfolio: true,
-  Social: true,
-  SummerOfStem: true,
-  OurMentors: true,
+  sponsors: true,
+  community: true,
+  faq: true,
+  portfolio: true,
+  social: true,
+  summerOfStem: true,
+  ourMentors: true,
 };
 
 /**

@@ -1,14 +1,13 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 
 export type SectionId =
-  //| "youtube"
-  | "Sponsors"
-  | "Community"
-  | "FAQ"
-  | "Portfolio"
-  | "Social"
-  | "SummerOfStem"
-  | "OurMentors";
+  | "sponsors"
+  | "community"
+  | "faq"
+  | "portfolio"
+  | "social"
+  | "summerOfStem"
+  | "ourMentors";
 
 export function useVisibility() {
   return useQuery<Record<SectionId, boolean>>({
