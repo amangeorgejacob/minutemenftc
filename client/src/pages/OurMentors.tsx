@@ -1,31 +1,39 @@
 import { motion } from "framer-motion";
 import { Users, ArrowDown } from "lucide-react";
 
-import mentor1 from "@assets/Mentors/mentor1.png";
-import mentor2 from "@assets/Mentors/mentor2.png";
-import mentor3 from "@assets/Mentors/mentor3.png";
+import Nate from "@assets/Mentors/Nate.png";
+import Jeff from "@assets/Mentors/Jeff.png";
+import Doug from "@assets/Mentors/Doug.png";
+import Dave from "@assets/Mentors/Dave.png";
 
 const mentors = [
   {
-    name: "John Smith",
-    role: "Lead Engineering Mentor",
-    image: mentor1,
+    name: "Douglas Chappelle",
+    role: "Head Mentor (FTC & FRC) since 2011",
+    image: Doug,
     description:
-      "John has over 15 years of engineering experience and helps guide our robot design, manufacturing, and strategy development.",
+      "Doug is a technical fellow at Boeing, where he's worked for 30 years as a complex systems integrator on programs like AWACS and the USAF Tanker. He started his career in robotics 35 years ago while at MIT. In his free time Doug likes to hike, bike, pilot small aircraft, and scuba dive. Doug is a founding mentor of our sister FRC team 'Iron Patriots' team #4131.",
   },
   {
-    name: "Sarah Johnson",
-    role: "Programming Mentor",
-    image: mentor2,
+    name: "Nate Hines",
+    role: "Minutemen Mentor",
+    image: Nate,
     description:
-      "Sarah mentors our software team in Java development, autonomous systems, and advanced FTC programming concepts.",
+      "Nate is a technical fellow at Boeing being product development chief engineer with a history of innovative products.",
   },
   {
-    name: "Michael Chen",
-    role: "CAD & Design Mentor",
-    image: mentor3,
+    name: "Dave Duncan",
+    role: "Software Mentor (FTC & FRC) since 2021",
+    image: Dave,
     description:
-      "Michael assists students with CAD design, prototyping, and transforming ideas into competition-ready mechanisms.",
+      "Dave began mentoring for FTC in 2021 and soon began to mentor team 4131 as well. He is an electrical engineer who does research and development at a local biomedical company. When he's not working on robotics, Dave loves running and spending time with his family.",
+  },
+  {
+    name: "Jeff Batis",
+    role: "Software Mentor",
+    image: Jeff,
+    description:
+      "Jeff assists students with CAD design, prototyping, and transforming ideas into competition-ready mechanisms.",
   },
 ];
 

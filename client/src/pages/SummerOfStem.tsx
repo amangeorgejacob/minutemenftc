@@ -23,9 +23,9 @@ const stemSections = [
   {
     title: "Built By Students",
     description:
-      "Summer Of STEM is led by Liberty High School robotics students who mentor younger students and create an energetic environment focused on curiosity and innovation.",
+      "Summer Of STEM is led by Liberty High School robotics students (FTC and FRC teams) who mentor younger students and create an energetic environment focused on curiosity and innovation.",
     image: stemTwo,
-    bullet: "High school mentors helping the next generation discover STEM.",
+    bullet: "High school mentors and elementary school kids celebrating the summer of learning, creativity, and teamwork.",
   },
 ];
 
