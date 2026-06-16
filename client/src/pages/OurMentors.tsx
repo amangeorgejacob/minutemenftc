@@ -165,7 +165,7 @@ export default function Mentors() {
         </motion.div>
       </section>
 
-      <AdminVisibilityToggle sectionId="ourMentors" visible={visible} />
+      <AdminVisibilityToggle sectionId="ourMentors" visible={visible} label="Our Mentors" />
     </div>
   );
 }
