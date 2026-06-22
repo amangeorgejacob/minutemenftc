@@ -4,6 +4,13 @@ import { useVisibility } from "@/hooks/use-visibility";
 import { AdminVisibilityToggle } from "@/components/AdminVisibilityToggle";
 import { HiddenSection } from "@/components/HiddenSection";
 
+/**
+ * 🔧 CONTROL WHICH KITS ARE VISIBLE HERE
+ * Just add/remove IDs from this array
+ */
+const ENABLED_KIT_IDS = [1];
+// Example later: [1, 2, 3] or [1, 4, 6]
+
 const kits = [
   {
     id: 1,
@@ -85,6 +92,10 @@ export default function StemKits() {
   const { data: visibility } = useVisibility();
   const visible = visibility?.stemKits ?? true;
 
+  const visibleKits = kits.filter((kit) =>
+    ENABLED_KIT_IDS.includes(kit.id)
+  );
+
   if (!visible && !isAdmin) return <HiddenSection label="STEM Kits" />;
 
   return (
@@ -106,14 +117,12 @@ export default function StemKits() {
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-8">
             Hands-on STEM kits built by the Minutemen to spark curiosity in students of all ages.
-            Explore our contributions to the CircuitX Kit Exchange and bring these projects to your classroom.
           </p>
 
           <a
             href="https://hisarcs.github.io/CircuitX/"
             target="_blank"
             rel="noopener noreferrer"
-            data-testid="link-circuitx"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary text-white font-semibold hover:bg-primary/80 transition"
           >
             View Full Kit Exchange
@@ -122,18 +131,15 @@ export default function StemKits() {
         </motion.div>
       </section>
 
-      {/* STATS BAR */}
+      {/* STATS */}
       <section className="container mx-auto px-4 mb-16">
         <div className="max-w-4xl mx-auto grid grid-cols-3 gap-4 text-center">
           {[
-            { value: `${kits.length}`, label: "Kits Available" },
-            { value: "4", label: "Subject Areas" },
+            { value: `${visibleKits.length}`, label: "Kits Available" },
+            { value: "1", label: "Subject Areas" },
             { value: "K–8", label: "Grade Range" },
           ].map((stat) => (
-            <div
-              key={stat.label}
-              className="rounded-2xl border border-white/10 bg-secondary/20 px-4 py-6"
-            >
+            <div key={stat.label} className="rounded-2xl border border-white/10 bg-secondary/20 px-4 py-6">
               <p className="text-3xl font-black text-primary mb-1">{stat.value}</p>
               <p className="text-sm text-muted-foreground">{stat.label}</p>
             </div>
@@ -141,94 +147,56 @@ export default function StemKits() {
         </div>
       </section>
 
-      {/* KIT GRID */}
+      {/* GRID */}
       <section className="container mx-auto px-4">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-2xl font-bold text-foreground mb-8">
             Our Kits
           </h2>
+
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {kits.map((kit, idx) => (
-              <motion.div
+            {visibleKits.map((kit, idx) => (
+              <motion.a
                 key={kit.id}
-                data-testid={`card-kit-${kit.id}`}
+                href={kit.circuitxLink}
+                target="_blank"
+                rel="noopener noreferrer"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: idx * 0.08 }}
                 whileHover={{ y: -6 }}
-                className="group flex flex-col rounded-3xl overflow-hidden border border-white/10 bg-secondary/20 hover:border-primary/30 transition-all duration-500"
+                className="group flex flex-col rounded-3xl overflow-hidden border border-white/10 bg-secondary/20 hover:border-primary/30 transition-all duration-500 cursor-pointer"
               >
-                {/* COLOR IMAGE AREA */}
                 <div className={`relative h-48 bg-gradient-to-br ${kit.color} flex items-center justify-center`}>
                   <Package size={56} className="text-white/30" />
                   <div className="absolute top-4 right-4">
-                    <span className={`text-xs font-semibold px-3 py-1 rounded-full border ${categoryColors[kit.category] ?? "bg-white/10 text-white border-white/20"}`}>
+                    <span className={`text-xs font-semibold px-3 py-1 rounded-full border ${categoryColors[kit.category]}`}>
                       {kit.category}
                     </span>
                   </div>
                 </div>
 
-                {/* CONTENT */}
                 <div className="flex flex-col flex-1 p-6 gap-3">
-                  <h3 className="text-lg font-black uppercase tracking-wide text-primary leading-snug">
+                  <h3 className="text-lg font-black uppercase tracking-wide text-primary">
                     {kit.title}
                   </h3>
 
-                  <p className="text-sm text-muted-foreground leading-relaxed flex-1">
+                  <p className="text-sm text-muted-foreground flex-1">
                     {kit.description}
                   </p>
 
-                  <div className="pt-2 border-t border-white/10">
-                    <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground/70 mb-3">
-                      {kit.team}
-                    </p>
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs text-muted-foreground/60">{kit.tag}</span>
-                      <a
-                        href={kit.circuitxLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        data-testid={`link-kit-${kit.id}`}
-                        className="inline-flex items-center gap-1 text-xs font-semibold text-primary hover:underline"
-                      >
-                        View on CircuitX
-                        <ArrowUpRight size={12} />
-                      </a>
-                    </div>
+                  <div className="pt-2 border-t border-white/10 flex justify-between items-center">
+                    <span className="text-xs text-muted-foreground/60">{kit.tag}</span>
+                    <span className="inline-flex items-center gap-1 text-xs font-semibold text-primary">
+                      View
+                      <ArrowUpRight size={12} />
+                    </span>
                   </div>
                 </div>
-              </motion.div>
+              </motion.a>
             ))}
           </div>
         </div>
-      </section>
-
-      {/* BOTTOM CTA */}
-      <section className="container mx-auto px-4 mt-24">
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 }}
-          className="max-w-5xl mx-auto rounded-3xl border border-primary/20 bg-gradient-to-r from-primary/10 to-secondary/20 p-12 text-center"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Want to Use a Kit?
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed">
-            All of our kits are free and open-source through the CircuitX platform.
-            Browse the full library and submit your own STEM kits to share with the community.
-          </p>
-          <a
-            href="https://hisarcs.github.io/CircuitX/"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-testid="link-circuitx-cta"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-primary text-white font-bold text-lg hover:bg-primary/80 transition"
-          >
-            Explore CircuitX
-            <ExternalLink size={18} />
-          </a>
-        </motion.div>
       </section>
 
       <AdminVisibilityToggle sectionId="stemKits" visible={visible} label="STEM Kits" />
