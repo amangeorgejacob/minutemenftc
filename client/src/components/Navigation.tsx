@@ -92,7 +92,7 @@ export function Navigation() {
                 className={`block px-3 py-3 rounded-md text-base font-medium ${
                   location === link.href
                     ? "bg-primary/10 text-primary"
-                    : "text-muted-foreground hover:bg-white/5 hover:text-white"
+                    : "text-muted-foreground hover:bg-primary/10 hover:text-primary"
                 }`}
                 onClick={() => setIsOpen(false)}
               >
