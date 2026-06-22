@@ -7,7 +7,8 @@ export type SectionId =
   | "portfolio"
   | "social"
   | "summerOfStem"
-  | "ourMentors";
+  | "ourMentors"
+  | "stemKits";
 
 export function useVisibility() {
   return useQuery<Record<SectionId, boolean>>({

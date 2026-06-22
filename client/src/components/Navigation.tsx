@@ -11,6 +11,7 @@ const links = [
   { href: "/Community", label: "Impact" },
   { href: "/Sponsors", label: "Sponsors" },
   { href: "/Social", label: "Social" },
+  { href: "/StemKits", label: "STEM Kits" },
   { href: "/FAQ", label: "FAQ" },
   { href: "/Contact", label: "Contact" },
 ];

@@ -13,6 +13,7 @@ const DEFAULT_VISIBILITY: VisibilityMap = {
   social: true,
   summerOfStem: true,
   ourMentors: true,
+  stemKits: true,
 };
 
 /**

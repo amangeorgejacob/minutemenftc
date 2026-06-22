@@ -17,6 +17,7 @@ import Sponsors from "@/pages/Sponsors";
 import Contact from "@/pages/Contact";
 import SocialMedia from "@/pages/SocialMedia";
 import FAQ from "@/pages/FAQ";
+import StemKits from "@/pages/StemKits";
 
 function VisitTracker() {
   const [location] = useLocation();
@@ -54,6 +55,7 @@ function Router() {
       <Route path="/Contact" component={Contact} />
       <Route path="/Social" component={SocialMedia} />
       <Route path="/FAQ" component={FAQ} />
+      <Route path="/StemKits" component={StemKits} />
       <Route component={NotFound} />
     </Switch>
   );
