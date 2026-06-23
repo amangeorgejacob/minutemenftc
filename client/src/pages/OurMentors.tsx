@@ -70,7 +70,7 @@ export default function Mentors() {
           </h1>
 
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            The mentors behind Team 24621 dedicate countless hours helping students
+            The mentors behind Team 24131 dedicate countless hours helping students
             grow as engineers, programmers, leaders, and problem-solvers. Their
             guidance makes everything we accomplish possible.
           </p>
@@ -160,7 +160,7 @@ export default function Mentors() {
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Our mentors make it possible for students to explore STEM,
             strengthen leadership skills, and tackle engineering challenges.
-            Their dedication has a lasting impact on every member of Team 24621.
+            Their dedication has a lasting impact on every member of Team 24131.
           </p>
         </motion.div>
       </section>

@@ -33,18 +33,18 @@ export function Footer() {
             <h3 className="text-2xl font-bold mb-4 text-foreground">MINUTEMEN</h3>
             <p className="text-muted-foreground max-w-md mb-6">
               Inspiring the next generation of engineers and innovators through competitive robotics.
-              First Tech Challenge Team #24621.
+              First Tech Challenge Team #24131.
             </p>
             <div className="flex gap-4">
               <a
-                href="mailto:lhsftc24621@gmail.com"
+                href="mailto:lhsftc24131@gmail.com"
                 className="p-2 bg-foreground/5 rounded-full hover:bg-primary/20 hover:text-primary transition-colors"
                 aria-label="Email us"
               >
                 <Mail className="w-5 h-5" />
               </a>
               <a
-                href="https://www.instagram.com/minutemen.ftc24621"
+                href="https://www.instagram.com/minutemen.ftc24131"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 bg-foreground/5 rounded-full hover:bg-[#d62976]/20 hover:text-[#d62976] transition-colors"
@@ -93,7 +93,7 @@ export function Footer() {
 
         {/* BOTTOM BAR */}
         <div className="border-t border-foreground/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} Minutemen #24621. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Minutemen #24131. All rights reserved.</p>
           <div className="flex items-center gap-4">
             <p className="flex items-center gap-1">Built with ❤️</p>
             <button

@@ -17,7 +17,7 @@ const kits = [
     title: "Iron Innovators – Rocket",
     description:
       "A syringe-powered rocket STEM kit that helps 1st–2nd graders explore gravity, inertia, and Newton's Third Law through hands-on experimentation.",
-    team: "Iron Patriots #4131 & Minutemen #24621 (FTC)",
+    team: "Iron Patriots #4131 & Minutemen #24131 (FTC)",
     category: "Physics",
     color: "from-blue-500/30 to-blue-900/50",
     circuitxLink: "https://hisarcs.github.io/CircuitX/",
@@ -28,7 +28,7 @@ const kits = [
     title: "Gear & Crank Explorer",
     description:
       "A hands-on mechanical kit where students build gear trains, crank mechanisms, and cam systems to learn the foundational concepts behind every robot drivetrain.",
-    team: "Minutemen #24621 (FTC)",
+    team: "Minutemen #24131 (FTC)",
     category: "Mechanical",
     color: "from-green-500/30 to-green-900/50",
     circuitxLink: "https://hisarcs.github.io/CircuitX/",
@@ -39,7 +39,7 @@ const kits = [
     title: "Line Follower Challenge",
     description:
       "Students wire up sensors and write simple block code to make a robot follow a line — the same basic skill behind FTC autonomous routines.",
-    team: "Minutemen #24621 (FTC)",
+    team: "Minutemen #24131 (FTC)",
     category: "Programming",
     color: "from-purple-500/30 to-purple-900/50",
     circuitxLink: "https://hisarcs.github.io/CircuitX/",
@@ -50,7 +50,7 @@ const kits = [
     title: "Bridge Builder STEM Kit",
     description:
       "Teams use popsicle sticks and limited materials to design bridges tested for load capacity — teaching structural engineering and iterative design.",
-    team: "Minutemen #24621 (FTC)",
+    team: "Minutemen #24131 (FTC)",
     category: "Engineering",
     color: "from-amber-500/30 to-orange-900/50",
     circuitxLink: "https://hisarcs.github.io/CircuitX/",
@@ -61,7 +61,7 @@ const kits = [
     title: "Autonomous Maze Runner",
     description:
       "A beginner FTC-inspired kit where students program a minibot to navigate a maze using distance sensors and basic decision logic.",
-    team: "Minutemen #24621 (FTC)",
+    team: "Minutemen #24131 (FTC)",
     category: "Programming",
     color: "from-cyan-500/30 to-cyan-900/50",
     circuitxLink: "https://hisarcs.github.io/CircuitX/",
@@ -72,7 +72,7 @@ const kits = [
     title: "Spaghetti Tower Challenge",
     description:
       "The classic marshmallow-and-spaghetti tower challenge, packaged as a guided STEM kit with scoring rubrics and reflection prompts about iterative design.",
-    team: "Minutemen #24621 (FTC)",
+    team: "Minutemen #24131 (FTC)",
     category: "Engineering",
     color: "from-rose-500/30 to-rose-900/50",
     circuitxLink: "https://hisarcs.github.io/CircuitX/",
