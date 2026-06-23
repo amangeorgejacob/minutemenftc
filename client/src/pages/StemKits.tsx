@@ -96,7 +96,7 @@ export default function StemKits() {
     ENABLED_KIT_IDS.includes(kit.id)
   );
 
-  if (!visible && !isAdmin) return <HiddenSection label="STEM Kits" />;
+  if (!visible && !isAdmin) return <HiddenSection label="Minutemen Kits" />;
 
   return (
     <div className="min-h-screen pt-24 pb-20 overflow-hidden">
@@ -113,10 +113,10 @@ export default function StemKits() {
             Community Education
           </p>
           <h1 className="text-5xl md:text-7xl font-black tracking-tight text-foreground mb-6">
-            STEM <span className="text-primary">KITS</span>
+            MINUTEMEN <span className="text-primary">KITS</span>
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-8">
-            Hands-on STEM kits built by the Minutemen to spark curiosity in students of all ages.
+            Hands-on kits built by the Minutemen to spark curiosity in students of all ages.
           </p>
 
           <a
@@ -199,7 +199,7 @@ export default function StemKits() {
         </div>
       </section>
 
-      <AdminVisibilityToggle sectionId="stemKits" visible={visible} label="STEM Kits" />
+      <AdminVisibilityToggle sectionId="stemKits" visible={visible} label="Minutemen Kits" />
     </div>
   );
 }
