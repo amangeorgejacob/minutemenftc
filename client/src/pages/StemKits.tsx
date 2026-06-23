@@ -116,7 +116,7 @@ export default function StemKits() {
             MINUTEMEN <span className="text-primary">KITS</span>
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-8">
-            Hands-on kits built by the Minutemen to spark curiosity in students of all ages.
+            Hands-on STEM kits built by the Minutemen to spark curiosity in students of all ages.
           </p>
 
           <a
