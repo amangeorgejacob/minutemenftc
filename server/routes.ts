@@ -35,6 +35,14 @@ export async function registerRoutes(
 ): Promise<Server> {
 
   /**
+   * DISCORD DOMAIN VERIFICATION
+   */
+  app.get("/.well-known/discord", (req, res) => {
+    res.setHeader("Content-Type", "text/plain");
+    res.send("dh=bb90efd0f331899fdabf7e73813990fe5d86e7d3");
+  });
+
+  /**
    * VISIBILITY API (FIXED — NOW USES FILE STORAGE)
    */
 
