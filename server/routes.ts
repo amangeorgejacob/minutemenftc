@@ -29,6 +29,37 @@ function formatPage(page: string) {
   return page.replace("/", "").toLowerCase();
 }
 
+/**
+ * Geo-locate an IP and return a human-readable location string.
+ * Returns "🤖 Replit Bot" if the request comes from Replit infrastructure,
+ * "📍 Local / Dev" for loopback addresses, or "City, Region, Country" otherwise.
+ */
+async function getLocation(ip: string): Promise<string> {
+  // Loopback / private
+  if (!ip || ip === "Unknown" || ip === "::1" || ip.startsWith("127.") || ip.startsWith("192.168.") || ip.startsWith("10.")) {
+    return "📍 Local / Dev";
+  }
+
+  try {
+    const res = await fetch(`http://ip-api.com/json/${ip}?fields=status,city,regionName,countryCode,isp,org`);
+    if (!res.ok) return ip;
+    const data = await res.json() as any;
+    if (data.status !== "success") return ip;
+
+    // Detect Replit bots / infrastructure
+    const org: string = (data.org || "").toLowerCase();
+    const isp: string = (data.isp || "").toLowerCase();
+    if (org.includes("replit") || isp.includes("replit")) {
+      return "🤖 Replit Bot";
+    }
+
+    const parts = [data.city, data.regionName, data.countryCode].filter(Boolean);
+    return parts.length ? parts.join(", ") : ip;
+  } catch {
+    return ip;
+  }
+}
+
 export async function registerRoutes(
   httpServer: Server,
   app: Express,
@@ -89,6 +120,8 @@ export async function registerRoutes(
       .split(",")[0]
       .trim();
 
+    const location = await getLocation(ip);
+
     if (isAdmin) {
       try {
         await fetch(`${webhookUrl}?wait=true`, {
@@ -101,6 +134,9 @@ export async function registerRoutes(
               {
                 title: "🔑 Admin Logged In",
                 color: 0xffd700,
+                fields: [
+                  { name: "Location", value: location, inline: true },
+                ],
                 timestamp: new Date().toISOString(),
               },
             ],
@@ -136,6 +172,7 @@ export async function registerRoutes(
                   color: 0x00b0f4,
                   fields: [
                     { name: "IP", value: ip, inline: true },
+                    { name: "Location", value: location, inline: true },
                     { name: "Pages Visited", value: pagesList },
                   ],
                   timestamp: new Date().toISOString(),
@@ -173,6 +210,7 @@ export async function registerRoutes(
                 color: 0x00b0f4,
                 fields: [
                   { name: "IP", value: ip, inline: true },
+                  { name: "Location", value: location, inline: true },
                   { name: "Pages Visited", value: pagesList },
                 ],
                 timestamp: new Date().toISOString(),
