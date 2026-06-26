@@ -128,27 +128,6 @@ export async function registerRoutes(
     const location = await getLocation(ip);
 
     if (isAdmin) {
-      try {
-        await fetch(`${webhookUrl}?wait=true`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            embeds: [
-              {
-                title: "🔑 Admin Logged In",
-                color: 0xffd700,
-                fields: [
-                  { name: "Location", value: location, inline: true },
-                ],
-                timestamp: new Date().toISOString(),
-              },
-            ],
-          }),
-        });
-      } catch {}
-
       return res.status(200).json({ ok: true });
     }
 
