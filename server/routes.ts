@@ -46,12 +46,17 @@ async function getLocation(ip: string): Promise<string> {
     const data = await res.json() as any;
     if (data.status !== "success") return ip;
 
-    // Detect Replit bots / infrastructure
+    // Detect bots from cloud providers (Replit runs on GCP)
     const org: string = (data.org || "").toLowerCase();
     const isp: string = (data.isp || "").toLowerCase();
-    if (org.includes("replit") || isp.includes("replit")) {
-      return "🤖 Replit Bot";
-    }
+    const combined = org + " " + isp;
+
+    if (combined.includes("replit")) return "🤖 Replit Bot";
+    if (combined.includes("google") && (combined.includes("cloud") || combined.includes("llc"))) return "🤖 Replit Bot (GCP)";
+    if (combined.includes("amazon") || combined.includes("aws")) return "🤖 Bot (AWS)";
+    if (combined.includes("microsoft") || combined.includes("azure")) return "🤖 Bot (Azure)";
+    if (combined.includes("digitalocean")) return "🤖 Bot (DigitalOcean)";
+    if (combined.includes("linode") || combined.includes("akamai")) return "🤖 Bot (Linode)";
 
     const parts = [data.city, data.regionName, data.countryCode].filter(Boolean);
     return parts.length ? parts.join(", ") : ip;
