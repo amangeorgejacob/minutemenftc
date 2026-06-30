@@ -165,6 +165,8 @@ export default function Community() {
                 idx % 2 === 1 ? "md:order-1" : "md:order-2"
               } rounded-2xl overflow-hidden border border-white/10 h-[400px] relative group`}
             >
+              <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/25 transition-all duration-500 z-10 pointer-events-none" />
+
               {item.image2 ? (
                 <div className="grid grid-cols-2 h-full">
                   <img
