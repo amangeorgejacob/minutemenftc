@@ -60,83 +60,57 @@ export default function Community() {
 
   return (
     <div className="min-h-screen pt-24 pb-20 overflow-hidden">
-      {/* HERO */}
-      <section className="container mx-auto px-4 mb-20">
-        <motion.div
-          initial={{ opacity: 0, y: -25 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            type: "spring",
-            stiffness: 540,
-            damping: 28,
-          }}
-          className="text-center relative px-8 py-12 md:px-16"
-        >
-          <p className="uppercase tracking-[0.35em] text-sm text-accent mb-4">
-            Outreach & Impact
-          </p>
+{/* HERO */}
+<section className="container mx-auto px-4 mb-20">
+  <motion.div
+    initial={{ opacity: 0, y: -25 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{
+      type: "spring",
+      stiffness: 540,
+      damping: 28,
+    }}
+    className="text-center relative px-8 py-12 md:px-16"
+  >
+    <p className="uppercase tracking-[0.35em] text-sm text-accent mb-4">
+      Outreach & Impact
+    </p>
 
-          <h1 className="text-5xl md:text-7xl font-black tracking-tight text-foreground mb-6">
-            COMMUNITY <span className="text-accent">IMPACT</span>
-          </h1>
+    <h1 className="text-5xl md:text-7xl font-black tracking-tight text-foreground mb-6">
+      COMMUNITY IMPACT
+      <span className="block text-3xl md:text-4xl text-accent mt-3">
+        Our Outreach This Year
+      </span>
+    </h1>
 
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Robotics is more than building machines, it's about building people
-            and communities.
-          </p>
+    <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+      Robotics is more than building machines—it's about building people and
+      communities. Through STEM outreach, demonstrations, mentorship, and
+      regional events, we inspire the next generation of innovators. While we
+      can't showcase everything we've accomplished, here's a look at our impact
+      throughout this year.
+    </p>
 
-          <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8">
-            <button
-              onClick={() => scrollToSection("community-impact")}
-              className="group inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-accent text-black font-semibold hover:scale-105 transition"
-            >
-              Community Impact
-              <ArrowDown
-                size={18}
-                className="transition-transform duration-300 group-hover:translate-y-1"
-              />
-            </button>
-
-            <Link
-              href="/StemKits"
-              className="group inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl border border-accent text-accent font-semibold hover:bg-accent/10 transition"
-            >
-              Minutemen Kits
-              <ArrowDown
-                size={18}
-                className="transition-transform duration-300 group-hover:translate-y-1 -rotate-90"
-              />
-            </Link>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* CURRENT IMPACT TITLE */}
-      <section
-        id="community-impact"
-        className="container mx-auto px-4 mb-24 scroll-mt-24"
+    <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8">
+      <button
+        onClick={() => scrollToSection("community-impact")}
+        className="group inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-accent text-black font-semibold hover:scale-105 transition"
       >
-        <div className="text-center">
-          <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-widest text-muted-foreground">
-            Current Impact
-          </h2>
-
-          <p className="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-muted-foreground leading-relaxed">
-            Over the years, we've connected with countless students and community
-            members through STEM outreach, mentorship, and hands-on robotics
-            experiences. While we can't showcase everything we've accomplished,
-            here's a glimpse of our impact this year.
-          </p>
-
-          <ArrowDown
-            size={30}
-            className="mx-auto mt-6 text-accent animate-bounce"
-          />
-        </div>
-      </section>
+        View Our Outreach
+        <ArrowDown
+          size={18}
+          className="transition-transform duration-300 group-hover:translate-y-1"
+        />
+      </button>
+    </div>
+  </motion.div>
+</section>
 
       {/* OUTREACH SECTIONS */}
-      <section className="container mx-auto px-4 space-y-32 mb-32">
+      <section
+        id="community-impact"
+        className="container mx-auto px-4 space-y-32 mb-32 scroll-mt-24"
+      >
         {outreachItems.map((item, idx) => (
           <motion.div
             key={item.title}
