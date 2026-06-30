@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "wouter";
 import { ArrowDown } from "lucide-react";
 
 import { useVisibility } from "@/hooks/use-visibility";
@@ -96,16 +97,16 @@ export default function Community() {
               />
             </button>
 
-            <button
-              onClick={() => scrollToSection("minutemen-kits")}
+            <Link
+              href="/StemKits"
               className="group inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl border border-accent text-accent font-semibold hover:bg-accent/10 transition"
             >
               Minutemen Kits
               <ArrowDown
                 size={18}
-                className="transition-transform duration-300 group-hover:translate-y-1"
+                className="transition-transform duration-300 group-hover:translate-y-1 -rotate-90"
               />
-            </button>
+            </Link>
           </div>
         </motion.div>
       </section>
@@ -164,8 +165,6 @@ export default function Community() {
                 idx % 2 === 1 ? "md:order-1" : "md:order-2"
               } rounded-2xl overflow-hidden border border-white/10 h-[400px] relative group`}
             >
-              <div className="absolute inset-0 bg-cyan-300/0 group-hover:bg-cyan-300/10 transition-all duration-500 z-10 pointer-events-none" />
-
               {item.image2 ? (
                 <div className="grid grid-cols-2 h-full">
                   <img
@@ -190,20 +189,6 @@ export default function Community() {
             </div>
           </motion.div>
         ))}
-      </section>
-
-      {/* MINUTEMEN KITS */}
-      <section
-        id="minutemen-kits"
-        className="container mx-auto px-4 mb-24 scroll-mt-24"
-      >
-        <h2 className="text-4xl md:text-5xl font-bold text-center uppercase tracking-widest text-muted-foreground">
-          Minutemen Kits
-        </h2>
-
-        <p className="mt-6 text-center text-lg md:text-xl text-accent font-medium">
-          Coming Soon
-        </p>
       </section>
 
       <AdminVisibilityToggle
