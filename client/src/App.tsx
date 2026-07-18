@@ -19,6 +19,14 @@ import SocialMedia from "@/pages/SocialMedia";
 import FAQ from "@/pages/FAQ";
 import StemKits from "@/pages/StemKits";
 
+function ScrollToTop() {
+  const [location] = useLocation();
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [location]);
+  return null;
+}
+
 function VisitTracker() {
   const [location] = useLocation();
   useEffect(() => {
@@ -65,6 +73,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <div className="min-h-screen bg-background text-foreground flex flex-col font-body selection:bg-primary/30 selection:text-white">
+        <ScrollToTop />
         <VisitTracker />
         <Navigation />
         <main className="flex-grow relative">
