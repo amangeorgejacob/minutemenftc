@@ -10,7 +10,7 @@ const FILE_PATH = path.join(process.cwd(), "notification.json");
 
 const DEFAULT: NotificationData = {
   message: "Summer of STEM registration is currently closed — check back soon for the next open window!",
-  active: false,
+  active: true,
 };
 
 function load(): NotificationData {
