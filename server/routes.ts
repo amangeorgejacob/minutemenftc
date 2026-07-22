@@ -3,6 +3,7 @@ import type { Server } from "http";
 import { api } from "@shared/routes";
 import { z } from "zod";
 import { getVisibility, setVisibility } from "./visibility-store";
+import { getNotification, setNotification } from "./notification-store";
 
 /**
  * VISIBILITY (NOW PERSISTENT — FIXED BUG)
@@ -76,6 +77,25 @@ export async function registerRoutes(
   app.get("/.well-known/discord", (req, res) => {
     res.setHeader("Content-Type", "text/plain");
     res.send("dh=bb90efd0f331899fdabf7e73813990fe5d86e7d3");
+  });
+
+  /**
+   * NOTIFICATION BANNER API
+   */
+  app.get("/api/notification", (req, res) => {
+    res.json(getNotification());
+  });
+
+  app.post("/api/notification", (req, res) => {
+    const { message, active } = req.body ?? {};
+    const update: Record<string, unknown> = {};
+    if (typeof message === "string") update.message = message.trim();
+    if (typeof active === "boolean") update.active = active;
+    if (Object.keys(update).length === 0) {
+      return res.status(400).json({ message: "No valid fields provided" });
+    }
+    const result = setNotification(update);
+    res.json({ ok: true, ...result });
   });
 
   /**

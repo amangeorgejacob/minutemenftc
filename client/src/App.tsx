@@ -3,6 +3,7 @@ import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { Navigation } from "@/components/Navigation";
+import { NotificationBanner } from "@/components/NotificationBanner";
 import { Footer } from "@/components/Footer";
 import NotFound from "@/pages/not-found";
 import { useEffect } from "react";
@@ -75,6 +76,7 @@ function App() {
       <div className="min-h-screen bg-background text-foreground flex flex-col font-body selection:bg-primary/30 selection:text-white">
         <ScrollToTop />
         <VisitTracker />
+        <NotificationBanner />
         <Navigation />
         <main className="flex-grow relative">
           {/* Subtle background grain or pattern could go here */}
