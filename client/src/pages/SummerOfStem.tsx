@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import { useVisibility } from "@/hooks/use-visibility";
 import { AdminVisibilityToggle } from "@/components/AdminVisibilityToggle";
 import { HiddenSection } from "@/components/HiddenSection";
-import { NotificationBanner } from "@/components/NotificationBanner";
 
 import stemOne from "@assets/ImpactPics/SOS1.jpg";
 import stemTwo from "@assets/ImpactPics/GroupPicSOS.jpg";
@@ -85,7 +84,6 @@ export default function SummerOfStem() {
 
   return (
     <div className="min-h-screen pt-24 pb-20 overflow-hidden scroll-smooth">
-      <NotificationBanner />
       {/* HERO */}
       <section className="relative container mx-auto px-4 mb-10">
         <motion.div

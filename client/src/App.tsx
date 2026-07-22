@@ -4,6 +4,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
+import { NotificationBanner } from "@/components/NotificationBanner";
 import NotFound from "@/pages/not-found";
 import { useEffect } from "react";
 
@@ -69,6 +70,16 @@ function Router() {
   );
 }
 
+function SummerBanner() {
+  const [location] = useLocation();
+  if (location !== "/SummerOfStem") return null;
+  return (
+    <div className="fixed top-20 left-0 right-0 z-40">
+      <NotificationBanner />
+    </div>
+  );
+}
+
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
@@ -76,6 +87,7 @@ function App() {
         <ScrollToTop />
         <VisitTracker />
         <Navigation />
+        <SummerBanner />
         <main className="flex-grow relative">
           {/* Subtle background grain or pattern could go here */}
           <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 pointer-events-none z-0 mix-blend-overlay"></div>
