@@ -56,13 +56,13 @@ export function NotificationBanner() {
 
   return (
     <div
-      className={`w-full px-4 py-3 flex items-center gap-3 text-sm border-b transition-colors duration-300 ${
+      className={`w-full px-4 py-3 flex items-center gap-3 text-sm font-medium border-b transition-colors duration-300 ${
         active
-          ? "bg-accent/10 border-accent/30 text-foreground"
+          ? "bg-destructive text-destructive-foreground border-destructive"
           : "bg-muted border-border text-muted-foreground opacity-60"
       }`}
     >
-      <Megaphone size={15} className="shrink-0 text-accent" />
+      <Megaphone size={15} className="shrink-0 opacity-90" />
 
       <div className="flex-1 min-w-0">
         {editing ? (
