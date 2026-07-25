@@ -22,7 +22,7 @@ const mentors = [
     role: "Minutemen Mentor",
     image: Nate,
     description:
-      "Nate is a technical fellow at Boeing being product development chief engineer with a history of innovative products.",
+      "Nate is a technical fellow at Boeing being product development chief engineer with a history of innovative products. This is his third year mentoring the FTC and FRC teams at LHS.",
   },
   {
     name: "Dave Duncan",
@@ -36,7 +36,7 @@ const mentors = [
     role: "Software Mentor",
     image: Jeff,
     description:
-      "Jeff assists students with CAD design, prototyping, and transforming ideas into competition-ready mechanisms.",
+      "Jeff assists students with using and navigating diffrent types of software for the robot like android studio and github. From CAD design, prototyping, and transforming ideas into competition-ready mechanisms.",
   },
 ];
 

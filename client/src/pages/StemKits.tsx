@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
-import { ExternalLink, ArrowUpRight, Package } from "lucide-react";
+import { ExternalLink, ArrowUpRight } from "lucide-react";
 import { useVisibility } from "@/hooks/use-visibility";
 import { AdminVisibilityToggle } from "@/components/AdminVisibilityToggle";
 import { HiddenSection } from "@/components/HiddenSection";
+import kp1 from "@assets/KitPics/KP1.png";
 
 /**
  * 🔧 CONTROL WHICH KITS ARE VISIBLE HERE
@@ -19,7 +20,7 @@ const kits = [
       "A syringe-powered rocket STEM kit that helps 1st–2nd graders explore gravity, inertia, and Newton's Third Law through hands-on experimentation.",
     team: "Iron Patriots #4131 & Minutemen #24131 (FTC)",
     category: "Physics",
-    color: "from-blue-500/30 to-blue-900/50",
+    image: kp1,
     circuitxLink: "https://hisarcs.github.io/CircuitX/",
     tag: "Physics · Grades 1–2",
   },
@@ -30,7 +31,7 @@ const kits = [
       "A hands-on mechanical kit where students build gear trains, crank mechanisms, and cam systems to learn the foundational concepts behind every robot drivetrain.",
     team: "Minutemen #24131 (FTC)",
     category: "Mechanical",
-    color: "from-green-500/30 to-green-900/50",
+    image: kp1,
     circuitxLink: "https://hisarcs.github.io/CircuitX/",
     tag: "Mechanical · Grades 3–5",
   },
@@ -41,7 +42,7 @@ const kits = [
       "Students wire up sensors and write simple block code to make a robot follow a line — the same basic skill behind FTC autonomous routines.",
     team: "Minutemen #24131 (FTC)",
     category: "Programming",
-    color: "from-purple-500/30 to-purple-900/50",
+    image: kp1,
     circuitxLink: "https://hisarcs.github.io/CircuitX/",
     tag: "Coding · Grades 4–6",
   },
@@ -52,7 +53,7 @@ const kits = [
       "Teams use popsicle sticks and limited materials to design bridges tested for load capacity — teaching structural engineering and iterative design.",
     team: "Minutemen #24131 (FTC)",
     category: "Engineering",
-    color: "from-amber-500/30 to-orange-900/50",
+    image: kp1,
     circuitxLink: "https://hisarcs.github.io/CircuitX/",
     tag: "Engineering · Grades 5–8",
   },
@@ -63,7 +64,7 @@ const kits = [
       "A beginner FTC-inspired kit where students program a minibot to navigate a maze using distance sensors and basic decision logic.",
     team: "Minutemen #24131 (FTC)",
     category: "Programming",
-    color: "from-cyan-500/30 to-cyan-900/50",
+    image: kp1,
     circuitxLink: "https://hisarcs.github.io/CircuitX/",
     tag: "Coding · Grades 6–8",
   },
@@ -74,7 +75,7 @@ const kits = [
       "The classic marshmallow-and-spaghetti tower challenge, packaged as a guided STEM kit with scoring rubrics and reflection prompts about iterative design.",
     team: "Minutemen #24131 (FTC)",
     category: "Engineering",
-    color: "from-rose-500/30 to-rose-900/50",
+    image: kp1,
     circuitxLink: "https://hisarcs.github.io/CircuitX/",
     tag: "Engineering · Grades K–3",
   },
@@ -167,8 +168,12 @@ export default function StemKits() {
                 whileHover={{ y: -6 }}
                 className="group flex flex-col rounded-3xl overflow-hidden border border-white/10 bg-secondary/20 hover:border-primary/30 transition-all duration-500 cursor-pointer"
               >
-                <div className={`relative h-48 bg-gradient-to-br ${kit.color} flex items-center justify-center`}>
-                  <Package size={56} className="text-white/30" />
+                <div className="relative h-56 overflow-hidden">
+                  <img
+                    src={kit.image}
+                    alt={kit.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
                   <div className="absolute top-4 right-4">
                     <span className={`text-xs font-semibold px-3 py-1 rounded-full border ${categoryColors[kit.category]}`}>
                       {kit.category}
