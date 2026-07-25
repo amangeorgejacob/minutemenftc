@@ -131,21 +131,6 @@ export default function StemKits() {
         </motion.div>
       </section>
 
-      {/* STATS */}
-      <section className="container mx-auto px-4 mb-16">
-        <div className="max-w-4xl mx-auto grid grid-cols-2 gap-4 text-center">
-          {[
-            { value: `${visibleKits.length}`, label: "Kits Available" },
-            { value: "K–8", label: "Grade Range" },
-          ].map((stat) => (
-            <div key={stat.label} className="rounded-2xl border border-white/10 bg-secondary/20 px-4 py-6">
-              <p className="text-3xl font-black text-primary mb-1">{stat.value}</p>
-              <p className="text-sm text-muted-foreground">{stat.label}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* GRID */}
       <section className="container mx-auto px-4">
         <div className="max-w-7xl mx-auto">
