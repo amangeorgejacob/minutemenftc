@@ -117,17 +117,16 @@ export default function StemKits() {
             MINUTEMEN <span className="text-primary">KITS</span>
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Hands-on STEM kits built by the Minutemen to spark curiosity in students of all ages.
-            A huge thank you to all of our partner teams — and a special thanks to the{" "}
+            Hands-on STEM kits built by the Minutemen to spark curiosity in students of all ages.{" "}
             <a
               href="https://hisarcs.github.io/CircuitX/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-primary underline underline-offset-2 hover:text-primary/80 transition"
             >
-              HISARCS team
+              CircuitX
             </a>{" "}
-            for building and hosting the CircuitX kit exchange that powers this catalog.
+            is an open-source, community-driven platform for FIRST teams to access content, exchange ideas, and inspire creativity in STEM globally. This network is initiated and made by team #6431, NoktaParantez.
           </p>
         </motion.div>
       </section>
