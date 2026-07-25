@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ExternalLink, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { useVisibility } from "@/hooks/use-visibility";
 import { AdminVisibilityToggle } from "@/components/AdminVisibilityToggle";
 import { HiddenSection } from "@/components/HiddenSection";
@@ -116,28 +116,27 @@ export default function StemKits() {
           <h1 className="text-5xl md:text-7xl font-black tracking-tight text-foreground mb-6">
             MINUTEMEN <span className="text-primary">KITS</span>
           </h1>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-8">
+          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Hands-on STEM kits built by the Minutemen to spark curiosity in students of all ages.
+            A huge thank you to all of our partner teams — and a special thanks to the{" "}
+            <a
+              href="https://hisarcs.github.io/CircuitX/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary underline underline-offset-2 hover:text-primary/80 transition"
+            >
+              HISARCS team
+            </a>{" "}
+            for building and hosting the CircuitX kit exchange that powers this catalog.
           </p>
-
-          <a
-            href="https://hisarcs.github.io/CircuitX/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary text-white font-semibold hover:bg-primary/80 transition"
-          >
-            View Full Kit Exchange
-            <ExternalLink size={16} />
-          </a>
         </motion.div>
       </section>
 
       {/* STATS */}
       <section className="container mx-auto px-4 mb-16">
-        <div className="max-w-4xl mx-auto grid grid-cols-3 gap-4 text-center">
+        <div className="max-w-4xl mx-auto grid grid-cols-2 gap-4 text-center">
           {[
             { value: `${visibleKits.length}`, label: "Kits Available" },
-            { value: "1", label: "Subject Areas" },
             { value: "K–8", label: "Grade Range" },
           ].map((stat) => (
             <div key={stat.label} className="rounded-2xl border border-white/10 bg-secondary/20 px-4 py-6">
